@@ -61,10 +61,11 @@ export default function AppFooter() {
               spacing={2}
               sx={{ height: 120 }}
             >
-              <Grid item sx={{ display: 'flex', marginLeft:'2rem' }}>
+              <Grid item sx={{ display: 'block', marginLeft:'2rem' }}>
                   <Box component="a" href="https://mui.com/" sx={iconStyle}>
                     <FacebookIcon/>
                   </Box>
+                  <br/>
                   <Box component="a" href="https://twitter.com/MUI_hq" sx={iconStyle}>
                     <TwitterIcon/>
                   </Box>

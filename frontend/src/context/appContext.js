@@ -42,7 +42,7 @@ export const AppProvider = ({children})=>{
                 );
                     localStorage.setItem('token', data.token);
                     toast.success("Authenticated successfuly!");
-                    window.location.href='/';
+                    window.location.href='/explore';
          } 
           catch (error) {
                 toast.error(error.response?.data?.message);

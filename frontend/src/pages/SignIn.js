@@ -77,7 +77,6 @@ function SignIn() {
               />
               <div className='passwordInputDiv'>
                 <TextField
-                  style={{background: "url()"}}
                   id={"password"}
                   fullWidth
                   size="large"

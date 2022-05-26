@@ -8,7 +8,7 @@ const backgroundImage =
   'http://127.0.0.1:8888/daniela-cuevas-t7YycgAoVSw-unsplash.jpg';
 
 
-export default function ProductHero() {
+export default function AppMainHome() {
 
   const navigate=useNavigate();
 
