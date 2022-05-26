@@ -32,7 +32,7 @@ export default function AppMainExplore() {
         variant="h5"
          sx={{ mb: 1, mt: { sx: 2, sm: 2 } }}
       >
-        Feel free to search the most interesting locations for yourself
+        Feel free to search the most cozy places for yourself
       </Typography>
       <div className='block' style={{marginTop:'2rem', padding:'1rem' ,backgroundColor:"#ffffff36"}}>
       <DatePickerCalendar/>

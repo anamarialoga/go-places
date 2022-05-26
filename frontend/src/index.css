@@ -42,7 +42,11 @@
 
 .css-np8i56-MuiFormLabel-root-MuiInputLabel-root{
   border: #ff3366 !important;
+}
 
+.css-1io9rkj-MuiButtonBase-root-MuiPickersDay-root.Mui-selected{
+  background-color: #ff3366 !important;
+  color: white !important;
 }
 
 .css-1smlk3z-MuiPaper-root {
