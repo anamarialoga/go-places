@@ -60,3 +60,24 @@
 .css-vnh2vv-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
   border: 1px solid #ff3366 !important;
 }
+
+
+@media (min-width: 600px)
+{
+.css-1r7kz78-MuiModal-root-MuiDrawer-root{
+  display: contents !important;
+}
+}
+
+.css-3mkgrz-MuiFormControl-root-MuiTextField-root {
+  border-radius: 0.25rem !important;
+}
+
+.css-lgttvj-MuiInputBase-root-MuiOutlinedInput-root {
+  background-color: white !important;
+}
+
+.MuiCardHeader-title{
+  color: #ff3366 !important;
+  font-weight: 600 !important;
+}

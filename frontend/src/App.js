@@ -8,6 +8,7 @@ import SignIn  from './pages/SignIn';
 import  SignUp  from './pages/SignUp';
 import Explore from './pages/Explore';
 import { PrivateExploreRoute } from './components/PivateExploreRoute';
+import Profile from "./pages/Profile.jsx";
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/signin" element={<SignIn/>}/>
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/explore" element={<Explore/>}/>
+            <Route path="/profile" element={<Profile/>}/>
         </Routes>
       </Router>
       <ToastContainer/>

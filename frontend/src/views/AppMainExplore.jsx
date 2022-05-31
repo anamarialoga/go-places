@@ -4,12 +4,20 @@ import DatePickerCalendar from '../components/Explore/DatePickerCalendar';
 import TextField from '@mui/material/TextField';
 import Typography from '../components/Typography.js';
 import ProductHeroLayout from './ProductHeroLayout';
+import { Button } from '@mui/material';
+import Sidebar from '../components/Explore/Sidebar';
 
 const backgroundImage =
   'http://127.0.0.1:8888/daniela-cuevas-t7YycgAoVSw-unsplash.jpg';
 
 
 export default function AppMainExplore() {
+
+  const [sidebar, setSideBar] = React.useState(false);
+  const onSidebar=()=>{
+    setSideBar(!sidebar);
+  }
+
   return (
     <ProductHeroLayout
       sxBackground={{
@@ -40,10 +48,17 @@ export default function AppMainExplore() {
           fullWidth
           label={"Search locations"} 
           sx={{backgroundColor: "white"}}
-          />
-        <SearchIcon style={{zIndex:'9', position:'absolute', right:"2%", top:"40%"}} color={"secondary"}/>
+      />
+      <SearchIcon style={{zIndex:'9', position:'absolute', right:"2%", top:"40%"}} color={"secondary"}/>
+      </div>
+      <div  style={{ textAlign: 'center'}}>
+        <Button variant='contained' color={"primary"} style={{fontSize: "1.1rem"}}>Search</Button>
+      </div>
+      <div style={{ textAlign: 'center', marginTop: '1rem'}}>
+        <Button variant={'contained'} color={'secondary'} onClick={onSidebar}>Advanced Search</Button>
       </div>
       </div>
+      <Sidebar sidebar={sidebar} onSidebar={onSidebar}/>
     </ProductHeroLayout>
   );
 }
