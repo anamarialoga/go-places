@@ -1,10 +1,8 @@
 import SearchIcon from '@mui/icons-material/Search';
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from '../components/Button';
-import DatePickerCalendar from '../components/DatePickerCalendar';
+import DatePickerCalendar from '../components/Explore/DatePickerCalendar';
 import TextField from '@mui/material/TextField';
-import Typography from '../components/Typography';
+import Typography from '../components/Typography.js';
 import ProductHeroLayout from './ProductHeroLayout';
 
 const backgroundImage =
@@ -12,9 +10,6 @@ const backgroundImage =
 
 
 export default function AppMainExplore() {
-
-  const navigate=useNavigate();
-
   return (
     <ProductHeroLayout
       sxBackground={{
@@ -32,7 +27,7 @@ export default function AppMainExplore() {
         variant="h5"
          sx={{ mb: 1, mt: { sx: 2, sm: 2 } }}
       >
-        Feel free to search the most cozy places for yourself
+        Discover the experience
       </Typography>
       <div className='block' style={{marginTop:'2rem', padding:'1rem' ,backgroundColor:"#ffffff36"}}>
       <DatePickerCalendar/>
@@ -44,7 +39,7 @@ export default function AppMainExplore() {
           required
           fullWidth
           label={"Search locations"} 
-          sx={{backgroundColor: "rgb(255 250 251 / 40%)"}}
+          sx={{backgroundColor: "white"}}
           />
         <SearchIcon style={{zIndex:'9', position:'absolute', right:"2%", top:"40%"}} color={"secondary"}/>
       </div>

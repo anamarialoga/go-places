@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
-import Typography from '../components/Typography';
+import Typography from '../components/Typography.js';
 import ProductHeroLayout from './ProductHeroLayout';
 
 const backgroundImage =

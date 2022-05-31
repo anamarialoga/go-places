@@ -1,12 +1,13 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
-import AppBar from '../components/AppBar';
-import Toolbar from '../components/Toolbar';
+import AppBar from '../components/Header-Bar/AppBar';
+import Toolbar from '../components/Header-Bar/Toolbar';
 import {RiMapPinFill} from 'react-icons/ri'
 import { Button } from '@mui/material';
 import {  useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/appContext';
+import {ReactComponent as PersonIcon} from '../common/svg/personIcon.svg';
 
 const rightLink = {
   fontSize: 16,
@@ -54,6 +55,15 @@ function AppAppBar() {
             </Button>
           </Box>  ) : (
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+          <Button
+              color={"primary"}
+              variant="contained"
+              underline="none"
+              sx={rightLink}
+              onClick={()=> navigate('/profile')}
+            >
+              <PersonIcon style={{marginRight: '0.5rem', fill: "white"}}/> {'Profile'}
+            </Button>
             <Button
               color={"secondary"}
               variant="contained"
