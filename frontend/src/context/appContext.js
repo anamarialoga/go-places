@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import {decodeToken} from 'react-jwt';
 import axios from 'axios';
 toast.configure();
 
@@ -13,15 +12,26 @@ export const AppProvider = ({children})=>{
     const [changeDetails, setChangeDetails] = useState(false);
 
     useEffect(()=>{
-        if(localStorage.getItem('token'))
-            {
-                setUser(decodeToken(localStorage.getItem('token')));
-            }
-        else
-            {
-                setUser({});
-            }
-    },[]);
+        const getUser = async ()=>{
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('token')}`
+                },
+            };
+            
+             try{
+                    const {data} = await axios.get(
+                    "http://localhost:1179/api/users/me",
+                    config
+                    );
+                    setUser(data);
+             } 
+              catch (error) {
+                    toast.error(error.response?.data?.message);
+              }
+        }
+        getUser();
+    },[])
 
     const onLogin = async (formdata) => {
         const { email, password} = formdata;
@@ -92,10 +102,10 @@ export const AppProvider = ({children})=>{
       }
 
     const onSubmitChangeDetails= async(formdata)=>{
-        const {name, password} = formdata;
+        const {name, password, phone} = formdata;
         setChangeDetails(!changeDetails);
         if(changeDetails === true){ 
-            if((name !== user.name) || (password !== "")){
+            if((name !== user.name) || (password !== "") || phone !==user.phone){
                 const config={
                     headers:{
                         Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -105,7 +115,8 @@ export const AppProvider = ({children})=>{
                         await axios.put(`http://localhost:1179/api/users/${user.id}`, 
                         {
                             name, 
-                            password
+                            password, 
+                            phone
                         },
                         config
                         );

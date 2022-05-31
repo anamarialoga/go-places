@@ -98,7 +98,8 @@ const getMe = asyncHandler(async (req, rsp) => {
     const user = { 
         id: req.user._id,
         email: req.user.email,
-        name: req.user.name
+        name: req.user.name,
+        phone: req.user.phone
     }
     rsp.status(200).json(user);   
 })
@@ -118,7 +119,7 @@ const generateToken = (id, name, email) =>{
 const updateUser = asyncHandler(async (req, rsp) => {
 
     const user = await User.findById(req.user.id);
-    const {name, password} = req.body;
+    const {name, password, phone} = req.body;
 
     if(!user){
         console.log('User not found');
@@ -128,10 +129,10 @@ const updateUser = asyncHandler(async (req, rsp) => {
     if(password){
         const salt = await bcrypt.genSalt(10);
         const hashedPass = await bcrypt.hash(password, salt);
-        const updatedUser = await User.findByIdAndUpdate(req.params.id, {name, password: hashedPass}, {new: true});
+        const updatedUser = await User.findByIdAndUpdate(req.params.id, {name, password: hashedPass, phone}, {new: true});
         return rsp.status(200).json(updatedUser);    
     }else{
-        const updatedUser = await User.findByIdAndUpdate(req.params.id, {name}, {new: true});
+        const updatedUser = await User.findByIdAndUpdate(req.params.id, {name, phone}, {new: true});
         return rsp.status(200).json(updatedUser);  
     }
 

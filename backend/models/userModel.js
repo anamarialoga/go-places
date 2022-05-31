@@ -14,6 +14,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please type a password'],
     },
+    phone:{
+        type: String,
+        unique: true
+    },
     isStaff:{
         type: Boolean,
         required:[true],
