@@ -6,16 +6,19 @@ import { FormContext } from '../context/formContext';
 import AppAppBar from '../views/AppAppBar';
 import SidebarProfile from '../components/Profile/SidebarProfile';
 import AppForm from '../views/AppForm'
+import { useParams } from 'react-router-dom';
 import { Loading } from '../components/Loading';
 
-function AddListing () {
+function EditListing () {
+    const {listingid} = useParams();
+
     const {
-        cancelListing, 
-        loading, 
-        setLoading, 
-        listing, 
-        onSubmitForm, 
-        onMutate, 
+        onChange,
+        fetchListing,
+        onUpdateForm, 
+        loading,
+        thisListing,
+        cancelListing,
     } = useContext(FormContext);
 
     const {
@@ -37,21 +40,20 @@ function AddListing () {
         geoloc,
         purpose,
         description,
-    } = listing;
+    } = thisListing;
 
 
     useEffect(()=>{
-        setLoading(false);
+        fetchListing(listingid);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        onSubmitForm(e, listing);
-
+        onUpdateForm(e, thisListing, thisListing._id);
     }
 
-return loading? <Loading/> : (
+return loading? <Loading/>: (
     <>
     <AppAppBar/>
     <SidebarProfile/>
@@ -68,7 +70,7 @@ return loading? <Loading/> : (
             value={name}
             maxLength='20'
             minLength='5'
-            onChange={onMutate}
+            onChange={onChange}
             required
             style={{marginBottom: '0.5rem', marginTop: '-2rem', backgroundColor: "white"}}
         />
@@ -80,14 +82,14 @@ return loading? <Loading/> : (
             label="Address"
             type="text"
             variant="outlined"
-            onChange={onMutate}
+            onChange={onChange}
             value={location}
             required
         />
 
       <FormControl  style={{marginBottom: '0.5rem', backgroundColor: "white"}}>
           <InputLabel>Geolocation Services</InputLabel>
-          <Select name="geoloc" value={geoloc}  onChange={onMutate}>
+          <Select name="geoloc" value={geoloc}  onChange={onChange}>
               <MenuItem  value={'true'}>Yes</MenuItem>
               <MenuItem  value={'false'}>No</MenuItem>
           </Select>
@@ -104,7 +106,7 @@ return loading? <Loading/> : (
                     type="number"
                     style={{width: "50%", backgroundColor: "white"}}
                     variant="outlined"
-                    onChange={onMutate}
+                    onChange={onChange}
                     value={latitude}
                     required/>
                 <TextField
@@ -115,7 +117,7 @@ return loading? <Loading/> : (
                     type="number"
                     style={{width: "50%", marginLeft:"1rem", backgroundColor: "white"}}
                     variant="outlined"
-                    onChange={onMutate}
+                    onChange={onChange}
                     value={longitude}
                     required
                 />
@@ -125,7 +127,7 @@ return loading? <Loading/> : (
     <div className='flex' style={{marginBottom: '0.5rem'}}>
     <FormControl fullWidth  style={{marginRight: "1rem", backgroundColor: "white"}}>
           <InputLabel>Purpose</InputLabel>
-          <Select  name="purpose" value={purpose} onChange={onMutate}>
+          <Select  name="purpose" value={purpose} onChange={onChange}>
               <MenuItem value={"ski"}>Ski</MenuItem>
               <MenuItem value={"beach"}>Beach</MenuItem>
               <MenuItem value={"nature"}>Nature</MenuItem>
@@ -135,7 +137,7 @@ return loading? <Loading/> : (
     </FormControl>
     <FormControl fullWidth style={{backgroundColor: "white"}}>
           <InputLabel>Type</InputLabel>
-          <Select  name="type" value={type} onChange={onMutate}>
+          <Select  name="type" value={type} onChange={onChange}>
               <MenuItem value={"hotel"}>Hotel</MenuItem>
               <MenuItem value={"apartment"}>Apartment</MenuItem>
               <MenuItem value={"villa"}>Villa</MenuItem>
@@ -153,7 +155,7 @@ return loading? <Loading/> : (
                     type="number"
                     variant="outlined"
                     style={{backgroundColor: "white"}}
-                    onChange={onMutate}
+                    onChange={onChange}
                     value={bedrooms}
                     required
                 />
@@ -167,7 +169,7 @@ return loading? <Loading/> : (
                     type="number"
                     variant="outlined"
                     style={{backgroundColor: "white"}}
-                    onChange={onMutate}
+                    onChange={onChange}
                     value={bathrooms}
                     required
                 />
@@ -177,21 +179,21 @@ return loading? <Loading/> : (
     <div className='flex' style={{marginBottom: '1rem'}}>
     <FormControl fullWidth  style={{marginRight: "1rem", backgroundColor: "white"}}>
           <InputLabel>Pool</InputLabel>
-          <Select  name="pool" value={pool}  onChange={onMutate}>
+          <Select  name="pool" value={pool}  onChange={onChange}>
                 <MenuItem  value={'true'}>Yes</MenuItem>
                 <MenuItem  value={'false'}>No</MenuItem>
           </Select>
     </FormControl>
     <FormControl fullWidth style={{marginRight: "1rem", backgroundColor: "white"}}>
           <InputLabel>Parking</InputLabel>
-          <Select  name="parking" value={parking}  onChange={onMutate}>
+          <Select  name="parking" value={parking}  onChange={onChange}>
                 <MenuItem  value={'true'}>Yes</MenuItem>
                 <MenuItem  value={'false'}>No</MenuItem>
           </Select>
     </FormControl>
     <FormControl fullWidth style={{backgroundColor: "white"}}>
           <InputLabel>Spa</InputLabel>
-          <Select  name="spa" value={spa}  onChange={onMutate}>
+          <Select  name="spa" value={spa}  onChange={onChange}>
                 <MenuItem  value={'true'}>Yes</MenuItem>
                 <MenuItem  value={'false'}>No</MenuItem>
           </Select>
@@ -201,7 +203,7 @@ return loading? <Loading/> : (
     <div className='flex' style={{marginBottom: '1rem'}}>
     <FormControl fullWidth  style={{marginRight: "1rem"}}>
           <InputLabel >Offer</InputLabel>
-          <Select  name="offer" value={offer}  onChange={onMutate} style={{backgroundColor:"white"}}>
+          <Select  name="offer" value={offer}  onChange={onChange} style={{backgroundColor:"white"}}>
                 <MenuItem  value={'true'}>Yes</MenuItem>
                 <MenuItem  value={'false'}>No</MenuItem>
           </Select>
@@ -215,7 +217,7 @@ return loading? <Loading/> : (
                     type="number"
                     style={{width: "100%", backgroundColor: "white"}}
                     variant="outlined"
-                    onChange={onMutate}
+                    onChange={onChange}
                     value={price}
                     required
                 />
@@ -230,7 +232,7 @@ return loading? <Loading/> : (
                     type="number"
                     style={{width: "100%", backgroundColor: "white"}}
                     variant="outlined"
-                    onChange={onMutate}
+                    onChange={onChange}
                     value={discount}
                     required
                 />
@@ -246,7 +248,7 @@ return loading? <Loading/> : (
             type="file"
             fullWidth
             variant="outlined"
-            onChange={onMutate}
+            onChange={onChange}
             multiple
             max='8'
             accept=".png, .jpg, .jpeg"
@@ -267,7 +269,7 @@ return loading? <Loading/> : (
                 multiline
                 style={{width: "100%", backgroundColor: "white"}}
                 variant="outlined"
-                onChange={onMutate}
+                onChange={onChange}
                 value={description}
             />
     </FormControl>
@@ -281,7 +283,7 @@ return loading? <Loading/> : (
         type={'submit'} 
         onClick={handleSubmit}
         >
-        Submit Listing
+        Update Listing
     </Button>
     <Button  color={"secondary"} style={{marginBottom: '-3rem'}} variant='text' onClick={cancelListing}>Cancel Listing</Button>
     </FormControl>
@@ -290,4 +292,4 @@ return loading? <Loading/> : (
     </>
 )}
 
-export default withRoot(AddListing);
+export default withRoot(EditListing);

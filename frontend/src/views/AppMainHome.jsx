@@ -5,7 +5,7 @@ import Typography from '../components/Typography.js';
 import ProductHeroLayout from './ProductHeroLayout';
 
 const backgroundImage =
-  'http://127.0.0.1:8888/daniela-cuevas-t7YycgAoVSw-unsplash.jpg';
+  'http://127.0.0.1:8888/patrick-ryan-3kUIaB2EPp8-unsplash.jpg';
 
 
 export default function AppMainHome() {
@@ -18,6 +18,7 @@ export default function AppMainHome() {
         backgroundImage: `url(${backgroundImage})`,
         backgroundColor: '#7fc7d9', // Average color of the background image.
         backgroundPosition: 'center',
+        backgroundSize: "cover"
       }}
     >
       <Typography color="inherit" align="center" variant="h2" marked="center">

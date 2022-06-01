@@ -24,6 +24,7 @@ export default function AppMainExplore() {
         backgroundImage: `url(${backgroundImage})`,
         backgroundColor: '#7fc7d9', // Average color of the background image.
         backgroundPosition: 'center',
+        backgroundSize: "cover"
       }}
     >
       <Typography color="inherit" align="center" variant="h2" marked="center">
@@ -52,10 +53,10 @@ export default function AppMainExplore() {
       <SearchIcon style={{zIndex:'9', position:'absolute', right:"2%", top:"40%"}} color={"secondary"}/>
       </div>
       <div  style={{ textAlign: 'center'}}>
-        <Button variant='contained' color={"primary"} style={{fontSize: "1.1rem"}}>Search</Button>
+        <Button variant='contained' color={"secondary"} style={{fontSize: "1.1rem"}}>Search</Button>
       </div>
       <div style={{ textAlign: 'center', marginTop: '1rem'}}>
-        <Button variant={'contained'} color={'secondary'} onClick={onSidebar}>Advanced Search</Button>
+        <Button variant={'contained'} color={"primary"} onClick={onSidebar}>Advanced Search</Button>
       </div>
       </div>
       <Sidebar sidebar={sidebar} onSidebar={onSidebar}/>

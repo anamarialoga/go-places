@@ -5,15 +5,16 @@ import { ProfileName } from '../components/Profile/ProfileName';
 import { ProfileDetails } from '../components/Profile/ProfileDetails';
 import { AppContext } from '../context/appContext';
 import React, { useContext } from 'react';
-import SidebarProfile from '../components/SidebarProfile';
+import SidebarProfile from '../components/Profile/SidebarProfile';
+import { Loading } from '../components/Loading';
 
 
 
 const Profile = () => {
-const {user} = useContext(AppContext);
+const {user, loadingUser} = useContext(AppContext);
 
 
- return (
+ return loadingUser? <Loading/> : (
     <>
     <AppAppBar/>
     <SidebarProfile/>

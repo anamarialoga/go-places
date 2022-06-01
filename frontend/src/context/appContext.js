@@ -11,6 +11,7 @@ export const AppProvider = ({children})=>{
     const [myListings, setMyListings] = useState([]);
     const [changeDetails, setChangeDetails] = useState(false);
 
+    const [loadingUser, setLoadingUser] = useState(true);
     useEffect(()=>{
         const getUser = async ()=>{
             const config = {
@@ -25,6 +26,7 @@ export const AppProvider = ({children})=>{
                     config
                     );
                     setUser(data);
+                    setLoadingUser(false);
              } 
               catch (error) {
                     toast.error(error.response?.data?.message);
@@ -146,8 +148,8 @@ export const AppProvider = ({children})=>{
         }
     }
     
-    const onDeleteListing = async (listingid) => {
-        if (window.confirm(`Are you sure you want to delete ${listingid}?`)) {
+    const onDeleteListing = async (listingid, listingname) => {
+        if (window.confirm(`Are you sure you want to delete ${listingname}?`)) {
             const config = {
                 headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -177,8 +179,8 @@ return (
     changeDetails,
     onEditListing,
     loadingList, 
-    setLoadingList,
     onSignUp,
+    loadingUser
     }}>
         {children}
     </AppContext.Provider>

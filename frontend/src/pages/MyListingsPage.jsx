@@ -1,21 +1,22 @@
 import { Box } from "@mui/system";
-import { useContext, useEffect, useState } from "react";
-import { MyListings } from "../components/My Listings/MyListings";
-import SidebarProfile from "../components/SidebarProfile";
+import { useContext, useEffect} from "react";
+import {Loading} from "../components/Loading";
+import { MyListings } from "../components/Profile/MyListings";
+import SidebarProfile from "../components/Profile/SidebarProfile";
 import { AppContext } from "../context/appContext";
 import AppAppBar from "../views/AppAppBar";
 import withRoot from "../withRoot";
 
 const MyListingsPage = () => {
-const {fetchMyListings, myListings} = useContext(AppContext);
-const [loading, setLoading]=useState(true);
+const {fetchMyListings, myListings, loadingList} = useContext(AppContext);
+
 
 useEffect(()=>{
     fetchMyListings();
-    setLoading(false);
-},[fetchMyListings]);
+// eslint-disable-next-line react-hooks/exhaustive-deps
+},[]);
 
-return  (
+return loadingList? <Loading/> :  (
 <>
     <AppAppBar/>
     <div style={{

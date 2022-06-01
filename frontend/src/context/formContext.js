@@ -46,8 +46,6 @@ export const FormProvider = ({children})=> {
         }
         if(!e.target.files){
             setListing((prevState)=> ({...prevState, [e.target.name]: boolean?? e.target.value}))
-            console.log(listing.geoloc);
-            console.log(e.target.id, e.target.value)
         }
     }
     
@@ -134,6 +132,8 @@ export const FormProvider = ({children})=> {
                 console.log(data);
                 setLoading(false);
                 toast.success('Listing created successfully!')
+                window.location.href="/mylistings"
+                setListing(initialListing);
             }else{
                 setListing(initialListing);
             }
@@ -243,6 +243,7 @@ export const FormProvider = ({children})=> {
                 console.log(data);
                 setLoading(false);
                 toast.success('Listing updated successfully!');
+                window.location.href="/mylistings"
             }else{
                 setThisListing(initialFetched) 
         }} 
@@ -262,12 +263,12 @@ export const FormProvider = ({children})=> {
             setThisListing((prevState) =>({...prevState, images:e.target.files}));
         }
         if(!e.target.files){
-            setThisListing((prevState)=> ({...prevState, [e.target.id]: boolean ?? e.target.value}))
+            setThisListing((prevState)=> ({...prevState, [e.target.name]: boolean ?? e.target.value}))
         }
     }
 
     const cancelListing = () => {
-        window.location.href = '/profile';
+        window.location.href = '/mylistings';
         setListing(initialListing);
         setThisListing(initialListing);
     }
@@ -280,8 +281,6 @@ export const FormProvider = ({children})=> {
             loading,
             setLoading,
             onSubmitForm,
-            // geolocationActive,
-            // onSetLocationServices,
             onMutate,
             fetchListing,
             onUpdateForm, 

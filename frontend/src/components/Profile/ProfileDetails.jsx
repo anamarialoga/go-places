@@ -11,7 +11,6 @@ import {
   TextField
 } from '@mui/material';
 import { AppContext } from '../../context/appContext';
-
 export const ProfileDetails = (props) => {
 
   const [values, setValues] = useState({
@@ -39,11 +38,12 @@ export const ProfileDetails = (props) => {
     >
       <Card >
         <CardHeader
+          style={{backgroundColor: "#fff5f8"}}
           subheader="The information can be edited"
           title="Personal Details"
         />
         <Divider />
-        <CardContent style={{background: 'none'}}>
+        <CardContent>
           <Grid
             container
             spacing={3}
@@ -72,6 +72,7 @@ export const ProfileDetails = (props) => {
               xs={12}
             >
               <TextField
+                style={{background: 'white'}}
                 fullWidth
                 label="Email Address"
                 helperText="Please fill your email"
@@ -88,6 +89,7 @@ export const ProfileDetails = (props) => {
               xs={12}
             >
               <TextField
+               style={{background: 'white'}}
                 fullWidth
                 label="Phone Number"
                 name="phone"
@@ -104,6 +106,7 @@ export const ProfileDetails = (props) => {
               xs={12}
             >
               <TextField
+                style={{background: 'white'}}
                 fullWidth
                 type="password"
                 label={changeDetails? 'Password' : '••••••'}
@@ -119,6 +122,7 @@ export const ProfileDetails = (props) => {
         </CardContent>
         <Divider />
         <Box
+         style={{backgroundColor: "#fff5f8"}}
           sx={{
             display: 'flex',
             justifyContent: 'flex-end',

@@ -4,50 +4,30 @@ import {
   Card,
   CardHeader,
   Divider,
-  IconButton,
   List,
   ListItem,
   ListItemAvatar,
   ListItemText, 
   ListItemButton,
-  MenuItem,
-  Menu,
 } from '@mui/material';
-import MoreVertIcon from '@mui/icons-material/MoreVert'; 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import {ReactComponent as Delete} from '../../common/svg/deleteIcon.svg'
 import {ReactComponent as Edit} from '../../common/svg/editIcon.svg'
 import { AppContext } from '../../context/appContext';
 import ReactPaginate from 'react-paginate';
+import { useNavigate } from 'react-router-dom';
 
 export const MyListings = (props) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () =>{
-    setAnchorEl(null);
-  }
+  const navigate = useNavigate();
   const {onEditListing, onDeleteListing} = useContext(AppContext);
 
-
-    //PAGINATION
-    const [pageNumber, setPageNumber] = useState(0);
-    const [listingsPerPage, setListingsPerPage] = useState(3);
-    const pageCount = Math.ceil(props.listings.length / listingsPerPage);
-    const changePage = ({ selected }) => {
-        setPageNumber(selected);
-    };
-
-    useEffect(()=>{
-        if(window.innerWidth>=1725)
-            setListingsPerPage(3);
-        else if(window.innerWidth >= 1488 && window.innerWidth < 1725)
-            setListingsPerPage(3);
-        else setListingsPerPage(4);
-    }, []);
+  //PAGINATION
+  const [pageNumber, setPageNumber] = useState(0);
+  const listingsPerPage=3;
+  const pageCount = Math.ceil(props.listings.length / listingsPerPage);
+  const changePage = ({ selected }) => {
+      setPageNumber(selected);
+  };
 
  return (
    <div style={{width: "75%",marginLeft: "20%"}}>
@@ -58,12 +38,12 @@ export const MyListings = (props) => {
     />
     <Divider />
     <List >
-      {Array.from(props.listings).slice(pageNumber * listingsPerPage, pageNumber * listingsPerPage + listingsPerPage).map((listing, i) => (
+      {props.listings.slice(pageNumber * listingsPerPage , pageNumber * listingsPerPage + listingsPerPage).map((listing, i) => (
         <ListItem
           divider={i < props.listings.length - 1}
-          key={listing._id}
+          key={i}
         >
-          <ListItemAvatar>
+          <ListItemAvatar style={{cursor:  "pointer"}} onClick={()=>navigate(`/listings/${listing._id}`)}>
             <img
               alt={listing.name}
               src={`http://127.0.0.1:8888/${listing.images[0]}`}
@@ -75,7 +55,7 @@ export const MyListings = (props) => {
             />
           </ListItemAvatar>
           <div style={{display: "flex",justifyContent: 'space-between', width: "100%", height:"9rem"}}>
-            <div className='block'>
+            <div className='block' style={{width:"70%"}}>
               <ListItemText
                 style={{marginLeft: "2rem"}}
                 primary={listing.name}
@@ -91,31 +71,14 @@ export const MyListings = (props) => {
                 secondary={listing.location}
               />
             </div>
-          <IconButton
-            edge="end"
-            size="small"
-            onClick={handleClick}
-          >
-            <MoreVertIcon />
-          </IconButton>
-          <Menu
-            style={{marginTop:'-3rem'}}
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            PaperProps={{
-              style: {
-                maxHeight: 48 * 4.5,
-              },
-            }}
-      >
-          <MenuItem key={'edit'}  onClick={()=>(onEditListing(listing._id), handleClose())}>
-            Edit <Edit fill={"#ff3366"} style={{marginLeft:"1.8rem"}}/>
-          </MenuItem>
-          <MenuItem key={'edit'}  onClick={()=>(onDeleteListing(listing._id), handleClose())}>
-            Delete <Delete fill={"#ff3366"} style={{marginLeft:"0.6rem"}}/>
-          </MenuItem>
-      </Menu>
+            <div className='block' style={{ display: "block", marginTop: "2rem", marginRight: "2rem"}}>
+              <div>
+                <Edit fill={"#ff3366"} onClick={()=>onEditListing(listing._id)} style={{cursor: "pointer"}}/>
+              </div>
+              <div>
+                <Delete fill={"#ff3366"}  onClick={()=>onDeleteListing(listing._id, listing.name)} style={{cursor: "pointer"}}/>
+              </div>
+            </div>
           </div>
         </ListItem>
       ))}

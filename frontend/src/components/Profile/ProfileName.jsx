@@ -44,9 +44,9 @@ export const ProfileName = (props) => {
       </Box>
     </CardContent>
     <Divider />
-    <CardActions>
+    <CardActions style={{backgroundColor: "#fff5f8"}}>
       <Button
-        color="primary"
+        color="secondary"
         style={{width: "100%"}}
         variant="contained"
       >

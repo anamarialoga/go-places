@@ -2,54 +2,51 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
-import withRoot from '../withRoot';
+import withRoot from '../../withRoot';
 import {Button} from '@mui/material';
-import Typography from './Typography';
-import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
-import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
-import LocalAirportOutlinedIcon from '@mui/icons-material/LocalAirportOutlined';
-import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
-import { NavItem } from './My Listings/NavItem';
-import HomeIcon from '@mui/icons-material/Home';
-import AddBoxIcon from '@mui/icons-material/AddBox';
+import Typography from '../Typography';
+import { NavItem } from '../NavItem';
+import InfoIcon from '@mui/icons-material/Info';
+import PersonIcon from '@mui/icons-material/Person';
+import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+import AttractionsIcon from '@mui/icons-material/Attractions';
+import ReviewsIcon from '@mui/icons-material/Reviews';
+import LocalDiningIcon from '@mui/icons-material/LocalDining';
 
+function SidebarListing(props) {
 
-const items = [
-    {
-        href: '/profile',
-        icon: (<ManageAccountsOutlinedIcon fontSize="small" />),
-        title: 'My Account'
-    },
-    {
-        href: '/mylistings',
-        icon: (<HomeIcon fontSize="small"/>),
-        title: 'My Listings'
-    },
-    {
-        href: '/addlisting',
-        icon: (<AddBoxIcon fontSize="small"/>),
-        title: 'Add Listing'
-    },
-    {
-      href: '/statistics',
-      icon: (<BarChartOutlinedIcon fontSize="small" />),
-      title: 'Statistics'
-    },
-    {
-      href: '/customers',
-      icon: (<PeopleOutlinedIcon fontSize="small" />),
-      title: 'Customers'
-    },
-    {
-      href: '/trips',
-      icon: (<LocalAirportOutlinedIcon fontSize="small" />),
-      title: 'Upcoming Trips'
-    },
-
-  ];
-
-
-function SidebarProfile() {
+    const items = [
+        {
+            href: `/listings/${props.listingid}`,
+            icon: (<InfoIcon fontSize="small" />),
+            title: 'Details'
+        },
+        {
+            href: `/listings/${props.listingid}/location`,
+            icon: (<LocationOnOutlinedIcon fontSize="small"/>),
+            title: 'Location'
+        },
+        {
+            href: `/listings/${props.listingid}/food`,
+            icon: (<LocalDiningIcon fontSize="small" />),
+            title: 'Food & Dining'
+        },
+        {
+            href:  `/listings/${props.listingid}/attractions`,
+            icon: (<AttractionsIcon fontSize="small" />),
+            title: 'Attractions'
+        },
+        {
+            href:  `/listings/${props.listingid}/landlord`,
+            icon: (<PersonIcon fontSize="small"/>),
+            title: 'Landlord'
+        },
+        {
+          href:  `/listings/${props.listingid}/reviews`,
+          icon: (<ReviewsIcon fontSize="small" />),
+          title: 'Reviews'
+        },    
+      ];
 
     const content = (
     <>
@@ -60,24 +57,23 @@ function SidebarProfile() {
                         backgroundColor: '#28282a',
                         cursor: 'pointer',
                         display: 'flex',
-                        justifyContent: 'space-between',
                         px: 1,
                         py: '0px',
                         borderRadius: 1
                     }}
                 >
-                    <div style={{marginTop: '1rem'}}>
+                    <div style={{marginTop: '1rem'}} >
                         <Typography
                             color="white"
-                            variant="h4"
+                            variant="h6"
                         >
-                           My
+                           {props?.listing?.name}
                         </Typography>
                         <Typography
                             color="white"
-                            variant="h4"
+                            variant="h7"
                         >
-                           Profile
+                           {props?.listing?.location}
                         </Typography>
                     </div>
                 </Box>
@@ -94,7 +90,6 @@ function SidebarProfile() {
                         icon={item.icon}
                         href={item.href}
                         title={item.title}
-                        onClick={()=>console.log("jsjsjss")}
                     />
                 ))}
             </Box>
@@ -148,4 +143,4 @@ function SidebarProfile() {
     </Drawer>
 );}
 
-export default withRoot(SidebarProfile);
+export default withRoot(SidebarListing);
