@@ -46,7 +46,9 @@ export const FormProvider = ({children})=> {
             setListing((prevState) =>({...prevState, images:e.target.files}));
         }
         if(!e.target.files){
-            setListing((prevState)=> ({...prevState, [e.target.id]: boolean ?? e.target.value}))
+            setListing((prevState)=> ({...prevState, [e.target.name]: boolean?? e.target.value}))
+            console.log(listing.geoloc);
+            console.log(e.target.id, e.target.value)
         }
     }
     
@@ -290,6 +292,7 @@ export const FormProvider = ({children})=> {
     return (
         <FormContext.Provider value={{
             listing,
+            setListing,
             thisListing,
             loading,
             setLoading,

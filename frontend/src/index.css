@@ -1,3 +1,7 @@
+ul{
+  list-style-type: none;
+}
+
 .block{
   display: block;
 }
@@ -25,6 +29,7 @@
 .css-ejdsk1-MuiButtonBase-root-MuiPickersDay-root.Mui-selected{
   background-color: #ff3366 !important;
   color: white !important;
+
 }
 
 .css-i4bv87-MuiSvgIcon-root{
@@ -84,5 +89,71 @@
 
 .MuiListItemText-primary{
   font-weight: 600 !important;
+}
+/* .css-169yyiq-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+  border: 1px solid #ff3366 !important
+} */
+
+.css-143daj2-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+  color: #ff3366 !important
+}
+
+/* .css-qc9b41-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline{
+  border: 1px solid #ff3366 !important
+} */
+
+
+
+.paginationBttns a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 60px;
+  color: #ff3366;
+  cursor: pointer;
+}
+
+.paginationActive a {
+  color: white;
+  background-color: #ff3366;
+}
+
+.paginationDisabled a {
+  color: white;
+  background-color: white;
+}
+.swiper-pagination-bullet-active {
+  background-color: #ffffff00 !important;
+}
+
+.paginationBttns {
+  color: black;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  appearance: button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input::-webkit-file-upload-button{
+  background-color: #fdb3c5 !important;
+  border: none !important;
+  border-radius: 1rem !important;
+  padding: 0.5rem !important;
+  margin-top: -0.5rem !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.css-12g3g83-MuiPaper-root{
+ background-color: #fff5f894 !important;
+}
+
+
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+  border-color: #ff33662e !important;
 }
 

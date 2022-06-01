@@ -37,7 +37,7 @@ export const ProfileDetails = (props) => {
       noValidate
       {...props}
     >
-      <Card style={{marginRight: '1rem'}}>
+      <Card >
         <CardHeader
           subheader="The information can be edited"
           title="Personal Details"

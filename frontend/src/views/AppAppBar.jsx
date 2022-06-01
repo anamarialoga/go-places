@@ -8,7 +8,6 @@ import { Button } from '@mui/material';
 import {  useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/appContext';
 import {ReactComponent as PersonIcon} from '../common/svg/personIcon.svg';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 const rightLink = {
   fontSize: 16,
@@ -29,7 +28,7 @@ function AppAppBar() {
             variant="h6"
             underline="none"
             color="inherit"
-            href='/'
+            href={((localStorage.getItem('token') === null) || (localStorage.getItem('token') === "")) ? '/' : '/explore'}
             sx={{ fontSize: 24 }}
           >
             G<RiMapPinFill size={'1.3rem'} color='ff3366'/>Places
@@ -55,7 +54,7 @@ function AppAppBar() {
             </Button>
           </Box>  ) : (
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-          {window.location.pathname !== "/profile" && (
+          {(window.location.pathname !== "/profile")&&(window.location.pathname !== "/addlisting") &&(window.location.pathname !== "/mylistings") && (
             <Button
               color={"primary"}
               variant="contained"
@@ -65,13 +64,6 @@ function AppAppBar() {
             >
               <PersonIcon style={{marginRight: '0.5rem', fill: "white"}}/> {'Profile'}
             </Button> )}
-            <Button
-              color={"secondary"}
-              variant="text"
-              sx={rightLink}
-            >
-              <MailOutlineIcon style={{marginRight: '0.5rem'}}/> {'Messages'}
-              </Button>
             <Button
               color={"secondary"}
               variant="contained"

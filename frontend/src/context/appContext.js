@@ -147,7 +147,7 @@ export const AppProvider = ({children})=>{
     }
     
     const onDeleteListing = async (listingid) => {
-        if (window.confirm('Are you sure you want to delete?')) {
+        if (window.confirm(`Are you sure you want to delete ${listingid}?`)) {
             const config = {
                 headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,

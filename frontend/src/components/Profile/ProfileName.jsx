@@ -9,8 +9,8 @@ import {
   Typography
 } from '@mui/material';
 
-
-export const ProfileName = (props) => (
+export const ProfileName = (props) => {
+  return (
   <Card {...props}>
     <CardContent>
       <Box
@@ -47,11 +47,11 @@ export const ProfileName = (props) => (
     <CardActions>
       <Button
         color="primary"
-        style={{width: "100%", marginBottom:'1.3rem'}}
+        style={{width: "100%"}}
         variant="contained"
       >
         Upload picture
       </Button>
     </CardActions>
   </Card>
-);
+)};

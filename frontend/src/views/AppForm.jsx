@@ -11,7 +11,7 @@ function AppForm(props) {
     <Box
       sx={{
         display: 'flex',
-        backgroundImage: 'url(http://127.0.0.1:8888/daniela-cuevas-t7YycgAoVSw-unsplash.jpg)',
+        backgroundImage: 'url(http://127.0.0.1:8888/eberhard-grossgasteiger-S-2Ukb_VqpA-unsplash.jpg)',
         backgroundRepeat: 'no-repeat',
       }}
     >
