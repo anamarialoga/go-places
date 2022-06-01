@@ -9,7 +9,6 @@ export const FormContext = createContext({});
 
 export const FormProvider = ({children})=> {
     const [loading, setLoading] = useState(false);
-    const [geolocationActive, setGeolocationActive] = useState(true);
 
     const initialListing = {
         type: 'hotel',
@@ -52,22 +51,6 @@ export const FormProvider = ({children})=> {
         }
     }
     
-    const onSetLocationServices = (e) => {
-        let bool=null;
-        if(e.target.value === 'true'){
-            bool=true;
-        }
-        if(e.target.value === 'false'){
-            bool=false;
-        }
-        setListing((prevState)=>({...prevState, [e.target.id]: bool ?? e.target.value }))
-        setThisListing((prevState)=>({...prevState, [e.target.id]: bool ?? e.target.value }))
-        if(bool === false){
-            setGeolocationActive(false);
-        }else if (bool === true){
-            setGeolocationActive(true);
-        }
-    }
 
     const onSubmitForm = async (e, formdata) =>{
         e.preventDefault();
@@ -89,7 +72,7 @@ export const FormProvider = ({children})=> {
         let geolocation={};
         let location;
 
-        if(geolocationActive === true){
+        if(formdata.geoloc === true){
             const resp = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${formdata.location}&key=${GEO_API_URI}`)
             const data = await resp.json();
 
@@ -194,7 +177,7 @@ export const FormProvider = ({children})=> {
         let geolocation={};
         let location;
    
-        if(geolocationActive === true){
+        if(formdata.geoloc === true){
             const resp = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${formdata.location}&key=${GEO_API_URI}`)
             const data = await resp.json();
 
@@ -297,8 +280,8 @@ export const FormProvider = ({children})=> {
             loading,
             setLoading,
             onSubmitForm,
-            geolocationActive,
-            onSetLocationServices,
+            // geolocationActive,
+            // onSetLocationServices,
             onMutate,
             fetchListing,
             onUpdateForm, 

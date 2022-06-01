@@ -1,5 +1,5 @@
-import { Box, Button, Card, CardHeader, Checkbox, Container, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControl, FormControlLabel, FormLabel, Grid, InputLabel, MenuItem, Modal, Select, Typography } from '@mui/material';
-import { useContext, useEffect, useState } from 'react';
+import {  Button, FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material';
+import { useContext, useEffect } from 'react';
 import { TextField } from '@mui/material';
 import withRoot from '../withRoot';
 import { FormContext } from '../context/formContext';
@@ -7,15 +7,13 @@ import AppAppBar from '../views/AppAppBar';
 import SidebarProfile from '../components/SidebarProfile';
 import AppForm from '../views/AppForm'
 
-function AddListing (props) {
+function AddListing () {
     const {
-        geolocationActive,
         cancelListing, 
         loading, 
         setLoading, 
         listing, 
         onSubmitForm, 
-        onSetLocationServices, 
         onMutate, 
     } = useContext(FormContext);
 
@@ -43,6 +41,7 @@ function AddListing (props) {
 
     useEffect(()=>{
         setLoading(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     const handleSubmit=(e)=>{
@@ -283,7 +282,7 @@ return (
         >
         Submit Listing
     </Button>
-    <Button  color={"secondary"} style={{marginBottom: '-3rem'}} variant='text' onClick={()=>props.setOpen(false)}>Cancel Listing</Button>
+    <Button  color={"secondary"} style={{marginBottom: '-3rem'}} variant='text' onClick={cancelListing}>Cancel Listing</Button>
     </FormControl>
     </AppForm>
     </div>
