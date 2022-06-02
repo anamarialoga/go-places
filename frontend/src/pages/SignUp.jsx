@@ -36,7 +36,6 @@ function SignUp(){
 
     return (
         <React.Fragment>
-          <AppAppBar />
           <AppForm>
             <React.Fragment>
               <Typography variant="h3" gutterBottom marked="center" align="center">
@@ -132,7 +131,6 @@ function SignUp(){
                   </Button>
             </form>
           </AppForm>
-          <AppFooter />
         </React.Fragment>
       );
 }

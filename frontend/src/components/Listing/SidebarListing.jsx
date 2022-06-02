@@ -6,7 +6,7 @@ import withRoot from '../../withRoot';
 import {Button} from '@mui/material';
 import Typography from '../Typography';
 import { NavItem } from '../NavItem';
-import InfoIcon from '@mui/icons-material/Info';
+import CollectionsIcon from '@mui/icons-material/Collections';
 import PersonIcon from '@mui/icons-material/Person';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import AttractionsIcon from '@mui/icons-material/Attractions';
@@ -18,13 +18,13 @@ function SidebarListing(props) {
     const items = [
         {
             href: `/listings/${props.listingid}`,
-            icon: (<InfoIcon fontSize="small" />),
-            title: 'Details'
+            icon: (<LocationOnOutlinedIcon fontSize="small" />),
+            title: 'Location & Details'
         },
         {
-            href: `/listings/${props.listingid}/location`,
-            icon: (<LocationOnOutlinedIcon fontSize="small"/>),
-            title: 'Location'
+            href: `/listings/${props.listingid}/images`,
+            icon: (<CollectionsIcon fontSize="small"/>),
+            title: 'Gallery'
         },
         {
             href: `/listings/${props.listingid}/food`,
@@ -42,7 +42,7 @@ function SidebarListing(props) {
             title: 'Landlord'
         },
         {
-          href:  `/listings/${props.listingid}/reviews`,
+          href:  `/listings/${props.listingid}/`,
           icon: (<ReviewsIcon fontSize="small" />),
           title: 'Reviews'
         },    
@@ -80,7 +80,7 @@ function SidebarListing(props) {
             </Box>
             <Divider
                 sx={{
-                    borderColor: '#2D3748',
+                    borderColor: "#2D3748",
                     my: 3
                 }} />
             <Box sx={{ flexGrow: 1 }}>
@@ -134,7 +134,8 @@ function SidebarListing(props) {
           sx: {
             backgroundColor: '#28282a',
             color: '#FFFFFF',
-            width: 280
+            width: 280,
+            border: 'none'
           }
         }}
         variant="persistent"

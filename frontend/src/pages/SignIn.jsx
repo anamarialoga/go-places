@@ -40,7 +40,6 @@ function SignIn() {
 
   return (
     <React.Fragment>
-      <AppAppBar />
       <AppForm>
         <React.Fragment>
           <Typography variant="h3" gutterBottom marked="center" align="center">
@@ -109,7 +108,6 @@ function SignIn() {
           </Link>
         </Typography>
       </AppForm>
-      <AppFooter />
     </React.Fragment>
   );
 }

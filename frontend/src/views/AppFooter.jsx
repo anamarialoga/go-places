@@ -7,13 +7,14 @@ import Typography from '../components/Typography.js';
 import TextField from '../components/TextField';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import withRoot from '../withRoot.js';
 function Copyright() {
   return (
     <React.Fragment >
       <div style={{marginRight:'2rem', width: '100%'}}>
-      {'© '}
-      <Link color="inherit"  href="https://mui.com/">
-        Your Website
+      {'Copyright ©'}
+      <Link color="inherit"  href="https://localhost:3000/">
+        GoPlaces
       </Link>{' '}
       {new Date().getFullYear()}
       </div>
@@ -39,20 +40,20 @@ const LANGUAGES = [
     code: 'en-US',
     name: 'English',
   },
-  // {
-  //   code: 'fr-FR',
-  //   name: 'Français',
-  // },
+  {
+    code: 'ro-RO',
+    name: 'Română',
+  },
 ];
 
-export default function AppFooter() {
+function AppFooter() {
   return (
     <Typography
       component="footer"
       sx={{ display: 'flex', bgcolor: 'secondary.light' }}
     >
       <Container sx={{ my: 8, display: 'flex' }}>
-        <Grid container spacing={5}>
+        <Grid container spacing={5} >
           <Grid item xs={6} sm={4} md={3}>
             <Grid
               container
@@ -108,31 +109,23 @@ export default function AppFooter() {
             </TextField>
           </Grid>
         </Grid>
-        <div className='block' >
-        <Copyright />
-        <Grid item>
-            <Typography variant="caption">
-              {'Icons made by '}
-              <Link href="https://www.freepik.com" rel="sponsored" title="Freepik">
-                Freepik
-              </Link>
-              {' from '}
-              <Link href="https://www.flaticon.com" rel="sponsored" title="Flaticon">
-                www.flaticon.com
-              </Link>
-              {' is licensed by '}
-              <Link
-                href="https://creativecommons.org/licenses/by/3.0/"
-                title="Creative Commons BY 3.0"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                CC 3.0 BY
-              </Link>
-            </Typography>
+        <div className='block' style={{width: "100%"}}>
+          <Grid item>
+              <Typography
+            variant="subtitle1"
+            align="left"
+            color="text.secondary"
+            component="p"
+          >
+            Consult the GoPlaces terms and conditions regarding the processing and manipulation of data.
+          </Typography>
+          <br/>
+          <Copyright />
           </Grid>
-          </div>
+        </div>
       </Container>
     </Typography>
   );
 }
+
+export default withRoot(AppFooter)

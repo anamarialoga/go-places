@@ -30,11 +30,12 @@ const rawTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: "'Montserrat', sans-serif",
+    fontFamily: "'Roboto Condensed', sans-serif",
     fontSize: 14,
     fontWeightLight: 300, // Work Sans
     fontWeightRegular: 400, // Work Sans
     fontWeightMedium: 700, // Roboto Condensed
+    fontWeightStrong: 900, // Roboto Condensed
   },
 });
 

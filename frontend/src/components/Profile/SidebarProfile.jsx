@@ -139,7 +139,8 @@ function SidebarProfile() {
           sx: {
             backgroundColor: '#28282a',
             color: '#FFFFFF',
-            width: 280
+            width: 280,
+            borderRight: '0px',
           }
         }}
         variant="persistent"

@@ -18,7 +18,6 @@ useEffect(()=>{
 
 return loadingList? <Loading/> :  (
 <>
-    <AppAppBar/>
     <div style={{
         height: "100vh",        
         background: "url(http://127.0.0.1:8888/eberhard-grossgasteiger-S-2Ukb_VqpA-unsplash.jpg) no-repeat",

@@ -16,7 +16,6 @@ const {user, loadingUser} = useContext(AppContext);
 
  return loadingUser? <Loading/> : (
     <>
-    <AppAppBar/>
     <SidebarProfile/>
     <Box
       component="main"

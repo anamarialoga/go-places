@@ -190,12 +190,12 @@ ul{
 
 
 .swiper-container {
-  height: 50vh;
+  height: 30vh;
   width: 100%;
 }
 .swiper-button-next,
 .swiper-button-prev {
-  color: #ffffff69 !important;
+  color: #ffffff00 !important;
     cursor: pointer !important;
 }
 
@@ -204,7 +204,6 @@ ul{
 }
 
 .swiperSlideDiv {
-  cursor: pointer;
   position: relative;
   width: 100%;
   height: 100%;
@@ -216,7 +215,7 @@ ul{
   top: 70px;
   right: 0;
   font-weight: 600;
-  max-width: 100%;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.658);
   padding: 0.5rem;
 }

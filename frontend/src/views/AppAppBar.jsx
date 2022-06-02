@@ -8,6 +8,7 @@ import { Button } from '@mui/material';
 import {  useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/appContext';
 import {ReactComponent as PersonIcon} from '../common/svg/personIcon.svg';
+import withRoot from '../withRoot';
 
 const rightLink = {
   fontSize: 16,
@@ -81,4 +82,4 @@ function AppAppBar() {
   );
 }
 
-export default AppAppBar;
+export default withRoot(AppAppBar);

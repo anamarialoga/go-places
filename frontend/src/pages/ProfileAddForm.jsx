@@ -53,7 +53,6 @@ function AddListing () {
 
 return loading? <Loading/> : (
     <>
-    <AppAppBar/>
     <SidebarProfile/>
     <div style={{marginLeft: "10%"}}>
     <AppForm >
