@@ -1,8 +1,6 @@
 import * as React from 'react';
 import Link from '@mui/material/Link';
 import Typography from '../components/Typography.js';
-import AppFooter from '../views/AppFooter';
-import AppAppBar from '../views/AppAppBar';
 import AppForm from '../views/AppForm';
 import withRoot from '../withRoot';
 import { AppContext } from '../context/appContext';

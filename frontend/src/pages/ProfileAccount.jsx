@@ -1,5 +1,4 @@
 import { Box,  Container, Grid } from '@mui/material';
-import AppAppBar from '../views/AppAppBar';
 import withRoot from '../withRoot';
 import { ProfileName } from '../components/Profile/ProfileName';
 import { ProfileDetails } from '../components/Profile/ProfileDetails';

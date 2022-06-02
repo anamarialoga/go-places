@@ -4,7 +4,6 @@ import {Loading} from "../components/Loading";
 import { MyListings } from "../components/Profile/MyListings";
 import SidebarProfile from "../components/Profile/SidebarProfile";
 import { AppContext } from "../context/appContext";
-import AppAppBar from "../views/AppAppBar";
 import withRoot from "../withRoot";
 
 const MyListingsPage = () => {

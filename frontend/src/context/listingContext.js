@@ -8,9 +8,9 @@ export const ListingProvider = ({children})=> {
 
     const [listing, setListing] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [coords, setCoords] = useState({});
     // const [shareLink, setShareLink] = useState(false);
 
-    const [coords, setCoords]=useState({})
     // const [places, setPlaces] = useState([]);
     // const [weather, setWeather] = useState({});
 

@@ -1,17 +1,12 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
-import CameraIcon from '@mui/icons-material/PhotoCamera';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
 import withRoot from '../withRoot';
 import SidebarListing from '../components/Listing/SidebarListing';
 import { useParams } from 'react-router-dom';
@@ -19,8 +14,6 @@ import { ListingContext } from '../context/listingContext';
 import { Loading } from '../components/Loading';
 import { AppContext } from '../context/appContext';
 import { Modal, Paper } from '@mui/material';
-import AppAppBar from '../views/AppAppBar';
-import AppFooter from '../views/AppFooter';
 import {Swiper, SwiperSlide} from 'swiper/react'
 import 'swiper/css/bundle'
 import {Navigation, EffectFade, Pagination, Autoplay } from 'swiper'
@@ -43,7 +36,7 @@ const style = {
     p: 4,
   };
 
-const backgroundImage = 'http://127.0.0.1:8888/annie-spratt-nWiS2rgtVts-unsplash.jpg';
+// const backgroundImage = 'http://127.0.0.1:8888/annie-spratt-nWiS2rgtVts-unsplash.jpg';
 
 function ListingAlbum() {
 
@@ -58,6 +51,7 @@ function ListingAlbum() {
 
     React.useEffect(()=>{
         fetchListing(listingid);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     return loading? <Loading/> : (
