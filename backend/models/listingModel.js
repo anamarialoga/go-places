@@ -76,6 +76,14 @@ const listingSchema= mongoose.Schema({
     },
     description:{
         type: String,
+    },
+    kitchen: {
+        type: Boolean,
+        default: false,
+    },
+    people: {
+        type: Number, 
+        default: 1
     }
 }, 
     {

@@ -64,6 +64,7 @@ function Facilities(props) {
             {props?.listing?.type === 'hotel' &&(
                 <Typography variant="subtitle1" color="text.secondary">
                     <DryCleaningIcon color={"primary"} style={{paddingTop: "0.3rem"}} /> Hotel Room
+                    <PeopleAltIcon color={"primary"} style={{paddingTop: "0.4rem"}}/> {props.listing?.people ?? '2'} People
                 </Typography>
             )}
             {props?.listing?.type === 'apartment' &&
@@ -85,22 +86,22 @@ function Facilities(props) {
             </Typography>
 
              <div className='flex'>
-                { !props.listing.parking && 
+                { props.listing?.parking && 
                 <Typography variant="subtitle1" color="text.secondary">
                     <LocalParkingIcon color={"primary"} style={{paddingTop: "0.3rem"}}/> Parking
                 </Typography>
                 }
-                { !props.listing.pool && 
+                { props.listing?.pool && 
                 <Typography variant="subtitle1" color="text.secondary">
                     <PoolIcon color={"primary"} style={{paddingTop: "0.3rem"}}/> Pool
                 </Typography>
                 }
-                { !props.listing.spa && 
+                { props.listing?.spa  && 
                 <Typography variant="subtitle1" color="text.secondary">
                     <SpaIcon color={"primary"} style={{paddingTop: "0.3rem"}}/> Spa
                 </Typography>
                 }
-                { !props.listing.kitchen && 
+                { props.listing?.kitchen && 
                 <Typography variant="subtitle1" color="text.secondary">
                     <KitchenIcon color={"primary"} style={{paddingTop: "0.3rem"}}/> Kitchen
                 </Typography>

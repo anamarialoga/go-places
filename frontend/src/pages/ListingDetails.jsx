@@ -78,9 +78,6 @@ return loading? <Loading/> : (
               <FeaturedPost listing={listing} />
               <Facilities listing={listing} />
           </Grid>
-          {/* <Grid container spacing={5} sx={{ mt: 3 }}>
-            <Main title="From the firehose" listing={listing} />
-          </Grid> */}
     </Container>
     </div>
     </>

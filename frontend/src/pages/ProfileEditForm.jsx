@@ -39,6 +39,8 @@ function EditListing () {
         geoloc,
         purpose,
         description,
+        kitchen,
+        people,
     } = thisListing;
 
 
@@ -158,6 +160,20 @@ return loading? <Loading/>: (
                     required
                 />
     </FormControl>
+    <FormControl fullWidth  style={{marginRight: "1rem"}}>         
+            <TextField
+                    autoFocus
+                    margin="dense"
+                    name="people"
+                    label="People"
+                    type="number"
+                    variant="outlined"
+                    style={{backgroundColor: "white"}}
+                    onChange={onChange}
+                    value={people}
+                    required
+                />
+    </FormControl>
     <FormControl fullWidth >
             <TextField
                     autoFocus
@@ -189,13 +205,20 @@ return loading? <Loading/>: (
                 <MenuItem  value={'false'}>No</MenuItem>
           </Select>
     </FormControl>
-    <FormControl fullWidth style={{backgroundColor: "white"}}>
+    {type === 'hotel' && <FormControl fullWidth style={{backgroundColor: "white"}}>
           <InputLabel>Spa</InputLabel>
           <Select  name="spa" value={spa}  onChange={onChange}>
                 <MenuItem  value={'true'}>Yes</MenuItem>
                 <MenuItem  value={'false'}>No</MenuItem>
           </Select>
-    </FormControl>
+    </FormControl>}
+    { type !== 'hotel' &&<FormControl fullWidth  style={{ backgroundColor: "white"}}>
+            <InputLabel>Kitchen</InputLabel>
+            <Select  name="kitchen" value={kitchen}  onChange={onChange}>
+                <MenuItem  value={'true'}>Yes</MenuItem>
+                <MenuItem  value={'false'}>No</MenuItem>
+            </Select>
+    </FormControl>}
     </div>
 
     <div className='flex' style={{marginBottom: '1rem'}}>

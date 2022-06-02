@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import axios from 'axios';
 toast.configure();
 
-const GEO_API_URI = "AIzaSyCU8A9UY3mqht9a8h9ZAPpvnWoSrvtoZzw";
+const GEO_API_URI = "AIzaSyChJb7b-LRNlR5mMgFdIQdD_yG0-WxYnjA";
 
 export const FormContext = createContext({});
 
@@ -27,7 +27,9 @@ export const FormProvider = ({children})=> {
         location: '',
         geoloc: true, 
         purpose: 'beach',
-        description: ''
+        description: '',
+        kitchen: false,
+        people: 1,
     }
 
 
@@ -73,11 +75,11 @@ export const FormProvider = ({children})=> {
         if(formdata.geoloc === true){
             const resp = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${formdata.location}&key=${GEO_API_URI}`)
             const data = await resp.json();
-
+            console.log(data)
             geolocation.lat=data.results[0]?.geometry.location.lat ?? 0;
             geolocation.long=data.results[0]?.geometry.location.lng ?? 0;
 
-            if (data.status === 'ZERO_RESULTS'){
+            if (data.status === 'ZERO_RESULTS'  ){
                 location='';
             } else {
                 location=data.results[0].formatted_address;
@@ -104,6 +106,8 @@ export const FormProvider = ({children})=> {
         formData.append('offer', formdata.offer);
         formData.append('price', Number(formdata.price));
         formData.append('discount', Number(formdata.discount));
+        formData.append('people', Number(formdata.people));
+        formData.append('kitchen', Number(formdata.kitchen));
         formData.append('latitude', Number(geolocation.lat));
         formData.append('longitude', Number(geolocation.long));
         formData.append('description', formdata.description)
@@ -210,6 +214,8 @@ export const FormProvider = ({children})=> {
         formData.append('parking', formdata.parking);
         formData.append('offer', formdata.offer);
         formData.append('price', Number(formdata.price));
+        formData.append('people', Number(formdata.people));
+        formData.append('kitchen', Number(formdata.kitchen));
         formdata.offer ? formData.append('discount', Number(formdata.discount)) : formData.append('discount', 0)
         formData.append('latitude', Number(geolocation.lat));
         formData.append('longitude', Number(geolocation.long));

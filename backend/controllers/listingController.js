@@ -118,7 +118,9 @@ const createListing = async(req, res) => {
         offer, 
         price,
         discount,
-        description
+        description,
+        kitchen, 
+        people
         }= req.body;
 
     let images = [];
@@ -150,6 +152,8 @@ const createListing = async(req, res) => {
         discount,
         images,
         description,
+        kitchen,
+        people,
         userId: req.user.id, 
         isActive: true,
     }
@@ -210,6 +214,8 @@ const updateListing = async(req, res)=>{
     listing.discount = req.body?.discount ?? listing.discount
     listing.price = req.body?.price ?? listing.price
     listing.description = req.body?.description ?? listing.description
+    listing.kitchen = req.body?.kitchen ?? listing.kitchen
+    listing.people = req.body?.people?? listing.people
     listing.images = images;
     
    listing.save().then(()=>res.json(listing));
