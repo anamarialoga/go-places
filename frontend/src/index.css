@@ -11,6 +11,7 @@ ul{
 }
 
 .passwordInputDiv{
+  margin-top: -1.5rem;
   position: relative;
 }
 
@@ -209,64 +210,6 @@ ul{
   height: 100%;
 }
 
-.swiperSlideText {
-  color: #ffffff;
-  position: absolute;
-  top: 70px;
-  right: 0;
-  font-weight: 600;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.658);
-  padding: 0.5rem;
-}
-
-.swiperSlideRating{
-  color: #ffffff;
-  position: absolute;
-  top: 70px;
-  right: 0;
-  font-weight: 600;
-  max-width: 100%;
-  background-color: rgba(226, 222, 222, 0.459);
-  padding: 0.5rem;
-}
-
-
-
-.swiperSlidePrice {
-  color: black;
-  position: absolute;
-  bottom: 0%;
-  left: 16px;
-  font-weight: 700;
-  max-width: 90%;
-  background-color: #ffffffaf;
-  padding: 0.25rem 0.5rem;
-  border-radius: 1rem;
-}
-
-.swiperSlidePriceNew {
-  color: black;
-  position: absolute;
-  bottom: 0%;
-  left: 11px;
-  font-weight: 700;
-  max-width: 90%;
-  background-color: #ffffffaf;
-  padding: 0.25rem 0.5rem;
-  border-radius: 1rem;
-}
-
-.swiperSlideOffer {
-  color: rgb(5, 5, 5);
-  position: absolute;
-  bottom: 10%;
-  font-weight: 700;
-  max-width: 90%;
-  background-color: #00cc66b9;
-  padding: 0.25rem 0.5rem;
-  font-size: 1.5rem;
-}
 
 .css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
   background-color: white !important;
@@ -276,3 +219,17 @@ ul{
   fill: #ff3366 !important
 }
 
+
+.css-5ld0j0-MuiFormControl-root-MuiTextField-root .OnePirateTextField-input{
+  background-color: white !important;
+}
+
+.css-5ld0j0-MuiFormControl-root-MuiTextField-root .OnePirateTextField-inputBorder{
+  border: none !important;
+}
+
+
+.css-581bxg-MuiFormLabel-root-MuiInputLabel-root{
+  color: #ff3366 !important;
+  font-weight: 600 !important;
+}

@@ -90,8 +90,8 @@ return loading? <Loading/>: (
       <FormControl  style={{marginBottom: '0.5rem', backgroundColor: "white"}}>
           <InputLabel>Geolocation Services</InputLabel>
           <Select name="geoloc" value={geoloc}  onChange={onChange}>
-              <MenuItem  value={'true'}>Yes</MenuItem>
-              <MenuItem  value={'false'}>No</MenuItem>
+              <MenuItem style={{color:"#ff3366"}} value={'true'}>Yes</MenuItem>
+              <MenuItem style={{color:"#ff3366"}} value={'false'}>No</MenuItem>
           </Select>
       </FormControl>
 
@@ -128,19 +128,19 @@ return loading? <Loading/>: (
     <FormControl fullWidth  style={{marginRight: "1rem", backgroundColor: "white"}}>
           <InputLabel>Purpose</InputLabel>
           <Select  name="purpose" value={purpose} onChange={onChange}>
-              <MenuItem value={"ski"}>Ski</MenuItem>
-              <MenuItem value={"beach"}>Beach</MenuItem>
-              <MenuItem value={"nature"}>Nature</MenuItem>
-              <MenuItem value={"citybreak"}>City Break</MenuItem>
-              <MenuItem value={"business"}>Business Trip</MenuItem>
+              <MenuItem style={{color:"#ff3366"}}value={"ski"}>Ski</MenuItem>
+              <MenuItem style={{color:"#ff3366"}}value={"beach"}>Beach</MenuItem>
+              <MenuItem style={{color:"#ff3366"}}value={"nature"}>Nature</MenuItem>
+              <MenuItem style={{color:"#ff3366"}}value={"citybreak"}>City Break</MenuItem>
+              <MenuItem style={{color:"#ff3366"}}value={"business"}>Business Trip</MenuItem>
           </Select>
     </FormControl>
     <FormControl fullWidth style={{backgroundColor: "white"}}>
           <InputLabel>Type</InputLabel>
           <Select  name="type" value={type} onChange={onChange}>
-              <MenuItem value={"hotel"}>Hotel</MenuItem>
-              <MenuItem value={"apartment"}>Apartment</MenuItem>
-              <MenuItem value={"villa"}>Villa</MenuItem>
+              <MenuItem style={{color:"#ff3366"}}value={"hotel"}>Hotel</MenuItem>
+              <MenuItem style={{color:"#ff3366"}}value={"apartment"}>Apartment</MenuItem>
+              <MenuItem style={{color:"#ff3366"}}value={"villa"}>Villa</MenuItem>
           </Select>
     </FormControl>
     </div>
@@ -194,29 +194,29 @@ return loading? <Loading/>: (
     <FormControl fullWidth  style={{marginRight: "1rem", backgroundColor: "white"}}>
           <InputLabel>Pool</InputLabel>
           <Select  name="pool" value={pool}  onChange={onChange}>
-                <MenuItem  value={'true'}>Yes</MenuItem>
-                <MenuItem  value={'false'}>No</MenuItem>
+                <MenuItem style={{color:"#ff3366"}} value={'true'}>Yes</MenuItem>
+                <MenuItem style={{color:"#ff3366"}} value={'false'}>No</MenuItem>
           </Select>
     </FormControl>
     <FormControl fullWidth style={{marginRight: "1rem", backgroundColor: "white"}}>
           <InputLabel>Parking</InputLabel>
           <Select  name="parking" value={parking}  onChange={onChange}>
-                <MenuItem  value={'true'}>Yes</MenuItem>
-                <MenuItem  value={'false'}>No</MenuItem>
+                <MenuItem style={{color:"#ff3366"}} value={'true'}>Yes</MenuItem>
+                <MenuItem style={{color:"#ff3366"}} value={'false'}>No</MenuItem>
           </Select>
     </FormControl>
     {type === 'hotel' && <FormControl fullWidth style={{backgroundColor: "white"}}>
           <InputLabel>Spa</InputLabel>
           <Select  name="spa" value={spa}  onChange={onChange}>
-                <MenuItem  value={'true'}>Yes</MenuItem>
-                <MenuItem  value={'false'}>No</MenuItem>
+                <MenuItem style={{color:"#ff3366"}} value={'true'}>Yes</MenuItem>
+                <MenuItem style={{color:"#ff3366"}} value={'false'}>No</MenuItem>
           </Select>
     </FormControl>}
     { type !== 'hotel' &&<FormControl fullWidth  style={{ backgroundColor: "white"}}>
             <InputLabel>Kitchen</InputLabel>
             <Select  name="kitchen" value={kitchen}  onChange={onChange}>
-                <MenuItem  value={'true'}>Yes</MenuItem>
-                <MenuItem  value={'false'}>No</MenuItem>
+                <MenuItem style={{color:"#ff3366"}} value={'true'}>Yes</MenuItem>
+                <MenuItem style={{color:"#ff3366"}} value={'false'}>No</MenuItem>
             </Select>
     </FormControl>}
     </div>
@@ -225,8 +225,8 @@ return loading? <Loading/>: (
     <FormControl fullWidth  style={{marginRight: "1rem"}}>
           <InputLabel >Offer</InputLabel>
           <Select  name="offer" value={offer}  onChange={onChange} style={{backgroundColor:"white"}}>
-                <MenuItem  value={'true'}>Yes</MenuItem>
-                <MenuItem  value={'false'}>No</MenuItem>
+                <MenuItem style={{color:"#ff3366"}} value={'true'}>Yes</MenuItem>
+                <MenuItem style={{color:"#ff3366"}} value={'false'}>No</MenuItem>
           </Select>
     </FormControl>
     <FormControl fullWidth style={{ marginTop: '-0.5rem'}}>

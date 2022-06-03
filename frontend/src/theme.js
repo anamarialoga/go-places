@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import { green, grey, red } from '@mui/material/colors';
+import { green, grey, red} from '@mui/material/colors';
 
 
 const rawTheme = createTheme({
@@ -25,7 +25,7 @@ const rawTheme = createTheme({
     },
     success: {
       light: green[50],
-      main: green[500],
+      main: "#ffffff",
       dark: green[700],
     },
   },

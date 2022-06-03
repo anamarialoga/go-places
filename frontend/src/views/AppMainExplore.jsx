@@ -6,6 +6,7 @@ import Typography from '../components/Typography.js';
 import ProductHeroLayout from './ProductHeroLayout';
 import { Button } from '@mui/material';
 import Sidebar from '../components/Explore/Sidebar';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
 const backgroundImage =
   'http://127.0.0.1:8888/daniela-cuevas-t7YycgAoVSw-unsplash.jpg';
@@ -22,7 +23,7 @@ export default function AppMainExplore() {
     <ProductHeroLayout
       sxBackground={{
         backgroundImage: `url(${backgroundImage})`,
-        backgroundColor: '#7fc7d9', // Average color of the background image.
+        backgroundColor: '#7fc7d9', 
         backgroundPosition: 'center',
         backgroundSize: "cover"
       }}
@@ -38,7 +39,7 @@ export default function AppMainExplore() {
       >
         Discover the experience
       </Typography>
-      <div className='block' style={{marginTop:'2rem', padding:'1rem' ,backgroundColor:"#ffffff36"}}>
+      <div className='block' style={{marginTop:'2rem', padding:'1rem' }}>
       <DatePickerCalendar/>
       <br/>
       <div className='passwordInputDiv'>
@@ -52,11 +53,11 @@ export default function AppMainExplore() {
       />
       <SearchIcon style={{zIndex:'9', position:'absolute', right:"2%", top:"40%"}} color={"secondary"}/>
       </div>
-      <div  style={{ textAlign: 'center'}}>
-        <Button variant='contained' color={"secondary"} style={{fontSize: "1.1rem"}}>Search</Button>
+      <div  style={{ textAlign: 'center', marginTop:"2rem"}}>
+        <Button fullWidth variant='contained' color={"secondary"} style={{fontSize: "1.1rem"}}>Search</Button>
       </div>
-      <div style={{ textAlign: 'center', marginTop: '1rem'}}>
-        <Button variant={'contained'} color={"primary"} onClick={onSidebar}>Advanced Search</Button>
+      <div style={{ textAlign: 'center', marginTop: '0.5rem', borderRadius:'0.2rem', backgroundColor:"#ffffff"}}>
+        <Button fullWidth variant={'text'}color={"secondary"}  onClick={onSidebar}> <FilterAltIcon /> Advanced</Button>
       </div>
       </div>
       <Sidebar sidebar={sidebar} onSidebar={onSidebar}/>
