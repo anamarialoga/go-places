@@ -30,7 +30,7 @@ const ListingAttractions= () => {
     return loading? <Loading/> : (
         <>
         <SidebarListing listingid={listingid} listing={listing}/>
-        <Places type={'attractions'} places={filteredPlaces.length ? filteredPlaces : places} rating={rating} setRating={setRating} />
+        <Places  type={'attractions'} places={filteredPlaces.length ? filteredPlaces : places} rating={rating} setRating={setRating} />
         </>
     )}
     

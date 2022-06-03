@@ -9,15 +9,12 @@ export const ListingProvider = ({children})=> {
     const [listing, setListing] = useState(null);
     const [loading, setLoading] = useState(false);
     const [coords, setCoords] = useState({});
-    // const [shareLink, setShareLink] = useState(false);
 
     const [places, setPlaces] = useState([]);
     const [weather, setWeather] = useState({});
     const [forecast, setForecast] = useState ([])
 
  
-    // const [childClicked, setChildClicked] = useState(null);
-    // const [filteredPlaces, setFilteredPlaces] = useState([]);
 
     const fetchListing = async (listingid) => {
         const config = {
@@ -38,7 +35,7 @@ export const ListingProvider = ({children})=> {
     }
 
    
-
+        const [loadingPlaces, setLoadingPlaces] = useState(false)
         const getPlacesData = async (type, lat, long) => {
             try {
               setLoading(true);
@@ -49,16 +46,15 @@ export const ListingProvider = ({children})=> {
                 },
                 headers: {
                     'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com',
-                    'X-RapidAPI-Key': 'c4af2c3815msh3a370aaf06de0b4p1afc74jsn36966ccaf885'
+                    'X-RapidAPI-Key': 'bb448a6f19mshcfb71a404c39b74p119c47jsn3ca02941b0df'                
                 },
               });
-              setLoading(false);
+              setLoadingPlaces(false);
               setPlaces(data);
             } catch (error) {
               console.log(error);
             }
         }
-        // getPlacesData( type, coords.lat, coords.lng);
 
 
         const getWeatherData = async (lat, lng) => {
@@ -69,7 +65,7 @@ export const ListingProvider = ({children})=> {
                   params: { lat, lon: lng},
                   headers: {
                     'X-RapidAPI-Host': 'community-open-weather-map.p.rapidapi.com',
-                    'X-RapidAPI-Key': 'c4af2c3815msh3a370aaf06de0b4p1afc74jsn36966ccaf885'
+                    'X-RapidAPI-Key': 'bb448a6f19mshcfb71a404c39b74p119c47jsn3ca02941b0df'
                   },
                 });
                 setLoading(false);
@@ -113,7 +109,8 @@ export const ListingProvider = ({children})=> {
          getWeatherForecast,
          forecast,
          getPlacesData,
-         places
+         places,
+         loadingPlaces
         }}>
             {children}
         </ListingContext.Provider>

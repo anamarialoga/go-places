@@ -84,14 +84,14 @@ function SidebarListing(props) {
                     my: 3
                 }} />
             <Box sx={{ flexGrow: 1 }}>
-                {items.map((item) => (
+            {items.map((item) => (
                     <NavItem
                         key={item.title}
                         icon={item.icon}
                         href={item.href}
                         title={item.title}
                     />
-                ))}
+            ))}
             </Box>
             <Divider sx={{ borderColor: '#2D3748' }} /><Box
                 sx={{

@@ -3,7 +3,6 @@ import RestaurantIcon from '@mui/icons-material/Restaurant';
 import withRoot from "../../withRoot";
 import AttractionsIcon from '@mui/icons-material/Attractions';
 
-
 function Places(props) {
   return (
     <>
