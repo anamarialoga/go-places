@@ -158,6 +158,7 @@ export const AppProvider = ({children})=>{
             try{
                 await axios.delete(`http://localhost:1179/api/listings/${listingid}`, 
                 config);
+                window.location.href="/mylistings";
             }catch(error){
                 toast.error(error.response.data.message);
             }

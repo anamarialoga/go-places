@@ -11,16 +11,17 @@ import withRoot from '../../withRoot';
 function FeaturedPost(props) {
 
   return (
-    <Grid item xs={12} md={6}>
+    <Grid item xs={12} md={5} >
       <CardActionArea component="a" href="#">
-        <Card sx={{ display: 'flex' }}>
+        <Card sx={{ display: 'flex' , height: "6cm"}}>
           <CardContent sx={{ flex: 1 }}>
             <Typography component="h2" variant="h5" style={{fontWeight: "800"}}>
               {props.listing?.name}
             </Typography>
             <br/>
+            <br/>
             <Typography variant="subtitle1" color="text.secondary">
-           { props.listing?.description? props.listing.description.slice(0,120)+' ...' : ""}
+           { props.listing?.description? props.listing.description.slice(0,50)+' ...' : ""}
             </Typography>
             {props.listing?.description && <ListItemButton style={{ fontWeight: 600, marginLeft:"-1rem", fontSize: "1rem", color: "#ff3366"}}  variant={"text"}>
                   [Read More]
@@ -28,7 +29,7 @@ function FeaturedPost(props) {
           </CardContent>
           <CardMedia
             component="img"
-            sx={{ width: "6cm", display: { xs: 'none', sm: 'block' } }}
+            sx={{ width: "5cm", display: { xs: 'none', sm: 'block' } }}
             src={`http://127.0.0.1:8888/${props.listing?.images[0]}`}
             alt={props.listing?.images[0].name}
           />

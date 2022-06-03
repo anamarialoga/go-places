@@ -12,7 +12,8 @@ export const ListingProvider = ({children})=> {
     // const [shareLink, setShareLink] = useState(false);
 
     // const [places, setPlaces] = useState([]);
-    // const [weather, setWeather] = useState({});
+    const [weather, setWeather] = useState({});
+    const [forecast, setForecast] = useState ([])
 
     // const [type, setType] = useState('restaurants');
     // const [rating, setRating] = useState('');
@@ -61,26 +62,45 @@ export const ListingProvider = ({children})=> {
         // getPlacesData( type, coords.lat, coords.lng);
 
 
-        // const getWeatherData = async (lat, lng) => {
-        //     try {
-        //       if (lat && lng) {
-        //         setLoading(true);
-        //         const { data } = await axios.get('https://community-open-weather-map.p.rapidapi.com/weather', {
-        //           params: { lat, lon: lng},
-        //           headers: {
-        //             'X-RapidAPI-Host': 'community-open-weather-map.p.rapidapi.com',
-        //             'X-RapidAPI-Key': 'c4af2c3815msh3a370aaf06de0b4p1afc74jsn36966ccaf885'
-        //           },
-        //         });
-        //         setLoading(false);
-        //         setWeather(data.list? data.list[0].main : data.main);
-        //       }
-        //     } catch (error) {
-        //       console.log(error);
-        //     }   
-        //   };
+        const getWeatherData = async (lat, lng) => {
+            try {
+              if (lat && lng) {
+                setLoading(true);
+                const { data } = await axios.get('https://community-open-weather-map.p.rapidapi.com/weather', {
+                  params: { lat, lon: lng},
+                  headers: {
+                    'X-RapidAPI-Host': 'community-open-weather-map.p.rapidapi.com',
+                    'X-RapidAPI-Key': 'c4af2c3815msh3a370aaf06de0b4p1afc74jsn36966ccaf885'
+                  },
+                });
+                setLoading(false);
+                setWeather(data.list? data.list[0].main : data.main);
+              }
+            } catch (error) {
+              console.log(error);
+            }   
+          };
 
-        // getWeatherData(coords.lat, coords.lng);
+
+        
+        const getWeatherForecast = async (lat, lng) => {
+        try {
+            if (lat && lng) {
+            setLoading(true);
+            const { data } = await axios.get('https://community-open-weather-map.p.rapidapi.com/forecast/daily', {
+                params: { lat, lon: lng},
+                headers: {
+                    'X-RapidAPI-Host': 'community-open-weather-map.p.rapidapi.com',
+                    'X-RapidAPI-Key': 'c4af2c3815msh3a370aaf06de0b4p1afc74jsn36966ccaf885'
+                },
+            });
+            setLoading(false);
+            setForecast(data.list);
+            }
+        } catch (error) {
+            console.log(error);
+        }   
+        };
 
 
     return (
@@ -88,7 +108,11 @@ export const ListingProvider = ({children})=> {
          loading,
          fetchListing,
          listing,
-         coords
+         coords,
+         getWeatherData,
+         weather,
+         getWeatherForecast,
+         forecast
         }}>
             {children}
         </ListingContext.Provider>

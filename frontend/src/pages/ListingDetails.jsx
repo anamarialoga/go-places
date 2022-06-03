@@ -6,7 +6,6 @@ import { Container } from "@mui/system";
 import { ListingContext } from "../context/listingContext";
 import { Loading } from "../components/Loading";
 import FeaturedPost from '../components/Listing/Description';
-import Main from '../components/Listing/Main';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
@@ -14,29 +13,35 @@ import GoogleMapReact from 'google-map-react';
 import mapStyles from '../components/Listing/mapStyles';
 import Rating from '@mui/material/Rating';
 import Facilities from "../components/Listing/Facilities";
-
+import Price from "../components/Listing/Price";
+import RatingListing from "../components/Listing/RatingListing";
+import Weather from "../components/Listing/Weather";
 const SingleListing = () => {
 
-const {listing, fetchListing, loading, coords} = useContext(ListingContext);
+const {listing, fetchListing, loading, coords, getWeatherData, weather, getWeatherForecast, forecast} = useContext(ListingContext);
 const {listingid} = useParams();
 
 useEffect(()=>{
     fetchListing(listingid);
+    getWeatherData(coords.lat, coords.lng)
+    getWeatherForecast(coords.lat, coords.lng)
 },[])
 
 
 // console.log(listing)
 // console.log(coords)
-
+console.log(weather)
+console.log(forecast)
 
 
 return loading? <Loading/> : (
     <>
     <SidebarListing listingid={listingid} listing={listing}/>
-    <div style={{width: '100%', marginLeft: "20px"}}>
+    <div style={{width: '100%', marginLeft: "20px", display:'inline-flex'}}>
     <Container style={{width:"100%"}} >
     <Paper
       sx={{
+        marginTop: '1rem',
         position: 'relative',
         backgroundColor: 'grey.800',
         color: '#fff',
@@ -47,7 +52,7 @@ return loading? <Loading/> : (
         backgroundPosition: 'center',
       }}
     >
-                <div style={{height: '40vh' ,width: '100%'}}>
+                <div  style={{height: '40vh' ,width: '100%'}}>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: 'AIzaSyChJb7b-LRNlR5mMgFdIQdD_yG0-WxYnjA' }}
                     defaultCenter={coords ?? {lat: 14.00000, lng: 15.0000}}
@@ -77,9 +82,17 @@ return loading? <Loading/> : (
           <Grid container spacing={4}>
               <FeaturedPost listing={listing} />
               <Facilities listing={listing} />
+              <Price listing={listing}/>
           </Grid>
     </Container>
+    <div style={{width:"20%", marginLeft: "-14%", display:"block", marginRight:"2%"}} >
+        <RatingListing listing={listing}/> 
+        <Weather listing={listing} forecast={forecast}/>
     </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
     </>
 )}
 
