@@ -63,14 +63,6 @@ function Weather(props) {
                   </ListItem>)}
               </List>
           </CardContent>
-          {/*<CardActions >      
-            <div style={{display: 'inline-flex', width:"100%", justifyContent: "space-between"}}>
-            <Rating size='large' readOnly defaultValue={props.listing?.rating ?? 5} precision={0.5}/>
-            <Typography component="h2" variant="h5" style={{marginRight:"1rem", fontWeight: "800"}}>
-              {props.listing?.rating ?? 5} /5 
-              </Typography>
-            </div>
-          </CardActions> */}
           </div>
         </Card>
       </CardActionArea>

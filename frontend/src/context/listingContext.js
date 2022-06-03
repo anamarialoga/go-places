@@ -11,12 +11,11 @@ export const ListingProvider = ({children})=> {
     const [coords, setCoords] = useState({});
     // const [shareLink, setShareLink] = useState(false);
 
-    // const [places, setPlaces] = useState([]);
+    const [places, setPlaces] = useState([]);
     const [weather, setWeather] = useState({});
     const [forecast, setForecast] = useState ([])
 
-    // const [type, setType] = useState('restaurants');
-    // const [rating, setRating] = useState('');
+ 
     // const [childClicked, setChildClicked] = useState(null);
     // const [filteredPlaces, setFilteredPlaces] = useState([]);
 
@@ -40,25 +39,25 @@ export const ListingProvider = ({children})=> {
 
    
 
-        // const getPlacesData = async (type, lat, long) => {
-        //     try {
-        //       setLoading(true);
-        //       const { data: { data } } = await axios.get(`https://travel-advisor.p.rapidapi.com/${type}/list-by-latlng`, {
-        //         params: {
-        //             latitude: `${lat}`,
-        //             longitude: `${long}`,
-        //         },
-        //         headers: {
-        //           'x-rapidapi-key': 'c4af2c3815msh3a370aaf06de0b4p1afc74jsn36966ccaf885',
-        //           'x-rapidapi-host': 'travel-advisor.p.rapidapi.com',
-        //         },
-        //       });
-        //       setLoading(false);
-        //       setPlaces(data);
-        //     } catch (error) {
-        //       console.log(error);
-        //     }
-        // }
+        const getPlacesData = async (type, lat, long) => {
+            try {
+              setLoading(true);
+              const { data: { data } } = await axios.get(`https://travel-advisor.p.rapidapi.com/${type}/list-by-latlng`, {
+                params: {
+                    latitude: `${lat}`,
+                    longitude: `${long}`,
+                },
+                headers: {
+                    'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com',
+                    'X-RapidAPI-Key': 'c4af2c3815msh3a370aaf06de0b4p1afc74jsn36966ccaf885'
+                },
+              });
+              setLoading(false);
+              setPlaces(data);
+            } catch (error) {
+              console.log(error);
+            }
+        }
         // getPlacesData( type, coords.lat, coords.lng);
 
 
@@ -112,7 +111,9 @@ export const ListingProvider = ({children})=> {
          getWeatherData,
          weather,
          getWeatherForecast,
-         forecast
+         forecast,
+         getPlacesData,
+         places
         }}>
             {children}
         </ListingContext.Provider>

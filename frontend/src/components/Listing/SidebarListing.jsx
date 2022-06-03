@@ -71,7 +71,7 @@ function SidebarListing(props) {
                         </Typography>
                         <Typography
                             color="white"
-                            variant="h7"
+                            variant="subtitle2"
                         >
                            {props?.listing?.location}
                         </Typography>

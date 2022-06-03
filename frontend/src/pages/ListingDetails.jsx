@@ -25,6 +25,7 @@ useEffect(()=>{
     fetchListing(listingid);
     getWeatherData(coords.lat, coords.lng)
     getWeatherForecast(coords.lat, coords.lng)
+// eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
 
 

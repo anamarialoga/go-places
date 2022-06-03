@@ -16,6 +16,8 @@ import ListingAlbum from "./pages/ListingAlbum.jsx";
 import { ListingProvider } from "./context/listingContext.js";
 import AppAppBar from "./views/AppAppBar.jsx";
 import AppFooter from "./views/AppFooter.jsx";
+import ListingDining from "./pages/ListingDining.jsx";
+import ListingAttractions from "./pages/ListingAttractions.jsx";
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
                   <Route path='/editlisting/:listingid' element={<EditListing/>} />
                   <Route path='/listings/:listingid' element={<ListingDetails/>} />
                   <Route path='/listings/:listingid/images' element={<ListingAlbum/>} />
+                  <Route path='/listings/:listingid/food' element={<ListingDining/>} /> 
+                  <Route path='/listings/:listingid/attractions' element={<ListingAttractions/>} /> 
               </Routes>
               <AppFooter/>
             </Router>
