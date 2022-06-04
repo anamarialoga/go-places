@@ -1,4 +1,4 @@
-import { Card, CardActionArea, CardHeader, Chip, Divider, List, ListItem, ListItemAvatar} from "@mui/material";
+import { Button, Card, CardActionArea, CardHeader, Chip, Divider, List, ListItem, ListItemAvatar} from "@mui/material";
 import { Box } from "@mui/system";
 import { useContext, useState } from "react"
 import ReactPaginate from "react-paginate";
@@ -83,32 +83,39 @@ const SearchedListings = ()=>{
                            ${listing.price} /night
                      </Typography> }
                     </div>
-                    <div style={{width:"100%",display:'flex', justifyContent:"space-between"}}>
-                        <div className="flex">
-                        <Typography variant="subtitle2">
-                            <p style={{display:"inline-flex", fontSize:"1rem", fontWeight:"400"}}> {listing.bedrooms} <LocalHotelIcon color={"primary"} style={{marginRight:"0.5cm",marginLeft:"0.3rem"}}/></p> 
-                        </Typography>
-                        <Typography variant="subtitle2">
-                            <p style={{display:"inline-flex", fontSize:"1rem", fontWeight:"400"}}> {listing.bathrooms} <ShowerIcon color={"primary"} style={{marginLeft:"0.1rem",marginRight:"0.4cm"}}/></p> 
-                        </Typography>
-                        <Typography variant="subtitle2">
-                            <p style={{display:"inline-flex", fontSize:"1rem", fontWeight:"400"}}> {listing.people} <PeopleIcon color={"primary"} style={{marginLeft:"0.1rem"}}/></p> 
-                        </Typography>
+                    <div style={{width:"100%", justifyContent:"space-between", display:"flex"}}>
+                        <div style={{width:"100%",display:'flex'}}>
+                            <div className="flex" style={{marginRight:"2rem"}}>
+                            <Typography variant="subtitle2">
+                                <p style={{display:"inline-flex", fontSize:"1rem", fontWeight:"400"}}> {listing.bedrooms} <LocalHotelIcon color={"primary"} style={{marginRight:"0.5cm",marginLeft:"0.3rem"}}/></p> 
+                            </Typography>
+                            <Typography variant="subtitle2">
+                                <p style={{display:"inline-flex", fontSize:"1rem", fontWeight:"400"}}> {listing.bathrooms} <ShowerIcon color={"primary"} style={{marginLeft:"0.1rem",marginRight:"0.4cm"}}/></p> 
+                            </Typography>
+                            <Typography variant="subtitle2">
+                                <p style={{display:"inline-flex", fontSize:"1rem", fontWeight:"400"}}> {listing.people} <PeopleIcon color={"primary"} style={{marginLeft:"0.1rem"}}/></p> 
+                            </Typography>
+                            </div>
+                            <div className="flex" style={{marginTop:"0.8rem"}}>
+                            { listing.pool && 
+                                <Chip style={{marginLeft:"0.5rem", backgroundColor:"rgb(237 222 227)"}} label="pool"/>
+                            }
+                            { listing.kitchen && 
+                                <Chip style={{marginLeft:"0.5rem" , backgroundColor:"rgb(237 222 227)"}} label="kitchen"/>
+                            }
+                            { listing.spa && 
+                                <Chip style={{marginLeft:"0.5rem", backgroundColor:"rgb(237 222 227)"}} label="spa"/>
+                            }
+                            { listing.parking && 
+                                <Chip style={{marginLeft:"0.5rem",backgroundColor:"rgb(237 222 227)"}} label="parking"/>
+                            }
+                            </div>   
                         </div>
-                        <div className="flex" style={{marginTop:"1rem"}}>
-                        { listing.pool && 
-                            <Chip style={{marginLeft:"0.5rem"}} label="pool"/>
-                        }
-                        { listing.kitchen && 
-                            <Chip style={{marginLeft:"0.5rem"}} label="kitchen"/>
-                        }
-                        { listing.spa && 
-                            <Chip style={{marginLeft:"0.5rem"}} label="spa"/>
-                        }
-                        { listing.parking && 
-                            <Chip style={{marginLeft:"0.5rem"}} label="parking"/>
-                        }
-                        </div>   
+                        <div style={{marginTop:"0.8rem"}}>
+                            <Button variant="contained" color={"secondary"} onClick={()=>window.location.href=`http://localhost:3000/listings/${listing._id}/rent`}>
+                                Checkout
+                            </Button>
+                        </div>
                     </div>
                     <Typography variant='subtitle2' style={{fontWeight:400, fontSize:"1rem"}}>
                         {listing.description.slice(0,200)}...

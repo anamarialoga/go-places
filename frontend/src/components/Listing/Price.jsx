@@ -48,8 +48,8 @@ function Price(props) {
           </CardContent>
           <Divider />
           <CardActions >
-              <Button fullWidth variant='contained' color={"secondary"}>
-                  RENT
+              <Button fullWidth variant='contained' color={"secondary"} onClick={()=>window.location.href=`http://localhost:3000/listings/${props.listing._id}/rent`}>
+                 checkout & Book
               </Button>
           </CardActions>
           </div>
