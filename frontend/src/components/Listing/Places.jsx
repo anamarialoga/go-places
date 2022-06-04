@@ -45,7 +45,7 @@ function Places(props) {
                 <FormControl style={{width: "10rem"}}>
                 <InputLabel style={{color:"rgb(241, 143, 159)"}}>Sort by Rating</InputLabel>
                 <Select   value={props.rating} onChange={(e) => props.setRating(e.target.value)}>
-                <MenuItem style={{color:"#ff3366"}} value="all">All</MenuItem>
+                <MenuItem style={{color:"#ff3366"}} value="">All</MenuItem>
                 <MenuItem style={{color:"#ff3366"}} value="3">Above 3.0</MenuItem>
                 <MenuItem style={{color:"#ff3366"}} value="4">Above 4.0</MenuItem>
                 <MenuItem style={{color:"#ff3366"}} value="4.5">Above 4.5</MenuItem>

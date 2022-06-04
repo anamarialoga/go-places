@@ -183,6 +183,28 @@ export const AppProvider = ({children})=>{
     
     const onEditListing = (listingid) => window.location.href = `/editlisting/${listingid}`
 
+
+    const [searchedListings, setSearchedListings] = useState([]);
+    const [youSearchedFor, setYouSearchedFor] = useState("")
+    const fetchSearchedListings = async (location)=>{
+        let locationTemp =[];
+        setYouSearchedFor(location);
+        try{
+            setLoading(true);
+            const  {data}  = await axios.get("http://localhost:1179/api/listings");
+            data.map((listing) => {
+                if(listing.location.includes(location))
+                    return locationTemp.push(listing);
+                else return locationTemp;
+            })
+            setSearchedListings(locationTemp);
+            setLoading(false);
+          }
+          catch (e) {
+            toast.error(e.response.data.message);
+          }
+    }
+
 return (
     <AppContext.Provider value={{
     onLogin, 
@@ -199,7 +221,10 @@ return (
     loadingUser,
     fetchAllListings,
     listings,
-    loading
+    loading, 
+    fetchSearchedListings, 
+    searchedListings,
+    youSearchedFor
     }}>
         {children}
     </AppContext.Provider>

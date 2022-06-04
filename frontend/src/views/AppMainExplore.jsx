@@ -7,6 +7,7 @@ import { Autocomplete, Button } from '@mui/material';
 import Sidebar from '../components/Explore/Sidebar';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { AppContext } from '../context/appContext';
+import {useNavigate} from 'react-router-dom'
 
 const backgroundImage =
   'http://127.0.0.1:8888/ian-dooley-DuBNA1QMpPA-unsplash.jpg';
@@ -19,7 +20,8 @@ export default function AppMainExplore() {
     setSideBar(!sidebar);
   }
 
-  const {fetchAllListings, listings} = React.useContext(AppContext)
+  const navigate = useNavigate();
+  const {fetchAllListings, listings, fetchSearchedListings} = React.useContext(AppContext)
   const [searchedLoc, setSearchedLoc] = React.useState("")
 
   const [dateRange, setDateRange] = React.useState({
@@ -30,7 +32,7 @@ export default function AppMainExplore() {
   const {
     searchDateStart, 
     searchDateEnd
-  } = dateRange
+  } = dateRange;
 
   const onChangeStart=(newValue)=>{
     setDateRange((prevState)=>({
@@ -73,11 +75,13 @@ export default function AppMainExplore() {
     else return (citiesDuplic.push(listing.location.split(",").slice(-3)[0]))
   })
   const cities = [...new Set(citiesDuplic)]
-
   let locationOptions = [];
 
-  console.log(dateRange)
-  console.log(searchedLoc)  
+
+  const handleSubmit = ()=>{
+    fetchSearchedListings(searchedLoc);
+    navigate("/listings");
+  }
 
   return (
     <ProductHeroLayout
@@ -126,7 +130,7 @@ export default function AppMainExplore() {
       />
       </div>
       <div  style={{ textAlign: 'center', marginTop:"2rem"}}>
-        <Button fullWidth variant='contained'  color={"secondary"} style={{fontSize: "1.1rem"}}>Search</Button>
+        <Button fullWidth variant='contained' onClick={handleSubmit} color={"secondary"} style={{fontSize: "1.1rem"}}>Search</Button>
       </div>
       <div style={{ textAlign: 'center', marginTop: '0.5rem', borderRadius:'0.2rem'}}>
         <Button fullWidth variant={'text'}color={"success"}  onClick={onSidebar}> <FilterAltIcon /> Advanced</Button>

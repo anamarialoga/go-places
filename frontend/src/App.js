@@ -18,6 +18,7 @@ import AppAppBar from "./views/AppAppBar.jsx";
 import AppFooter from "./views/AppFooter.jsx";
 import ListingDining from "./pages/ListingDining.jsx";
 import ListingAttractions from "./pages/ListingAttractions.jsx";
+import SearchedListings from "./pages/SearchedListings.jsx";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
                   <Route path="/mylistings" element={<MyListingsPage/>}/>
                   <Route path="/addlisting" element={<AddListing/>}/>
                   <Route path='/editlisting/:listingid' element={<EditListing/>} />
+                  <Route path='/listings' element={<SearchedListings/>} /> 
                   <Route path='/listings/:listingid' element={<ListingDetails/>} />
                   <Route path='/listings/:listingid/images' element={<ListingAlbum/>} />
                   <Route path='/listings/:listingid/food' element={<ListingDining/>} /> 
