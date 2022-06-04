@@ -19,7 +19,7 @@ import AppFooter from "./views/AppFooter.jsx";
 import ListingDining from "./pages/ListingDining.jsx";
 import ListingAttractions from "./pages/ListingAttractions.jsx";
 import SearchedListings from "./pages/SearchedListings.jsx";
-import CheckOutForm from "./pages/CheckOutForm.jsx";
+import CheckOutForm from "./pages/ListingCheckout.jsx";
 
 
 function App() {

@@ -22,7 +22,7 @@ import withRoot from '../../withRoot';
           value={props.searchDateEnd}
           onChange={props.setSearchDateEnd}
           renderInput={(params) => <TextField {...params} />}
-          minDate={props.searchStart}
+          minDate={props.searchDateStart}
         />
       </div>
     </LocalizationProvider>

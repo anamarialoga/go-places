@@ -12,6 +12,7 @@ import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import AttractionsIcon from '@mui/icons-material/Attractions';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 function SidebarListing(props) {
 
@@ -42,10 +43,15 @@ function SidebarListing(props) {
             title: 'Landlord'
         },
         {
-          href:  `/listings/${props.listingid}/`,
+          href:  `/listings/${props.listingid}/reviews`,
           icon: (<ReviewsIcon fontSize="small" />),
           title: 'Reviews'
         },    
+        {
+            href:  `/listings/${props.listingid}/rent`,
+            icon: (<ShoppingCartIcon fontSize="small" />),
+            title: 'Checkout'
+        },   
       ];
 
     const content = (

@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 
 const SearchedListings = ()=>{
     const {searchedListings, youSearchedFor, loading}  = useContext(AppContext);
-    console.log(searchedListings)
 
       //PAGINATION
     const [pageNumber, setPageNumber] = useState(0);
@@ -26,7 +25,7 @@ const SearchedListings = ()=>{
     const navigate = useNavigate();
 
     return loading? <Loading/> :  <>
-    <div style={{background: "url(http://127.0.0.1:8888/eberhard-grossgasteiger-S-2Ukb_VqpA-unsplash.jpg)  no-repeat"}}>
+    <div style={{height:"20cm",background: "url(http://127.0.0.1:8888/eberhard-grossgasteiger-S-2Ukb_VqpA-unsplash.jpg)  no-repeat"}}>
     <div className="flex" style={{marginLeft:"3cm", marginRight:"3cm", paddingTop:"1cm", paddingBottom:"1cm"}}>
     { searchedListings.length>0 ? 
     <>
@@ -145,8 +144,8 @@ const SearchedListings = ()=>{
     </Card> 
     </> : 
     <div style={{width:"100%",textAlign:"center"}}>
-        <Typography>
-        Currently, there are no listings avalabile
+        <Typography variant="h4" color={"gray"} style={{paddingTop:"5cm", fontSize:"1.5rem"}}>
+        Currently, there are no listings avalabile under the specified conditions
         </Typography>
     </div>
     }

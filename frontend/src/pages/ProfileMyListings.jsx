@@ -33,9 +33,9 @@ return loadingList? <Loading/> :  (
     >
         {myListings.length>0 ? <MyListings listings={myListings}/> :     
         <div style={{width:"100%",textAlign:"center"}}>
-          <Typography>
-          Currently, there are no listings avalabile
-          </Typography>
+        <Typography variant="h4" color={"gray"} style={{marginLeft:"10%", paddingTop:"4cm", fontSize:"1.5rem"}}>
+            Currently, you did not post any listings
+        </Typography>
       </div>}
     </Box>
     </div>

@@ -184,21 +184,55 @@ export const AppProvider = ({children})=>{
     const onEditListing = (listingid) => window.location.href = `/editlisting/${listingid}`
 
 
+    function getDatesInRange(startDate, endDate) {
+
+        if(startDate !== null && endDate !== null){
+        const date = new Date(startDate.getTime());
+      
+        const dates = [];
+      
+        while (date <= endDate) {
+          dates.push(new Date(date).toDateString());
+          date.setDate(date.getDate() + 1);
+        }
+           return dates;
+        }
+        return [];
+    }
+
+    function contains(arr1, arr2) {
+        return arr1.some(item => arr2.includes(item))
+    }
+     
+
     const [searchedListings, setSearchedListings] = useState([]);
     const [youSearchedFor, setYouSearchedFor] = useState("")
-    const fetchSearchedListings = async (location)=>{
-        let locationTemp =[];
+    const fetchSearchedListings = async (location, range)=>{
+        let searched =[];
         setYouSearchedFor(location);
+        const searchedPeriod = getDatesInRange(range.searchDateStart, range.searchDateEnd);
+
         try{
             setLoading(true);
             const  {data}  = await axios.get("http://localhost:1179/api/listings");
-            data.map((listing) => {
-                if(listing.location.includes(location))
-                    return locationTemp.push(listing);
-                else return locationTemp;
-            })
-            setSearchedListings(locationTemp);
-            setLoading(false);
+            if(searchedPeriod.length > 0) {
+                data.map((listing) => {
+                    if(listing.location.includes(location)  && !contains(listing.ranges, searchedPeriod))
+                    {
+                            searched.push(listing);
+                    }
+                    return searched
+                })
+            }else{
+                data.map((listing) => {
+                    if(listing.location.includes(location))
+                    {
+                        searched.push(listing);
+                    }
+                    return searched;
+            })}
+          setSearchedListings(searched);
+          window.location.href = 'http://localhost:3000/listings';
           }
           catch (e) {
             toast.error(e.response.data.message);

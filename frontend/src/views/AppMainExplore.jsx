@@ -7,7 +7,6 @@ import { Autocomplete, Button } from '@mui/material';
 import Sidebar from '../components/Explore/Sidebar';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { AppContext } from '../context/appContext';
-import {useNavigate} from 'react-router-dom'
 
 const backgroundImage =
   'http://127.0.0.1:8888/ian-dooley-DuBNA1QMpPA-unsplash.jpg';
@@ -20,7 +19,6 @@ export default function AppMainExplore() {
     setSideBar(!sidebar);
   }
 
-  const navigate = useNavigate();
   const {fetchAllListings, listings, fetchSearchedListings} = React.useContext(AppContext)
   const [searchedLoc, setSearchedLoc] = React.useState("")
 
@@ -79,11 +77,9 @@ export default function AppMainExplore() {
 
 
   const handleSubmit = ()=>{
-    fetchSearchedListings(searchedLoc);
-    navigate("/listings");
+    fetchSearchedListings(searchedLoc, dateRange);
   }
 
-  console.log(dateRange, searchedLoc)
 
   return (
     <ProductHeroLayout
