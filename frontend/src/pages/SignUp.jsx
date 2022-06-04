@@ -69,6 +69,7 @@ function SignUp(){
                     onChange={onChange}
                   />
                   <TextField
+                    style={{marginBottom:"2rem"}}
                     id={'email'}
                     autoComplete="email"
                     autoFocus
@@ -84,7 +85,7 @@ function SignUp(){
                   />
                   <div className='passwordInputDiv'>
                     <TextField
-                      style={{background: "url()"}}
+                      style={{marginBottom:"2rem"}}
                       id={"password"}
                       fullWidth
                       size="large"
