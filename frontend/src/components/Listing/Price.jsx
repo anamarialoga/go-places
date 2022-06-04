@@ -12,7 +12,6 @@ function Price(props) {
 
   return (
     <Grid item xs={12} md={3} >
-      <CardActionArea component="a" href="#">
         <Card sx={{ display: 'flex' , height: "6cm"}}>
         <div className='block' style={{width: "100%"}}>
           <CardContent sx={{ flex: 1 }}>
@@ -56,7 +55,6 @@ function Price(props) {
           </CardActions>
           </div>
         </Card>
-      </CardActionArea>
     </Grid>
   );
 }

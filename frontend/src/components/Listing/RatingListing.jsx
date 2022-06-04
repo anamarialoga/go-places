@@ -11,7 +11,6 @@ function RatingListing(props) {
 
   return (
     <Grid item xs={12} md={3} >
-      <CardActionArea component="a" href="#">
         <Card sx={{ marginTop: '1rem',display: 'flex' , width:"10cm"}}>
         <div className='block' style={{width: "100%"}}>
           <CardContent sx={{ flex: 1 }}>
@@ -33,7 +32,6 @@ function RatingListing(props) {
           </CardActions>
           </div>
         </Card>
-      </CardActionArea>
     </Grid>
   );
 }

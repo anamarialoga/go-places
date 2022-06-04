@@ -87,21 +87,31 @@ function Sidebar({sidebar, onSidebar}){
                     borderColor: "#ffffff",
                 }}/>
         <List>
-          <ListItem>
+            <div className='flex'>
+            <ListItem>
               <FormControlLabel style={{color:"#69696a"}} control={<Checkbox id={"parking"}/>} label="Parking" />
-          </ListItem>
-          <ListItem>
-              <FormControlLabel style={{color:"#69696a"}} control={<Checkbox id={"spa"}/>} label="Spa" />
-          </ListItem>
-          <ListItem>
-              <FormControlLabel style={{color:"#69696a"}}  control={<Checkbox id={"pool"}/>} label="Pool" />
-          </ListItem>
-          <ListItem>
-              <FormControlLabel style={{color:"#69696a"}} control={<Checkbox id={"kitchen"}/>} label="Kitchen" />
-          </ListItem>
+                </ListItem>
+                <ListItem>
+                    <FormControlLabel style={{color:"#69696a"}} control={<Checkbox id={"spa"}/>} label="Spa" />
+                </ListItem>
+            </div>
+          <div className='flex'>
+            <ListItem>
+                <FormControlLabel style={{color:"#69696a"}}  control={<Checkbox id={"pool"}/>} label="Pool" />
+            </ListItem>
+            <ListItem>
+                <FormControlLabel style={{color:"#69696a"}} control={<Checkbox id={"kitchen"}/>} label="Kitchen" />
+            </ListItem>
+          </div>
       </List> 
+          <br/>
+          <br/>
+          <br/>
           <ListItem>
-              <FormControlLabel style={{color:"#69696a"}} control={<Checkbox id={"pool"}/>} checked={true} label="Exclude my listings from the search" />
+              <FormControlLabel style={{color:"#69696a"}} control={<Checkbox id={"exclude"}/>} checked={true} label="Exclude my listings from the search" />
+          </ListItem>
+          <ListItem>
+              <FormControlLabel style={{color:"#ff3366"}} control={<Checkbox id={"apply"}/>} label="Apply Filters" />
           </ListItem>
           </div>
           </Box>

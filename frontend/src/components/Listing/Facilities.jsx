@@ -26,7 +26,6 @@ function Facilities(props) {
 
   return (
     <Grid item xs={12} md={4}>
-      <CardActionArea component="a" href="#">
         <Card sx={{ display: 'flex',  height: "6cm" }}>
           <CardContent sx={{ flex: 1 }}>
             <Typography component="h2" variant="h5" style={{fontWeight: "800"}}>
@@ -145,7 +144,6 @@ function Facilities(props) {
             </div>
           </CardContent>
         </Card>
-      </CardActionArea>
     </Grid>
   );
 }

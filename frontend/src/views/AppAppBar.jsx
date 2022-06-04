@@ -59,7 +59,7 @@ function AppAppBar() {
           {(window.location.pathname !== "/profile")&&(window.location.pathname !== "/addlisting") &&(window.location.pathname !== "/mylistings") && (window.location.pathname !== "/statistics") && (window.location.pathname !== "/customers") && (window.location.pathname !== "/trips")&& (
             <Button
               color={"primary"}
-              variant="contained"
+              variant="text"
               underline="none"
               sx={rightLink}
               onClick={()=> navigate('/profile')}
@@ -69,12 +69,12 @@ function AppAppBar() {
             {(window.location.pathname !== "/explore")&&(window.location.pathname !== "/") && (
             <Button
               color={"primary"}
-              variant="contained"
+              variant="text"
               underline="none"
               sx={rightLink}
               onClick={()=> navigate('/explore')}
             >
-              <ExploreIcon style={{marginRight: '0.5rem'}}/> {'Explore'}
+              <ExploreIcon  style={{marginRight: '0.5rem' }}/> {'Explore'}
             </Button> )}
             <Button
               color={"secondary"}

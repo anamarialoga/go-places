@@ -9,7 +9,7 @@ import Sidebar from '../components/Explore/Sidebar';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
 const backgroundImage =
-  'http://127.0.0.1:8888/daniela-cuevas-t7YycgAoVSw-unsplash.jpg';
+  'http://127.0.0.1:8888/ian-dooley-DuBNA1QMpPA-unsplash.jpg';
 
 
 export default function AppMainExplore() {
@@ -56,8 +56,8 @@ export default function AppMainExplore() {
       <div  style={{ textAlign: 'center', marginTop:"2rem"}}>
         <Button fullWidth variant='contained' color={"secondary"} style={{fontSize: "1.1rem"}}>Search</Button>
       </div>
-      <div style={{ textAlign: 'center', marginTop: '0.5rem', borderRadius:'0.2rem', backgroundColor:"#ffffff"}}>
-        <Button fullWidth variant={'text'}color={"secondary"}  onClick={onSidebar}> <FilterAltIcon /> Advanced</Button>
+      <div style={{ textAlign: 'center', marginTop: '0.5rem', borderRadius:'0.2rem'}}>
+        <Button fullWidth variant={'text'}color={"success"}  onClick={onSidebar}> <FilterAltIcon /> Advanced</Button>
       </div>
       </div>
       <Sidebar sidebar={sidebar} onSidebar={onSidebar}/>

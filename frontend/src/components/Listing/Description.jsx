@@ -2,7 +2,6 @@ import * as React from 'react';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { ListItemButton } from '@mui/material';
@@ -12,7 +11,6 @@ function FeaturedPost(props) {
 
   return (
     <Grid item xs={12} md={5} >
-      <CardActionArea component="a" href="#">
         <Card sx={{ display: 'flex' , height: "6cm"}}>
           <CardContent sx={{ flex: 1 }}>
             <Typography component="h2" variant="h5" style={{fontWeight: "800"}}>
@@ -34,7 +32,6 @@ function FeaturedPost(props) {
             alt={props.listing?.images[0].name}
           />
         </Card>
-      </CardActionArea>
     </Grid>
   );
 }

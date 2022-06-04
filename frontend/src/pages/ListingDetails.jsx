@@ -38,7 +38,11 @@ console.log(forecast)
 return loading? <Loading/> : (
     <>
     <SidebarListing listingid={listingid} listing={listing}/>
-    <div style={{width: '100%', marginLeft: "20px", display:'inline-flex'}}>
+    <div style={{   
+        height: "76vh",        
+        background: "url(http://127.0.0.1:8888/eberhard-grossgasteiger-S-2Ukb_VqpA-unsplash2.jpg)  no-repeat",
+        backgroundSize: "cover"}}>
+    <div style={{width: '100%', marginLeft: "20px", marginTop:"2rem", display:'inline-flex'}}>
     <Container style={{width:"100%"}} >
     <Paper
       sx={{
@@ -91,9 +95,7 @@ return loading? <Loading/> : (
         <Weather listing={listing} forecast={forecast}/>
     </div>
     </div>
-    <br/>
-    <br/>
-    <br/>
+    </div>
     </>
 )}
 
