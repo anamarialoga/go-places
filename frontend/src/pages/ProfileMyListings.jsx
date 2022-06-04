@@ -3,6 +3,7 @@ import { useContext, useEffect} from "react";
 import {Loading} from "../components/Loading";
 import { MyListings } from "../components/Profile/MyListings";
 import SidebarProfile from "../components/Profile/SidebarProfile";
+import Typography from "../components/Typography";
 import { AppContext } from "../context/appContext";
 import withRoot from "../withRoot";
 
@@ -30,7 +31,12 @@ return loadingList? <Loading/> :  (
         py: 7,
       }}
     >
-        <MyListings listings={myListings}/>
+        {myListings.length>0 ? <MyListings listings={myListings}/> :     
+        <div style={{width:"100%",textAlign:"center"}}>
+          <Typography>
+          Currently, there are no listings avalabile
+          </Typography>
+      </div>}
     </Box>
     </div>
 </>);

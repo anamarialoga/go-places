@@ -85,7 +85,7 @@ const listingSchema= mongoose.Schema({
         type: Number, 
         default: 1
     },
-    rangeOccupied: {
+    ranges: {
         type: [],
     }
 }, 

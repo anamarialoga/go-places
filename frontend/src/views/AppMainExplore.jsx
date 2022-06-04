@@ -83,6 +83,8 @@ export default function AppMainExplore() {
     navigate("/listings");
   }
 
+  console.log(dateRange, searchedLoc)
+
   return (
     <ProductHeroLayout
       sxBackground={{

@@ -28,6 +28,8 @@ const SearchedListings = ()=>{
     return loading? <Loading/> :  <>
     <div style={{background: "url(http://127.0.0.1:8888/eberhard-grossgasteiger-S-2Ukb_VqpA-unsplash.jpg)  no-repeat"}}>
     <div className="flex" style={{marginLeft:"3cm", marginRight:"3cm", paddingTop:"1cm", paddingBottom:"1cm"}}>
+    { searchedListings.length>0 ? 
+    <>
     <Card style={{width:"20%", height:"21cm"}}>
         <CardHeader title="Filter By" />
         <Divider/>
@@ -35,7 +37,7 @@ const SearchedListings = ()=>{
     <Card style={{width:"80%"}}>
     <CardHeader title={`You searched for: "${youSearchedFor}" (${searchedListings.length} results)`} subheader={`Find the best accomodation in ${youSearchedFor} with us and enjoy the experience` }  />
     <Divider/>
-    <List>
+    <List style={{height:'17cm'}}>
         {searchedListings.slice(pageNumber * listingsPerPage , pageNumber * listingsPerPage + listingsPerPage).map((listing, i) =>
             <ListItem key={i} divider={i<searchedListings.length - 1}>
 
@@ -116,6 +118,7 @@ const SearchedListings = ()=>{
             </ListItem>
         )}
     </List>
+    <Divider/>
     <Box
       sx={{
         display: 'flex',
@@ -132,7 +135,14 @@ const SearchedListings = ()=>{
             activeClassName={"paginationActive"}
         />
     </Box>
-    </Card>
+    </Card> 
+    </> : 
+    <div style={{width:"100%",textAlign:"center"}}>
+        <Typography>
+        Currently, there are no listings avalabile
+        </Typography>
+    </div>
+    }
     </div>
     </div>
     </>

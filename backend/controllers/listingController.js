@@ -156,7 +156,7 @@ const createListing = async(req, res) => {
         people,
         userId: req.user.id, 
         isActive: true,
-        range: [],
+        ranges: [],
     }
 
     const newListing = new Listing(newListingData);

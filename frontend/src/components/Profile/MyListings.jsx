@@ -31,7 +31,7 @@ export const MyListings = (props) => {
 
  return (
    <div style={{width: "75%",marginLeft: "20%"}}>
- <Card {...props}>
+    <Card {...props}>
     <CardHeader
       subheader={`${props.listings.length} properties in total`}
       title="My listings"
