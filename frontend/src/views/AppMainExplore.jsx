@@ -1,12 +1,12 @@
-import SearchIcon from '@mui/icons-material/Search';
 import * as React from 'react';
 import DatePickerCalendar from '../components/Explore/DatePickerCalendar';
 import TextField from '@mui/material/TextField';
 import Typography from '../components/Typography.js';
 import ProductHeroLayout from './ProductHeroLayout';
-import { Button } from '@mui/material';
+import { Autocomplete, Button } from '@mui/material';
 import Sidebar from '../components/Explore/Sidebar';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import { AppContext } from '../context/appContext';
 
 const backgroundImage =
   'http://127.0.0.1:8888/ian-dooley-DuBNA1QMpPA-unsplash.jpg';
@@ -18,6 +18,66 @@ export default function AppMainExplore() {
   const onSidebar=()=>{
     setSideBar(!sidebar);
   }
+
+  const {fetchAllListings, listings} = React.useContext(AppContext)
+  const [searchedLoc, setSearchedLoc] = React.useState("")
+
+  const [dateRange, setDateRange] = React.useState({
+    searchDateStart: null,
+    searchDateEnd: null
+  })
+
+  const {
+    searchDateStart, 
+    searchDateEnd
+  } = dateRange
+
+  const onChangeStart=(newValue)=>{
+    setDateRange((prevState)=>({
+      ...prevState,
+      [`searchDateStart`]: newValue
+    }))
+  }
+
+  const onChangeEnd=(newValue)=>{
+    setDateRange((prevState)=>({
+      ...prevState,
+      [`searchDateEnd`]: newValue
+    }))
+  }
+
+  React.useEffect(()=>{
+    fetchAllListings();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
+  let addressesDuplic = [];
+
+  listings.map((listing)=>
+    addressesDuplic.push(listing.location)
+  )
+  const addresses = [...new Set(addressesDuplic)]
+
+
+  let countriesDuplic =[];
+  listings.map((listing)=>
+    listing.location.split(',').slice(-1).map((country)=> countriesDuplic.push(country))
+  )
+  const countries = [...new Set(countriesDuplic)]
+
+
+  let citiesDuplic = [];
+  listings.map((listing)=> {
+    if(listing.location.split(", ").slice(-2)[0].length !== 2) 
+      return(citiesDuplic.push(listing.location.split(",").slice(-2)[0])) 
+    else return (citiesDuplic.push(listing.location.split(",").slice(-3)[0]))
+  })
+  const cities = [...new Set(citiesDuplic)]
+
+  let locationOptions = [];
+
+  console.log(dateRange)
+  console.log(searchedLoc)  
 
   return (
     <ProductHeroLayout
@@ -40,21 +100,33 @@ export default function AppMainExplore() {
         Discover the experience
       </Typography>
       <div className='block' style={{marginTop:'2rem', padding:'1rem' }}>
-      <DatePickerCalendar/>
+      <DatePickerCalendar 
+      searchDateStart={searchDateStart} 
+      searchDateEnd={searchDateEnd} 
+      setSearchDateStart={onChangeStart}
+      setSearchDateEnd={onChangeEnd} 
+      />
       <br/>
       <div className='passwordInputDiv'>
-      <TextField   
+      <Autocomplete
+      value={searchedLoc}
+      onChange={(e, newValue)=> setSearchedLoc(newValue)}
+      autoHighlight
+      disablePortal
+      options={locationOptions.concat(countries).concat(cities).concat(addresses)}
+      fullWidth
+      renderInput={(params) => 
+          <TextField {...params} 
           variant="outlined"
           margin="normal"
           required
           fullWidth
           label={"Search locations"} 
-          sx={{backgroundColor: "white"}}
+          sx={{backgroundColor: "white"}} />}
       />
-      <SearchIcon style={{zIndex:'9', position:'absolute', right:"2%", top:"40%"}} color={"secondary"}/>
       </div>
       <div  style={{ textAlign: 'center', marginTop:"2rem"}}>
-        <Button fullWidth variant='contained' color={"secondary"} style={{fontSize: "1.1rem"}}>Search</Button>
+        <Button fullWidth variant='contained'  color={"secondary"} style={{fontSize: "1.1rem"}}>Search</Button>
       </div>
       <div style={{ textAlign: 'center', marginTop: '0.5rem', borderRadius:'0.2rem'}}>
         <Button fullWidth variant={'text'}color={"success"}  onClick={onSidebar}> <FilterAltIcon /> Advanced</Button>

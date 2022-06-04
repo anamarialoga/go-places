@@ -84,6 +84,9 @@ const listingSchema= mongoose.Schema({
     people: {
         type: Number, 
         default: 1
+    },
+    rangeOccupied: {
+        type: [],
     }
 }, 
     {

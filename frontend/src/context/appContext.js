@@ -10,6 +10,8 @@ export const AppProvider = ({children})=>{
     const [user, setUser] = useState({});
     const [myListings, setMyListings] = useState([]);
     const [changeDetails, setChangeDetails] = useState(false);
+    const [listings, setListings] =useState([]);
+    const [loading, setLoading] = useState(false);
 
     const [loadingUser, setLoadingUser] = useState(true);
     useEffect(()=>{
@@ -147,6 +149,19 @@ export const AppProvider = ({children})=>{
             toast.error(error.response?.data?.message)
         }
     }
+
+
+    const fetchAllListings = async()=>{
+        try{
+          setLoading(true);
+          const  {data}  = await axios.get("http://localhost:1179/api/listings");
+          setListings(data);
+          setLoading(false);
+        }
+        catch (e) {
+          toast.error(e.response.data.message);
+        }
+      };
     
     const onDeleteListing = async (listingid, listingname) => {
         if (window.confirm(`Are you sure you want to delete ${listingname}?`)) {
@@ -181,7 +196,10 @@ return (
     onEditListing,
     loadingList, 
     onSignUp,
-    loadingUser
+    loadingUser,
+    fetchAllListings,
+    listings,
+    loading
     }}>
         {children}
     </AppContext.Provider>
