@@ -6,8 +6,12 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { ListItemButton } from '@mui/material';
 import withRoot from '../../withRoot';
+import ReadMore from '../ReadMore';
 
 function FeaturedPost(props) {
+
+  const [open, setOpen] = React.useState(false);
+  const handleClose = (e) => {e.preventDefault(); e.stopPropagation(); setOpen(false);}
 
   return (
     <Grid item xs={12} md={5} >
@@ -21,9 +25,11 @@ function FeaturedPost(props) {
             <Typography variant="subtitle1" color="text.secondary">
            { props.listing?.description? props.listing.description.slice(0,50)+' ...' : ""}
             </Typography>
-            {props.listing?.description && <ListItemButton style={{ fontWeight: 600, marginLeft:"-1rem", fontSize: "1rem", color: "#ff3366"}}  variant={"text"}>
+            {props.listing?.description && 
+            <ListItemButton onClick={(e)=>{e.preventDefault(); e.stopPropagation(); setOpen(true)}} style={{ fontWeight: 600, marginLeft:"-1rem", fontSize: "1rem", color: "#ff3366", width:"8rem"}}  variant={"text"}>
                   [Read More]
-              </ListItemButton>}
+            </ListItemButton>}
+            {open && <ReadMore listing={props.listing} open={open} handleClose={handleClose}/>}
           </CardContent>
           <CardMedia
             component="img"

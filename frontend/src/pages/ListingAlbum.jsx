@@ -21,6 +21,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
 import 'swiper/css/autoplay'
+import ReadMore from '../components/ReadMore';
 
 
 const style = {
@@ -54,11 +55,12 @@ function ListingAlbum() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
+    const [openModal, setOpenModal] = React.useState(false);
+    const handleCloseModal = (e) => {e.preventDefault(); e.stopPropagation(); setOpenModal(false);}
+
     return loading? <Loading/> : (
       <>
       <div 
-      //style={{backgroundColor: "#fff5f8"}}
-      //style={{        background: `url(${backgroundImage})   no-repeat`}}
       >
       <SidebarListing listingid={listingid} listing={listing}/>
       <Box sx={{ mt: 0, mb: 0, ml: 35, mr: 0}}>
@@ -101,9 +103,20 @@ function ListingAlbum() {
             >
              {listing?.name} Gallery 
             </Typography> 
-             <Typography variant="h5" align="center" color="primary" paragraph>
-            {listing?.description}
-            </Typography> 
+            { listing.description.length>0  ?
+              <div style={{textAlign:"center"}}>
+                  <Typography variant='h5' style={{fontWeight:400, fontSize:"1rem"}}>
+                  {listing.description.slice(0,200)}...  
+                  <Button variant={"text"} color="secondary" onClick={(e)=>{e.preventDefault(); e.stopPropagation(); setOpenModal(true)}}>
+                      [Read More]
+                  </Button>
+                  </Typography>
+              </div> :
+              <Typography variant='h5' style={{fontWeight:400, fontSize:"1rem"}}>
+                  {listing.description}
+              </Typography>
+            } 
+            {openModal && <ReadMore listing={listing} open={openModal} handleClose={handleCloseModal}/>}
           </Container>
         </Box >
         <Container sx={{ paddingBottom: 8 }} maxWidth="md">

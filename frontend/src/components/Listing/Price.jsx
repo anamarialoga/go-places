@@ -48,9 +48,13 @@ function Price(props) {
           </CardContent>
           <Divider />
           <CardActions >
-              <Button fullWidth variant='contained' color={"secondary"} onClick={()=>window.location.href=`http://localhost:3000/listings/${props.listing._id}/rent`}>
+             { props.user?.id === props.listing?.userId ?
+              <Button disabled fullWidth variant='contained' color={"secondary"} onClick={()=>window.location.href=`http://localhost:3000/listings/${props.listing._id}/rent`}>
                  checkout & Book
-              </Button>
+              </Button> :
+              <Button  fullWidth variant='contained' color={"secondary"} onClick={()=>window.location.href=`http://localhost:3000/listings/${props.listing._id}/rent`}>
+              checkout & Book
+           </Button> }
           </CardActions>
           </div>
         </Card>

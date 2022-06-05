@@ -16,10 +16,12 @@ import Facilities from "../components/Listing/Facilities";
 import Price from "../components/Listing/Price";
 import RatingListing from "../components/Listing/RatingListing";
 import Weather from "../components/Listing/Weather";
+import { AppContext } from "../context/appContext";
 const SingleListing = () => {
 
 const {listing, fetchListing, loading, coords, getWeatherData, weather, getWeatherForecast, forecast} = useContext(ListingContext);
 const {listingid} = useParams();
+const {user} = useContext(AppContext);
 
 useEffect(()=>{
     fetchListing(listingid);
@@ -87,7 +89,7 @@ return loading? <Loading/> : (
           <Grid container spacing={4}>
               <FeaturedPost listing={listing} />
               <Facilities listing={listing} />
-              <Price listing={listing}/>
+              <Price user={user} listing={listing}/>
           </Grid>
     </Container>
     <div style={{width:"20%", marginLeft: "-14%", display:"block", marginRight:"2%"}} >

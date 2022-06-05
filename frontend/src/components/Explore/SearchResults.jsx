@@ -7,6 +7,7 @@ import LocalHotelIcon from '@mui/icons-material/Hotel'
 import ShowerIcon from '@mui/icons-material/Shower'
 import PeopleIcon from '@mui/icons-material/People'
 import { Box } from "@mui/system";
+import ReadMore from "../ReadMore";
 
  const SearchResults = (props) =>{
     const [pageNumber, setPageNumber] = useState(0);
@@ -15,6 +16,10 @@ import { Box } from "@mui/system";
     const changePage = ({ selected }) => {
         setPageNumber(selected);
     };
+
+    const [open, setOpen] = useState(false);
+    const handleClose = (e) => {e.preventDefault(); e.stopPropagation(); setOpen(false);}
+    
 return<>
     <div className={!props.submit ? 'dontshow' :"showall"}>
     <div style={{width:"100%", borderRadius:"0"}}>
@@ -22,10 +27,10 @@ return<>
     <Divider/>
     {props.searchedListings.length > 0 ?
     <> 
-    <List style={{height:'16.8cm'}}>
+    <List style={{height:'16.4cm'}}>
         {props.searchedListings.slice(pageNumber * listingsPerPage , pageNumber * listingsPerPage + listingsPerPage).map((listing, i) =>
             <CardActionArea  key={i} onClick={()=>window.location.href=`/listings/${listing._id}`}>
-            <ListItem  divider={i<props.searchedListings.length - 1}>
+            <ListItem  divider={i<props.searchedListings.length }>
                 <ListItemAvatar>
                 <img
                     alt={listing.name}
@@ -102,10 +107,20 @@ return<>
                             </Button>
                         </div>
                     </div>
+                    { listing.description.length>0  ?
+                    <div style={{display:"inline-flex"}}>
+                        <Typography variant='subtitle2' style={{fontWeight:400, fontSize:"1rem"}}>
+                        {listing.description.slice(0,200)}...  
+                        <Button variant={"text"} color="secondary" onClick={(e)=>{e.preventDefault(); e.stopPropagation(); setOpen(true)}}>
+                            [Read More]
+                        </Button>
+                        </Typography>
+                    </div> :
                     <Typography variant='subtitle2' style={{fontWeight:400, fontSize:"1rem"}}>
-                        {listing.description.slice(0,200)}...
+                        {listing.description}
                     </Typography>
-
+                    } 
+                        {open && <ReadMore listing={listing} open={open} handleClose={handleClose}/>}
                 </div>
             </ListItem>
         </CardActionArea>
@@ -116,7 +131,8 @@ return<>
     sx={{
         display: 'flex',
         justifyContent: 'center',
-
+        mt: 1,
+        mb: 1
     }}
     >
         <ReactPaginate

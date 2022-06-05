@@ -13,8 +13,11 @@ import AttractionsIcon from '@mui/icons-material/Attractions';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { AppContext } from '../../context/appContext';
 
 function SidebarListing(props) {
+ 
+    const {user} = React.useContext(AppContext);
 
     const items = [
         {
@@ -38,21 +41,11 @@ function SidebarListing(props) {
             title: 'Attractions'
         },
         {
-            href:  `/listings/${props.listingid}/landlord`,
-            icon: (<PersonIcon fontSize="small"/>),
-            title: 'Landlord'
-        },
-        {
           href:  `/listings/${props.listingid}/reviews`,
           icon: (<ReviewsIcon fontSize="small" />),
           title: 'Reviews'
-        },    
-        {
-            href:  `/listings/${props.listingid}/rent`,
-            icon: (<ShoppingCartIcon fontSize="small" />),
-            title: 'Checkout'
         },   
-      ];
+      ];   
 
     const content = (
     <>
@@ -90,14 +83,16 @@ function SidebarListing(props) {
                     my: 3
                 }} />
             <Box sx={{ flexGrow: 1 }}>
-            {items.map((item) => (
-                    <NavItem
-                        key={item.title}
-                        icon={item.icon}
-                        href={item.href}
-                        title={item.title}
-                    />
-            ))}
+                {items.map((item) => (
+                        <NavItem
+                            key={item.title}
+                            icon={item.icon}
+                            href={item.href}
+                            title={item.title}
+                        />
+                ))}
+              {props.listing?.userId === user?.id ?  <NavItem disabled icon={(<PersonIcon fontSize="small"/>)} href={`/listings/${props.listingid}/#`} title={"Landlord"}/> : <NavItem  icon={(<PersonIcon fontSize="small"/>)} href={`/listings/${props.listingid}/landlord`} title={"Landlord"}/>  }
+              {props.listing?.userId === user?.id ?  <NavItem disabled icon={(<ShoppingCartIcon fontSize="small" />)} href={`/listings/${props.listingid}/#`} title={'Checkout'}/> : <NavItem  icon={(<ShoppingCartIcon fontSize="small" />)} href={`/listings/${props.listingid}/rent`} title={'Checkout'}/>}
             </Box>
             <Divider sx={{ borderColor: '#2D3748' }} /><Box
                 sx={{

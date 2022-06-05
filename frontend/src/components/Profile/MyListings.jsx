@@ -9,6 +9,7 @@ import {
   ListItemAvatar,
   ListItemText, 
   ListItemButton,
+  CardActionArea,
 } from '@mui/material';
 import { useContext, useState } from 'react';
 import {ReactComponent as Delete} from '../../common/svg/deleteIcon.svg'
@@ -16,6 +17,7 @@ import {ReactComponent as Edit} from '../../common/svg/editIcon.svg'
 import { AppContext } from '../../context/appContext';
 import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router-dom';
+import ReadMore from '../ReadMore';
 
 export const MyListings = (props) => {
   const navigate = useNavigate();
@@ -29,6 +31,9 @@ export const MyListings = (props) => {
       setPageNumber(selected);
   };
 
+  const [open, setOpen] = useState(false);
+  const handleClose = (e) => {e.preventDefault(); e.stopPropagation(); setOpen(false);}
+
  return (
    <div style={{width: "75%",marginLeft: "20%"}}>
     <Card {...props}>
@@ -39,18 +44,18 @@ export const MyListings = (props) => {
     <Divider />
     <List >
       {props.listings.slice(pageNumber * listingsPerPage , pageNumber * listingsPerPage + listingsPerPage).map((listing, i) => (
+        <CardActionArea onClick={()=>navigate(`/listings/${listing._id}`)}  key={i}>
         <ListItem
           divider={i < props.listings.length - 1}
-          key={i}
         >
-          <ListItemAvatar style={{cursor:  "pointer"}} onClick={()=>navigate(`/listings/${listing._id}`)}>
+          <ListItemAvatar style={{cursor:  "pointer"}}>
             <img
               alt={listing.name}
               src={`http://127.0.0.1:8888/${listing.images[0]}`}
               style={{
                 borderRadius: '1rem',
                 height: 190,
-                width: 250
+                width: 300
               }}
             />
           </ListItemAvatar>
@@ -62,9 +67,10 @@ export const MyListings = (props) => {
                 secondary={
                       listing.description? listing.description.slice(0,120)+' ...' : ""}
               />
-              {listing.description && <ListItemButton style={{marginLeft: "1rem", fontWeight: 600, fontSize: "0.9rem", color: "#ff3366", marginTop: '-1rem'}}  variant={"text"}>
+              {listing.description && <ListItemButton style={{marginLeft: "1rem", fontWeight: 600, fontSize: "0.9rem", color: "#ff3366", marginTop:"-0.5rem", width:"8rem"}}  variant={"text"} onClick={(e)=>{e.preventDefault(); e.stopPropagation(); setOpen(true)}}>
                   [Read More]
               </ListItemButton>}
+              {open && <ReadMore listing={listing} open={open} handleClose={handleClose}/>}
               <ListItemText
                 style={{marginLeft: "2rem"}}
                 primary={'Location'}
@@ -81,8 +87,10 @@ export const MyListings = (props) => {
             </div>
           </div>
         </ListItem>
+        </CardActionArea>
       ))}
     </List>
+    <Divider/>
     <Box
       sx={{
         display: 'flex',
