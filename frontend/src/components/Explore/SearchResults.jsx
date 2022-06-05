@@ -1,45 +1,31 @@
-import { Button, Card, CardActionArea, CardHeader, Chip, Divider, List, ListItem, ListItemAvatar} from "@mui/material";
-import { Box } from "@mui/system";
-import { useContext, useState } from "react"
+import { Button, CardActionArea, CardHeader, Chip, Divider, List, ListItem, ListItemAvatar } from "@mui/material";
+import { useState } from "react";
 import ReactPaginate from "react-paginate";
-import { Loading } from "../components/Loading";
-import Typography from "../components/Typography";
-import { AppContext } from "../context/appContext"
-import withRoot from "../withRoot"
-import LocalHotelIcon from '@mui/icons-material/LocalHotel';
-import ShowerIcon from '@mui/icons-material/Shower';
-import PeopleIcon from '@mui/icons-material/People';
-import { useNavigate } from "react-router-dom";
+import withRoot from "../../withRoot"
+import Typography from "../Typography";
+import LocalHotelIcon from '@mui/icons-material/Hotel'
+import ShowerIcon from '@mui/icons-material/Shower'
+import PeopleIcon from '@mui/icons-material/People'
+import { Box } from "@mui/system";
 
-const SearchedListings = ()=>{
-    const {searchedListings, youSearchedFor, loading}  = useContext(AppContext);
-
-      //PAGINATION
+ const SearchResults = (props) =>{
     const [pageNumber, setPageNumber] = useState(0);
     const listingsPerPage=3;
-    const pageCount = Math.ceil(searchedListings.length / listingsPerPage);
+    const pageCount = Math.ceil(props.searchedListings.length / listingsPerPage);
     const changePage = ({ selected }) => {
         setPageNumber(selected);
     };
-
-    const navigate = useNavigate();
-
-    return loading? <Loading/> :  <>
-    <div style={{height:"20cm",background: "url(http://127.0.0.1:8888/eberhard-grossgasteiger-S-2Ukb_VqpA-unsplash.jpg)  no-repeat"}}>
-    <div className="flex" style={{marginLeft:"3cm", marginRight:"3cm", paddingTop:"1cm", paddingBottom:"1cm"}}>
-    { searchedListings.length>0 ? 
-    <>
-    <Card style={{width:"20%", height:"21cm"}}>
-        <CardHeader title="Filter By" />
-        <Divider/>
-    </Card>
-    <Card style={{width:"80%"}}>
-    <CardHeader title={`You searched for: "${youSearchedFor}" (${searchedListings.length} results)`} subheader={`Find the best accomodation in ${youSearchedFor} with us and enjoy the experience` }  />
+return<>
+    <div className={!props.submit ? 'dontshow' :"showall"}>
+    <div style={{width:"100%", borderRadius:"0"}}>
+    <CardHeader title={`You searched for: "${props.searchedLoc}" (${props.searchedListings.length} results)`} subheader={`Find the best accomodation in ${props.searchedLoc} with us and enjoy the experience` }  />
     <Divider/>
-    <List style={{height:'17cm'}}>
-        {searchedListings.slice(pageNumber * listingsPerPage , pageNumber * listingsPerPage + listingsPerPage).map((listing, i) =>
-            <ListItem key={i} divider={i<searchedListings.length - 1}>
-
+    {props.searchedListings.length > 0 ?
+    <> 
+    <List style={{height:'16.8cm'}}>
+        {props.searchedListings.slice(pageNumber * listingsPerPage , pageNumber * listingsPerPage + listingsPerPage).map((listing, i) =>
+            <CardActionArea  key={i} onClick={()=>window.location.href=`/listings/${listing._id}`}>
+            <ListItem  divider={i<props.searchedListings.length - 1}>
                 <ListItemAvatar>
                 <img
                     alt={listing.name}
@@ -52,16 +38,16 @@ const SearchedListings = ()=>{
                     />
                 </ListItemAvatar>
                 <div className="block" style={{width:"100%",marginLeft:"1rem", marginRight:"2rem"}}>
-                <CardActionArea  onClick={()=>navigate(`/listings/${listing._id}`)}>
+                
                     <div style={{width:"100%",display:'flex', justifyContent:"space-between"}}>
                         <Typography color={"secondary"} variant="h5" style={{fontSize:"1.3rem", fontWeight:"900", textDecoration:"underline"}}>
                             {listing.type === "hotel"? `Hotel ${listing.name}` : (listing.type==='apartment') ? `Apartment ${listing.name}` : `Villa ${listing.name}`} 
                         </Typography>
                         <div className="flex">
                             <Typography variant="subtitle1" style={{marginRight:"0.5rem", fontWeight:"800"}}>
-                               {listing.rating ? `Graded ${listing.rating}/5` : ''}
+                            {listing.rating ? `Graded ${listing.rating}/5` : ''}
                             </Typography>
-                           {listing.reviews ?
+                        {listing.reviews ?
                             <Typography variant="subtitle1">
                                 {listing.reviews} reviews
                             </Typography> :
@@ -76,11 +62,11 @@ const SearchedListings = ()=>{
                         </Typography>
                         {listing.offer ? 
                         <Typography variant="subtitle1" color={"secondary"} style={{fontWeight:"900"}}>
-                           SALE ${listing.discount} /night
+                        SALE ${listing.discount} /night
                         </Typography> :
                         <Typography variant="subtitle1" style={{fontWeight:"900"}} >
-                           ${listing.price} /night
-                     </Typography> }
+                        ${listing.price} /night
+                    </Typography> }
                     </div>
                     <div style={{width:"100%", justifyContent:"space-between", display:"flex"}}>
                         <div style={{width:"100%",display:'flex'}}>
@@ -119,21 +105,23 @@ const SearchedListings = ()=>{
                     <Typography variant='subtitle2' style={{fontWeight:400, fontSize:"1rem"}}>
                         {listing.description.slice(0,200)}...
                     </Typography>
-                    </CardActionArea>
+
                 </div>
             </ListItem>
+        </CardActionArea>
         )}
-    </List>
+    </List> 
     <Divider/>
     <Box
-      sx={{
+    sx={{
         display: 'flex',
         justifyContent: 'center',
-      }}
+
+    }}
     >
         <ReactPaginate
             previousLabel={'<'}
-            nextLabel={searchedListings.length > 0 ? ">" : ""}
+            nextLabel={props.searchedListings.length > 0 ? ">" : ""}
             pageCount={pageCount}
             onPageChange={changePage}
             containerClassName={"paginationBttns"}
@@ -141,17 +129,16 @@ const SearchedListings = ()=>{
             activeClassName={"paginationActive"}
         />
     </Box>
-    </Card> 
-    </> : 
-    <div style={{width:"100%",textAlign:"center"}}>
-        <Typography variant="h4" color={"gray"} style={{paddingTop:"5cm", fontSize:"1.5rem"}}>
-        Currently, there are no listings avalabile under the specified conditions
+    </>
+    :
+    <div style={{width:"100%",textAlign:"center", height:"18.35cm"}}>
+        <Typography variant="h4" color={"gray"} style={{marginLeft:"5%", paddingTop:"10%", fontSize:"1.5rem"}}>
+            {`Currently, there are no avalabile listings in ${props.searchedLoc} in the selected dates`}
         </Typography>
-    </div>
-    }
-    </div>
+    </div> }
+    </div> 
     </div>
     </>
-}
+ }
 
-export default withRoot(SearchedListings)
+ export default withRoot(SearchResults)

@@ -80,6 +80,9 @@ const getListing = asyncHandler(async (req, rsp) => {
 })
 
 
+
+
+
 // @desc Retrieve all listings
 // @route /api/listings
 // @access Public
@@ -249,6 +252,10 @@ const delListing = asyncHandler(async (req, rsp) => {
     await listing.remove();
     return rsp.status(200).json({message: 'The listing has been deleted'});
 })
+
+
+
+
 
 module.exports= {createListing, getAllListings, getListings, getSingleListing, updateListing, delListing, getListing};
 

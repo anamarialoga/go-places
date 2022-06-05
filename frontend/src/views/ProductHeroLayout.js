@@ -40,11 +40,13 @@ function ProductHeroLayout(props) {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          width:"100%",
         }}
       >
         {children}
         <Box
           sx={{
+            width:"100%",
             position: 'absolute',
             left: 0,
             right: 0,

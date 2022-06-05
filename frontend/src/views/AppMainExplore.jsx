@@ -7,6 +7,9 @@ import { Autocomplete, Button } from '@mui/material';
 import Sidebar from '../components/Explore/Sidebar';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { AppContext } from '../context/appContext';
+import { toast } from 'react-toastify';
+import SearchResults from '../components/Explore/SearchResults';
+
 
 const backgroundImage =
   'http://127.0.0.1:8888/ian-dooley-DuBNA1QMpPA-unsplash.jpg';
@@ -19,40 +22,20 @@ export default function AppMainExplore() {
     setSideBar(!sidebar);
   }
 
-  const {fetchAllListings, listings, fetchSearchedListings} = React.useContext(AppContext)
-  const [searchedLoc, setSearchedLoc] = React.useState("")
+  const {fetchAllListings, listings, searchedLoc, setSearchedLoc, searchedListings,fetchSearchedListings, dateRange } = React.useContext(AppContext)
 
-  const [dateRange, setDateRange] = React.useState({
-    searchDateStart: null,
-    searchDateEnd: null
-  })
-
-  const {
-    searchDateStart, 
-    searchDateEnd
-  } = dateRange;
-
-  const onChangeStart=(newValue)=>{
-    setDateRange((prevState)=>({
-      ...prevState,
-      [`searchDateStart`]: newValue
-    }))
-  }
-
-  const onChangeEnd=(newValue)=>{
-    setDateRange((prevState)=>({
-      ...prevState,
-      [`searchDateEnd`]: newValue
-    }))
-  }
+  const [submit, setSubmit] = React.useState(false)
 
   React.useEffect(()=>{
     fetchAllListings();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
-  let addressesDuplic = [];
+  React.useEffect(()=>{
+    setSubmit(false)
+  },[])
 
+  let addressesDuplic = [];
   listings.map((listing)=>
     addressesDuplic.push(listing.location)
   )
@@ -75,13 +58,18 @@ export default function AppMainExplore() {
   const cities = [...new Set(citiesDuplic)]
   let locationOptions = [];
 
-
-  const handleSubmit = ()=>{
-    fetchSearchedListings(searchedLoc, dateRange);
+  const handleSubmit=()=>{
+    if(searchedLoc !== "")
+        {
+           setSubmit(true);
+           fetchSearchedListings(searchedLoc, dateRange);
+           console.log(searchedLoc)
+        }
+    else toast.info("You should search for a location first")
   }
 
-
   return (
+    <div className={submit ? "flex": ""} style={{width:"100%"}}>
     <ProductHeroLayout
       sxBackground={{
         backgroundImage: `url(${backgroundImage})`,
@@ -103,10 +91,6 @@ export default function AppMainExplore() {
       </Typography>
       <div className='block' style={{marginTop:'2rem', padding:'1rem' }}>
       <DatePickerCalendar 
-      searchDateStart={searchDateStart} 
-      searchDateEnd={searchDateEnd} 
-      setSearchDateStart={onChangeStart}
-      setSearchDateEnd={onChangeEnd} 
       />
       <br/>
       <div className='passwordInputDiv'>
@@ -136,5 +120,7 @@ export default function AppMainExplore() {
       </div>
       <Sidebar sidebar={sidebar} onSidebar={onSidebar}/>
     </ProductHeroLayout>
+    {submit && <SearchResults submit={submit} searchedListings={searchedListings} searchedLoc={searchedLoc} startDate={(dateRange.searchDateStart)?.toDateString()} endDate={(dateRange.searchDateEnd)?.toDateString()}/>}
+    </div>
   );
 }

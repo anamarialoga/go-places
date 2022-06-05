@@ -233,3 +233,13 @@ ul{
   color: #ff3366 !important;
   font-weight: 600 !important;
 }
+
+
+.dontshow{
+  display:none;
+}
+
+.showall{
+  width: 100%;
+}
+

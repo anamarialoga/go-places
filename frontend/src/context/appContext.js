@@ -1,7 +1,9 @@
 import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from 'axios';
+
 toast.configure();
+
 
 export const AppContext = createContext();
 
@@ -184,7 +186,32 @@ export const AppProvider = ({children})=>{
     const onEditListing = (listingid) => window.location.href = `/editlisting/${listingid}`
 
 
-    function getDatesInRange(startDate, endDate) {
+    const [searchedLoc, setSearchedLoc] = useState("")
+    const [dateRange, setDateRange] = useState({
+      searchDateStart: null,
+      searchDateEnd: null
+    })
+
+    const {
+        searchDateStart, 
+        searchDateEnd
+      } = dateRange;
+    
+      const onChangeStart=(newValue)=>{
+        setDateRange((prevState)=>({
+          ...prevState,
+          [`searchDateStart`]: newValue
+        }))
+      }
+    
+      const onChangeEnd=(newValue)=>{
+        setDateRange((prevState)=>({
+          ...prevState,
+          [`searchDateEnd`]: newValue
+        }))
+      }
+
+      function getDatesInRange(startDate, endDate) {
 
         if(startDate !== null && endDate !== null){
         const date = new Date(startDate.getTime());
@@ -206,38 +233,39 @@ export const AppProvider = ({children})=>{
      
 
     const [searchedListings, setSearchedListings] = useState([]);
-    const [youSearchedFor, setYouSearchedFor] = useState("")
-    const fetchSearchedListings = async (location, range)=>{
-        let searched =[];
-        setYouSearchedFor(location);
-        const searchedPeriod = getDatesInRange(range.searchDateStart, range.searchDateEnd);
 
+    const fetchSearchedListings = async (searchedLoc, range)=>{
+        let searched =[];
+        const {searchDateStart, searchDateEnd} = range;
+        const searchedPeriod = getDatesInRange(searchDateStart, searchDateEnd);
         try{
             setLoading(true);
             const  {data}  = await axios.get("http://localhost:1179/api/listings");
             if(searchedPeriod.length > 0) {
                 data.map((listing) => {
-                    if(listing.location.includes(location)  && !contains(listing.ranges, searchedPeriod))
+                    if(listing.location.includes(searchedLoc)  && !contains(listing.ranges, searchedPeriod))
                     {
-                            searched.push(listing);
+                        searched.push(listing);
                     }
                     return searched
                 })
             }else{
                 data.map((listing) => {
-                    if(listing.location.includes(location))
+                    if(listing.location.includes(searchedLoc))
                     {
                         searched.push(listing);
                     }
                     return searched;
-            })}
+            })
+          }
           setSearchedListings(searched);
-          window.location.href = 'http://localhost:3000/listings';
+          setLoading(false);
           }
-          catch (e) {
+        catch (e) {
             toast.error(e.response.data.message);
-          }
+        }
     }
+
 
 return (
     <AppContext.Provider value={{
@@ -256,9 +284,16 @@ return (
     fetchAllListings,
     listings,
     loading, 
-    fetchSearchedListings, 
+//----------------------------------------------
+    dateRange,
+    searchDateStart,
+    searchDateEnd,
+    onChangeStart,
+    onChangeEnd,
+    searchedLoc,
+    setSearchedLoc,
     searchedListings,
-    youSearchedFor
+    fetchSearchedListings,
     }}>
         {children}
     </AppContext.Provider>
