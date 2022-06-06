@@ -20,7 +20,8 @@ import { ListingContext } from '../../context/listingContext';
   },[])
 
   function disableDays(date) {
-    return listing.ranges?.includes(date.toDateString())
+    if(window.location.href===`http://localhost:3000/listings/${listingid}/rent`)
+      return listing.ranges?.includes(date.toDateString())
   }
   
   return (
@@ -32,7 +33,7 @@ import { ListingContext } from '../../context/listingContext';
           onChange={onChangeStart}
           renderInput={(params) => <TextField {...params} />}
           disablePast
-          shouldDisableDate={window.location.href===`http://localhost:3000/listings/${listingid}/rent` && disableDays}
+          shouldDisableDate={disableDays}
         />
       <p style={{marginRight: '1rem'}}></p>
       <DatePicker
@@ -41,7 +42,7 @@ import { ListingContext } from '../../context/listingContext';
           onChange={onChangeEnd}
           renderInput={(params) => <TextField {...params} />}
           minDate={searchDateStart}
-          shouldDisableDate={window.location.href===`http://localhost:3000/listings/${listingid}/rent` && disableDays}
+          shouldDisableDate={disableDays}
         />
       </div>
     </LocalizationProvider>

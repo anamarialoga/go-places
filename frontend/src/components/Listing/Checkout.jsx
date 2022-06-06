@@ -60,7 +60,7 @@ function Checkout(props) {
   };
 
 
-  const {getDatesInRange, contains, onSubmitBooking} = React.useContext(AppContext)
+  const {getDatesInRange, contains, onSubmitBooking, onUpdateListingRanges} = React.useContext(AppContext)
 
   const searchedRange = getDatesInRange(props.dateRange.searchDateStart, props.dateRange.searchDateEnd)
   const listingBusyDays = props.listing?.ranges.map((date)=> date)
@@ -123,7 +123,8 @@ function Checkout(props) {
       activeStep === 2 
     ){
        setActiveStep(activeStep + 1);
-       onSubmitBooking();
+       onSubmitBooking(props.listing._id, valuesDetails, valuesPayment, searchedRange );
+       onUpdateListingRanges(props.listing._id, searchedRange)
     }
   };
 

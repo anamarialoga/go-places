@@ -1,5 +1,5 @@
 const express = require('express');
-const {createListing,getAllListings, getListings, getSingleListing, updateListing, delListing, getListing} = require('../controllers/listingController');
+const {createListing,getAllListings, getListings, getSingleListing, updateListing, delListing, getListing, updateListingWithRanges} = require('../controllers/listingController');
 const { protect } = require('../middleware/authMiddleware');
 const router = express.Router();
 const multer = require('multer');

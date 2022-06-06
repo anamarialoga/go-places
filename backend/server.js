@@ -17,6 +17,7 @@ app.use(express.urlencoded({extended: false}));//send urlencoded
 //connect with the route file, which contains the strings to be added to the route;
 app.use('/api/users', require('./routes/userRoutes') );
 app.use('/api/listings', require('./routes/listingRoutes'));
+app.use('/api/bookings', require('./routes/bookingRoutes'));
 
 //serve front-end
 if (process.env.NODE_ENV === 'production') {

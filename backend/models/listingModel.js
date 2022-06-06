@@ -61,7 +61,7 @@ const listingSchema= mongoose.Schema({
         default: 0
     },
     userId: {
-        type: mongoose.Schema.Types.ObjectId, //Relationship between user and tickets
+        type: mongoose.Schema.Types.ObjectId, //Relationship between user and listings
         required: true,
         ref: 'User' 
     },

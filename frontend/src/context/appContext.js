@@ -273,8 +273,52 @@ export const AppProvider = ({children})=>{
     }
 
 
-    const onSubmitBooking = ()=>{
-        console.log("Booking submitted")
+    const onSubmitBooking = async (listingid, billingData, paymentData, dateRange )=>{
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+        };
+
+        const hashedCardNumber = "xxxx-xxxx-xxxx-"+paymentData.cardNumber.slice(-4);
+        delete paymentData.cardNumber
+        delete paymentData.cvv
+        paymentData.cardNumber=hashedCardNumber;
+
+        try{
+            await axios.post("http://localhost:1179/api/bookings", 
+            {
+                listingid,
+                billingData,
+                paymentData,
+                dateRange
+            },
+            config )
+            toast.success("Booking created with success!")
+        }catch(error){
+            toast.error(error.response.data.message)
+        }
+    }
+
+    const onUpdateListingRanges = async(listingid, ranges)=>{
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+        };
+        try{
+            await axios.put(`http://localhost:1179/api/listings/${listingid}`,
+            {
+                ranges
+            },
+            config)
+            setDateRange({
+                searchDateStart: null,
+                searchDateEnd: null
+            })
+        }catch(error){
+            toast.error(error.response.data.message)
+        }
     }
 
 return (
@@ -306,7 +350,8 @@ return (
     fetchSearchedListings,
     getDatesInRange,
     contains,
-    onSubmitBooking
+    onSubmitBooking,
+    onUpdateListingRanges
     }}>
         {children}
     </AppContext.Provider>
