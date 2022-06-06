@@ -11,6 +11,9 @@ import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
 import withRoot from '../../withRoot';
+import { toast } from 'react-toastify';
+import { ignoreRoot } from 'nodemon/lib/config/defaults';
+var creditCardType = require("credit-card-type");
 
 const steps = ['Your Details', 'Payment details', 'Review booking'];
 
@@ -30,14 +33,6 @@ function getStepContent(step, user, valuesDetails, handleChangeDetails, valuesPa
 
 function Checkout(props) {
   const [activeStep, setActiveStep] = React.useState(0);
-
-  const handleNext = () => {
-    setActiveStep(activeStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
 
   const [valuesDetails, setValuesDetails] = React.useState({
     firstName: props.user.firstName,
@@ -66,17 +61,51 @@ function Checkout(props) {
 
 
   const [valuesPayment, setValuesPayment] = React.useState({
-    cardholder: "",
-    cardNumber: "",
-    expiresIn: "",
-    cvv: ""
+    cardholder: "John Doe",
+    cardNumber: "6011556448578945",
+    expiresIn: "1",
+    cvv: "111",
   })
+
+
   const handlePayment = (e) =>{
     setValuesPayment ({
       ...valuesPayment,
-      [e.target.id] : e.target.value
+      [e.target.id] : e.target.value 
     })
   }
+
+  const handleNext = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if(valuesPayment.cardholder ==="")
+    {
+      toast.error('You must provide the cardholder name!')
+    }else if(valuesPayment.cardNumber.length !== 16)
+    {
+      toast.error('Card number must have a 16-digit format ');
+    }else if(valuesPayment.cvv.length !== 3){
+      toast.error('CVV must have a 3-digit format')
+    }else if(creditCardType(valuesPayment.cardNumber)[0]?.niceType ==="" || creditCardType(valuesPayment.cardNumber)[0]?.niceType === undefined){
+      toast.error("Card number is invalid")
+    }
+
+    if(valuesPayment.cardNumber.length===16  && valuesPayment.cvv.length===3 && creditCardType(valuesPayment.cardNumber)[0]?.niceType !== undefined && creditCardType(valuesPayment.cardNumber)[0]?.niceType !=="")
+      {
+        setActiveStep(activeStep + 1);
+        setValuesPayment({
+          cardholder: "",
+          cardNumber: "",
+          expiresIn: "",
+          cvv: "",
+        })
+      }
+  };
+
+  const handleBack = () => {
+    setActiveStep(activeStep - 1);
+  };
+
 
   return (
     <>
@@ -104,6 +133,7 @@ function Checkout(props) {
               </React.Fragment>
             ) : (
               <React.Fragment>
+                <form onSubmit={handleNext}>
                 {getStepContent(activeStep, props.user, valuesDetails, handleChangeDetails, valuesPayment, handlePayment)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
@@ -115,12 +145,13 @@ function Checkout(props) {
                   <Button
                     color="secondary"
                     variant="contained"
-                    onClick={handleNext}
+                    type={'submit'}
                     sx={{ mt: 3, ml: 1 }}
                   >
                     {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
                   </Button>
                 </Box>
+                </form>
               </React.Fragment>
             )}
           </React.Fragment>

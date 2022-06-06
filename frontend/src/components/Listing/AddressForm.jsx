@@ -7,8 +7,6 @@ import Checkbox from '@mui/material/Checkbox';
 import withRoot from '../../withRoot';
 
 function AddressForm(props) {
-
-  console.log(props.values)
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom style={{marginBottom:"1rem"}}>
@@ -17,7 +15,7 @@ function AddressForm(props) {
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
+            required={true}
             id="firstName"
             name="firstName"
             label="First name"
@@ -69,7 +67,7 @@ function AddressForm(props) {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
+            required={true}
             id="city"
             name="city"
             label="City"

@@ -27,7 +27,10 @@ const payments = [
   { name: 'Expiry date', detail: '04/2024' },
 ];
 
-function Review() {
+
+
+function Review(props) {
+  console.log(props.cardType)
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
