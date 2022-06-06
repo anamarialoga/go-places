@@ -14,10 +14,14 @@ import { AppContext } from '../../context/appContext';
 export const ProfileDetails = (props) => {
 
   const [values, setValues] = useState({
-    name: props.user.name,
+    firstName: props.user.firstName,
+    lastName: props.user.lastName,
     email: props.user.email,
     phone: props.user.phone ?? "",
-    password: ''
+    password: '',
+    address: props.user.address ?? '',
+    city: props.user.city ?? '',
+    country: props.user.country ?? ''
   });
 
 
@@ -56,13 +60,31 @@ export const ProfileDetails = (props) => {
               <TextField
                 style={{background: 'white'}}
                 fullWidth
-                label="Name"
-                helperText="Please fill your name"
-                name="name"
+                label="First Name"
+                helperText="Please fill your first name"
+                name="firstName"
                 onChange={handleChange}
                 required
                 disabled={ changeDetails? false: true}
-                value={values.name}
+                value={values.firstName}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
+              <TextField
+                style={{background: 'white'}}
+                fullWidth
+                label="Last Name"
+                helperText="Please fill your last name"
+                name="lastName"
+                onChange={handleChange}
+                required
+                disabled={ changeDetails? false: true}
+                value={values.lastName}
                 variant="outlined"
               />
             </Grid>
@@ -115,6 +137,57 @@ export const ProfileDetails = (props) => {
                 onChange={handleChange}
                 disabled={ changeDetails? false: true}
                 value={values.password}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
+              <TextField
+                style={{background: 'white'}}
+                fullWidth
+                label={"Address Line"}
+                name="address"
+                helperText="Please fill your address"
+                onChange={handleChange}
+                disabled={ changeDetails? false: true}
+                value={values.address}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
+              <TextField
+                style={{background: 'white'}}
+                fullWidth
+                label={"City"}
+                name="city"
+                helperText="Please fill your city"
+                onChange={handleChange}
+                disabled={ changeDetails? false: true}
+                value={values.city}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
+              <TextField
+                style={{background: 'white'}}
+                fullWidth
+                label={"Country"}
+                name="country"
+                helperText="Please fill your country"
+                onChange={handleChange}
+                disabled={ changeDetails? false: true}
+                value={values.country}
                 variant="outlined"
               />
             </Grid>

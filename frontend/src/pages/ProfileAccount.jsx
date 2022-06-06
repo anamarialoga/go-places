@@ -20,7 +20,7 @@ const {user, loadingUser} = useContext(AppContext);
       component="main"
       sx={{
         flexGrow: 1,
-        py: 20,
+        py: 6,
         background: "url(http://127.0.0.1:8888/eberhard-grossgasteiger-S-2Ukb_VqpA-unsplash.jpg)  no-repeat"
       }}
     >

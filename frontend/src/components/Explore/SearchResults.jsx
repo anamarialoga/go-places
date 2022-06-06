@@ -8,6 +8,7 @@ import ShowerIcon from '@mui/icons-material/Shower'
 import PeopleIcon from '@mui/icons-material/People'
 import { Box } from "@mui/system";
 import ReadMore from "../ReadMore";
+import {useNavigate} from 'react-router-dom'
 
  const SearchResults = (props) =>{
     const [pageNumber, setPageNumber] = useState(0);
@@ -19,7 +20,7 @@ import ReadMore from "../ReadMore";
 
     const [open, setOpen] = useState(false);
     const handleClose = (e) => {e.preventDefault(); e.stopPropagation(); setOpen(false);}
-    
+    const navigate = useNavigate();
 return<>
     <div className={!props.submit ? 'dontshow' :"showall"}>
     <div style={{width:"100%", borderRadius:"0"}}>
@@ -102,7 +103,7 @@ return<>
                             </div>   
                         </div>
                         <div style={{marginTop:"0.8rem"}}>
-                            <Button variant="contained" color={"secondary"} onClick={()=>window.location.href=`http://localhost:3000/listings/${listing._id}/rent`}>
+                            <Button variant="contained" color={"secondary"} onClick={()=>navigate(`http://localhost:3000/listings/${listing._id}/rent`)}>
                                 Checkout
                             </Button>
                         </div>

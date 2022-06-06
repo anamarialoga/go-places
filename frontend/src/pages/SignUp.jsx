@@ -11,7 +11,7 @@ import visibilityIcon from '../common/svg/visibilityIcon.svg'
 
 function SignUp(){
 
-    const [formData, setFormData]=React.useState({name: "", email: "", password: "", confirmPassword: ""});
+    const [formData, setFormData]=React.useState({firstName: "", lastName: "", email: "", password: "", confirmPassword: ""});
     const [showPass, setShowPass] = React.useState(false);
     const [showPass2, setShowPass2] = React.useState(false);
     const {onSignUp} = React.useContext(AppContext);
@@ -55,17 +55,32 @@ function SignUp(){
               noValidate={false}
             >
                   <TextField
-                    id={'name'}
-                    autoComplete="name"
+                    id={'firstName'}
+                    autoComplete="firstname"
                     autoFocus
                     disabled={ sent}
                     fullWidth
-                    label="Name"
+                    label="First Name"
                     margin="normal"
-                    name="name"
+                    name="firstName"
                     required
                     size="large"
-                    value={formData.name }
+                    value={formData.firstName }
+                    onChange={onChange}
+                  />
+                  
+                  <TextField
+                    id={'lastName'}
+                    autoComplete="lastname"
+                    autoFocus
+                    disabled={ sent}
+                    fullWidth
+                    label="Last Name"
+                    margin="normal"
+                    name="lastName"
+                    required
+                    size="large"
+                    value={formData.lastName }
                     onChange={onChange}
                   />
                   <TextField

@@ -1,9 +1,13 @@
 const mongoose=require('mongoose'); 
 
 const userSchema = mongoose.Schema({
-    name:{
+    firstName:{
         type: String,
-        required: [true, 'Please type a name']
+        required: [true, 'Please type a first name']
+    },
+    lastName:{
+        type: String,
+        required: [true, 'Please type a last name']
     },
     email:{
         type: String,
@@ -18,11 +22,18 @@ const userSchema = mongoose.Schema({
         type: String,
         unique: true
     },
-    isStaff:{
-        type: Boolean,
-        required:[true],
-        default: false
-    }
+    address:{
+        type:String,
+    },
+    city:{
+        type:String,
+    },
+    country:{
+        type: String
+    },
+    since: {
+        type: Date,
+    },
 },
     {
         timestamps: true,

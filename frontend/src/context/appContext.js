@@ -68,7 +68,7 @@ export const AppProvider = ({children})=>{
 
     const onSignUp = async (formdata) =>{
 
-        const {password, confirmPassword, name, email } = formdata;
+        const {password, confirmPassword, firstName, lastName, email } = formdata;
 
         if(password !== confirmPassword)
         {
@@ -84,7 +84,8 @@ export const AppProvider = ({children})=>{
                 const {data} = await axios.post(
                 "http://localhost:1179/api/users",
                 {
-                    name,
+                    firstName, 
+                    lastName,
                     email,
                     password,
                 },
@@ -108,10 +109,10 @@ export const AppProvider = ({children})=>{
       }
 
     const onSubmitChangeDetails= async(formdata)=>{
-        const {name, password, phone} = formdata;
+        const {firstName, lastName, password, phone, address, city, country} = formdata;
         setChangeDetails(!changeDetails);
         if(changeDetails === true){ 
-            if((name !== user.name) || (password !== "") || phone !==user.phone){
+            if(((firstName !== user.firstName) && (lastName !== user.lastName)) || (password !== "") || (phone !==user.phone) ||( address !== user.address) || (city!== user.city) || (country !== user.country)) {
                 const config={
                     headers:{
                         Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -120,9 +121,13 @@ export const AppProvider = ({children})=>{
                 try{
                         await axios.put(`http://localhost:1179/api/users/${user.id}`, 
                         {
-                            name, 
+                            firstName,
+                            lastName,  
                             password, 
-                            phone
+                            phone,
+                            address,
+                            city,
+                            country
                         },
                         config
                         );

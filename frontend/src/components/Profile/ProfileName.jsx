@@ -33,13 +33,13 @@ export const ProfileName = (props) => {
           gutterBottom
           variant="h5"
         >
-          {props.user?.name}
+          {props.user?.firstName} {props.user?.lastName}
         </Typography>
         <Typography
           color="textSecondary"
           variant="body2"
         >
-        Landlord on GoPlaces since {props.user?.since ?? "dd/mm/yyyy"}
+        Active on GoPlaces since {props.user?.since ?? "dd/mm/yyyy"}
         </Typography>
       </Box>
     </CardContent>
