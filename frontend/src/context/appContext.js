@@ -239,6 +239,7 @@ export const AppProvider = ({children})=>{
 
     const [searchedListings, setSearchedListings] = useState([]);
 
+
     const fetchSearchedListings = async (searchedLoc, range)=>{
         let searched =[];
         const {searchDateStart, searchDateEnd} = range;
@@ -271,7 +272,6 @@ export const AppProvider = ({children})=>{
         }
     }
 
-
 return (
     <AppContext.Provider value={{
     onLogin, 
@@ -299,6 +299,8 @@ return (
     setSearchedLoc,
     searchedListings,
     fetchSearchedListings,
+    getDatesInRange,
+    contains
     }}>
         {children}
     </AppContext.Provider>

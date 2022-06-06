@@ -12,19 +12,19 @@ import PaymentForm from './PaymentForm';
 import Review from './Review';
 import withRoot from '../../withRoot';
 import { toast } from 'react-toastify';
-import { ignoreRoot } from 'nodemon/lib/config/defaults';
+import { AppContext } from '../../context/appContext';
 var creditCardType = require("credit-card-type");
 
 const steps = ['Your Details', 'Payment details', 'Review booking'];
 
-function getStepContent(step, user, valuesDetails, handleChangeDetails, valuesPayment, handlePayment) {
+function getStepContent(step, user, valuesDetails, handleChangeDetails, valuesPayment, handlePayment, dateRange) {
   switch (step) {
     case 0:
       return <AddressForm user={user} values={valuesDetails} handleChange={handleChangeDetails}/>;
     case 1:
       return <PaymentForm values={valuesPayment} handleChange={handlePayment}/>;
     case 2:
-      return <Review />;
+      return <Review dateRange={dateRange} customerDetails={valuesDetails} paymentDetails={valuesPayment}/>;
     default:
       throw new Error('Unknown step');
   }
@@ -60,11 +60,17 @@ function Checkout(props) {
   };
 
 
+  const {getDatesInRange, contains} = React.useContext(AppContext)
+
+  const searchedRange = getDatesInRange(props.dateRange.searchDateStart, props.dateRange.searchDateEnd)
+  const listingBusyDays = props.listing?.ranges.map((date)=> date)
+  console.log("Booked dates on this listing", listingBusyDays);
+
   const [valuesPayment, setValuesPayment] = React.useState({
-    cardholder: "John Doe",
-    cardNumber: "6011556448578945",
-    expiresIn: "1",
-    cvv: "111",
+    cardholder: "",
+    cardNumber: "",
+    expiresIn: "",
+    cvv: "",
   })
 
 
@@ -78,6 +84,7 @@ function Checkout(props) {
   const handleNext = (e) => {
     e.preventDefault();
     e.stopPropagation();
+    if(activeStep === 1){
     if(valuesPayment.cardholder ==="")
     {
       toast.error('You must provide the cardholder name!')
@@ -88,18 +95,38 @@ function Checkout(props) {
       toast.error('CVV must have a 3-digit format')
     }else if(creditCardType(valuesPayment.cardNumber)[0]?.niceType ==="" || creditCardType(valuesPayment.cardNumber)[0]?.niceType === undefined){
       toast.error("Card number is invalid")
+    }}
+    else if(activeStep===0){
+    if(props.dateRange.searchDateStart === null || props.dateRange.searchDateEnd === null){
+      toast.error('Please select the start and end dates for your trip')
+    }else if(contains(listingBusyDays, searchedRange)){
+      toast.error('The date-range you selected is invalid')
     }
+  }
 
-    if(valuesPayment.cardNumber.length===16  && valuesPayment.cvv.length===3 && creditCardType(valuesPayment.cardNumber)[0]?.niceType !== undefined && creditCardType(valuesPayment.cardNumber)[0]?.niceType !=="")
+    if( 
+        activeStep === 1  && 
+        valuesPayment.cardNumber.length===16  &&
+        valuesPayment.cvv.length===3 &&
+        creditCardType(valuesPayment.cardNumber)[0]?.niceType !== undefined &&
+        creditCardType(valuesPayment.cardNumber)[0]?.niceType !=="" 
+      )
       {
         setActiveStep(activeStep + 1);
-        setValuesPayment({
-          cardholder: "",
-          cardNumber: "",
-          expiresIn: "",
-          cvv: "",
-        })
       }
+    else if(
+      activeStep === 0 &&        
+      props.dateRange.searchDateStart !== null &&
+      props.dateRange.searchDateEnd !== null &&
+      contains(listingBusyDays, searchedRange)===false
+      ){
+        setActiveStep(activeStep + 1);
+      }
+    else if(
+      activeStep === 2 
+    ){
+      setActiveStep(activeStep + 1);
+    }
   };
 
   const handleBack = () => {
@@ -134,7 +161,7 @@ function Checkout(props) {
             ) : (
               <React.Fragment>
                 <form onSubmit={handleNext}>
-                {getStepContent(activeStep, props.user, valuesDetails, handleChangeDetails, valuesPayment, handlePayment)}
+                {getStepContent(activeStep, props.user, valuesDetails, handleChangeDetails, valuesPayment, handlePayment, searchedRange)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
@@ -148,7 +175,7 @@ function Checkout(props) {
                     type={'submit'}
                     sx={{ mt: 3, ml: 1 }}
                   >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                    {activeStep === steps.length - 1 ? 'Confirm Booking' : 'Next'}
                   </Button>
                 </Box>
                 </form>

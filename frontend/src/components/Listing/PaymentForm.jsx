@@ -29,6 +29,7 @@ function PaymentForm(props) {
             placeholder='xxxx-xxxx-xxxx-xxxx'
             id="cardNumber"
             label="Card number"
+            helperText="ex. 6011556448578945"
             fullWidth
             value={props.values.cardNumber}
             onChange={props.handleChange}

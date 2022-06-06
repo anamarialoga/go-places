@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SidebarListing from "../components/Listing/SidebarListing";
 import { ListingContext } from "../context/listingContext";
@@ -9,15 +9,12 @@ import { AppContext } from "../context/appContext";
 const CheckOutForm=()=>{
     const {listingid} = useParams();
     const {fetchListing, listing }= useContext(ListingContext);
-    const {user} = useContext(AppContext);
+    const {user, dateRange} = useContext(AppContext);
 
     useEffect(()=>{
         fetchListing(listingid);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
-
-
-    
 
     return <>
     <div style={{   
@@ -26,7 +23,7 @@ const CheckOutForm=()=>{
         backgroundSize: "cover",
     }}>
     <SidebarListing listingid={listingid} listing={listing}/>
-    <Checkout user={user} />
+    <Checkout user={user} listing={listing} dateRange={dateRange} />
     </div>
     </>
 }

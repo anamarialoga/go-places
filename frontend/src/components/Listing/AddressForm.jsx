@@ -5,11 +5,13 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import withRoot from '../../withRoot';
+import DatePickerCalendar from '../Explore/DatePickerCalendar';
 
 function AddressForm(props) {
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom style={{marginBottom:"1rem"}}>
+      <DatePickerCalendar/>
+      <Typography variant="h6" gutterBottom style={{marginBottom:"1rem", marginTop:"1rem"}}>
       Billing Address
       </Typography>
       <Grid container spacing={3}>
@@ -39,7 +41,7 @@ function AddressForm(props) {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
           <TextField
             type={"email"}
             required
@@ -48,6 +50,18 @@ function AddressForm(props) {
             label="E-mail"
             disabled
             value={props.values.email}
+            fullWidth
+            variant="standard"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="phone"
+            name="phone"
+            label="Phone Number"
+            onChange={props.handleChange}
+            value={props.values.phone}
             fullWidth
             variant="standard"
           />

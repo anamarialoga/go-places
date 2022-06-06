@@ -103,7 +103,7 @@ function ListingAlbum() {
             >
              {listing?.name} Gallery 
             </Typography> 
-            { listing.description.length>0  ?
+            { listing?.description.length>0  ?
               <div style={{textAlign:"center"}}>
                   <Typography variant='h5' style={{fontWeight:400, fontSize:"1rem"}}>
                   {listing.description.slice(0,200)}...  
@@ -113,7 +113,7 @@ function ListingAlbum() {
                   </Typography>
               </div> :
               <Typography variant='h5' style={{fontWeight:400, fontSize:"1rem"}}>
-                  {listing.description}
+                  {listing?.description}
               </Typography>
             } 
             {openModal && <ReadMore listing={listing} open={openModal} handleClose={handleCloseModal}/>}
