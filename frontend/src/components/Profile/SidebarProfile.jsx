@@ -6,7 +6,7 @@ import withRoot from '../../withRoot';
 import {Button} from '@mui/material';
 import Typography from '../Typography';
 import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
-import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
+import MessagesIcon from '@mui/icons-material/Forum';
 import LocalAirportOutlinedIcon from '@mui/icons-material/LocalAirportOutlined';
 import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
 import { NavItem } from '../NavItem';
@@ -36,9 +36,9 @@ const items = [
       title: 'Statistics'
     },
     {
-      href: '/customers',
-      icon: (<PeopleOutlinedIcon fontSize="small" />),
-      title: 'Customers'
+      href: '/messages',
+      icon: (<MessagesIcon fontSize="small" />),
+      title: 'Messages'
     },
     {
       href: '/trips',

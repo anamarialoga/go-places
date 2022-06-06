@@ -19,6 +19,7 @@ import AppFooter from "./views/AppFooter.jsx";
 import ListingDining from "./pages/ListingDining.jsx";
 import ListingAttractions from "./pages/ListingAttractions.jsx";
 import CheckOutForm from "./pages/ListingCheckout.jsx";
+import ListingContactLandlord from "./pages/ListingContactLandlord.jsx";
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
                   <Route path='/listings/:listingid/food' element={<ListingDining/>} /> 
                   <Route path='/listings/:listingid/attractions' element={<ListingAttractions/>} /> 
                   <Route path='/listings/:listingid/rent' element={<CheckOutForm/>}/>
+                  <Route path="/listings/:listingid/landlord" element={<ListingContactLandlord/>}/>
               </Routes>
               <AppFooter/>
             </Router>

@@ -41,7 +41,8 @@ const registerUser = asyncHandler(async (req, rsp)=>{
         lastName,
         email,
         password: hashedPass,
-        since: new Date().toDateString()
+        since: new Date().toDateString(),
+        phone: "",
     })
 
     if(user){ //success
@@ -51,7 +52,8 @@ const registerUser = asyncHandler(async (req, rsp)=>{
             lastName: user.lastName,
             email: user.email,
             token: generateToken(user._id, user.firstName, user.lastName, user.email),
-            since: user.since
+            since: user.since,
+            phone: user.phone
         })
     }else{ //failure
         console.log('Something went wrong');

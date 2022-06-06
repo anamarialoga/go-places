@@ -17,6 +17,7 @@ export const AppProvider = ({children})=>{
 
     const [loadingUser, setLoadingUser] = useState(true);
     useEffect(()=>{
+        if(localStorage.getItem('token') !== undefined && localStorage.getItem('token') !== ""  && localStorage.getItem('token') !== null){
         const getUser = async ()=>{
             const config = {
                 headers: {
@@ -29,6 +30,7 @@ export const AppProvider = ({children})=>{
                     "http://localhost:1179/api/users/me",
                     config
                     );
+                    
                     setUser(data);
                     setLoadingUser(false);
              } 
@@ -37,6 +39,7 @@ export const AppProvider = ({children})=>{
               }
         }
         getUser();
+    }
     },[])
 
     const onLogin = async (formdata) => {
@@ -321,6 +324,29 @@ export const AppProvider = ({children})=>{
         }
     }
 
+    const [message, setMessage] = useState('');
+    const onChangeMessage = (e)=>{
+        setMessage(e.target.value);
+    }
+
+    const sendMesssage = async(to, message) =>{
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+        };
+        try{
+            await axios.post("http://localhost:1179/api/chat", {
+                message,
+                to
+            },
+            config)
+        } catch (error) {
+            toast.error(error.response?.data?.message);
+      }
+    }
+
+
 return (
     <AppContext.Provider value={{
     onLogin, 
@@ -351,7 +377,10 @@ return (
     getDatesInRange,
     contains,
     onSubmitBooking,
-    onUpdateListingRanges
+    onUpdateListingRanges,
+    onChangeMessage,
+    message, 
+    sendMesssage
     }}>
         {children}
     </AppContext.Provider>

@@ -102,7 +102,6 @@ function TextField(props) {
           ),
           ...InputPropsClassesOther,
         },
-        disableUnderline: true,
         ...InputPropsOther,
       }}
       InputLabelProps={{

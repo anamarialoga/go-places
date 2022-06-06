@@ -228,37 +228,6 @@ const updateListing = async(req, res)=>{
 }
 
 
-// @desc Update user's listing
-// @route /api/listings/:listingid
-// @access Protected
-// PUT
-const updateListingwithRanges = async(req, res)=>{
-    const user = await User.findById(req.user.id);
-    if(!user){
-        console.log('User not Connected');
-        return res.status(404).send({message: 'User not Connected'});
-    }
-
-    const listing = await Listing.findById(req.params.listingid);
-    if(!listing)
-    {
-        console.log('Listing not found');
-        return res.status(404).send({message: 'Listing not found'});
-    }
-
-
-    let ranges = [...listing.ranges]
-    if(req.body.ranges){
-        req.body.forEach((date)=>{
-            ranges.push(date)
-        })
-    }
-
-    listing.ranges= ranges;
-    
-   listing.save().then(()=>res.json(listing));
-}
-
 // @desc Delete user listing
 // @route /api/listings/:listingid
 // @access Protected
