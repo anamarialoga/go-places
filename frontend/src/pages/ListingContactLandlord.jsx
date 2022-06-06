@@ -17,7 +17,7 @@ const ListingContactLandlord = () =>{
     return (
     <>
     <SidebarListing listingid={listingid} listing={listing}/>
-    <Messages  landlordId={listing.userId}/>
+    <Messages  landlordId={listing?.userId}/>
     </>)
 }
 
