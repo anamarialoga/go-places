@@ -272,6 +272,11 @@ export const AppProvider = ({children})=>{
         }
     }
 
+
+    const onSubmitBooking = ()=>{
+        console.log("Booking submitted")
+    }
+
 return (
     <AppContext.Provider value={{
     onLogin, 
@@ -300,7 +305,8 @@ return (
     searchedListings,
     fetchSearchedListings,
     getDatesInRange,
-    contains
+    contains,
+    onSubmitBooking
     }}>
         {children}
     </AppContext.Provider>

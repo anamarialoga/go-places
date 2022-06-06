@@ -20,16 +20,12 @@ function Review(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
-  
-  console.log(props.dateRange)
-
   const payments = [
   { name: 'Card type', detail: creditCardType(props.paymentDetails.cardNumber)[0].niceType },
   { name: 'Card holder', detail: props.paymentDetails.cardholder },
   { name: 'Card number', detail: `xxxx-xxxx-xxxx-${props.paymentDetails.cardNumber.slice(-4)}` },
   { name: 'Expiry date', detail: props.paymentDetails.expiresIn },
-];
-
+  ];
 
   return (
     <React.Fragment>

@@ -60,11 +60,10 @@ function Checkout(props) {
   };
 
 
-  const {getDatesInRange, contains} = React.useContext(AppContext)
+  const {getDatesInRange, contains, onSubmitBooking} = React.useContext(AppContext)
 
   const searchedRange = getDatesInRange(props.dateRange.searchDateStart, props.dateRange.searchDateEnd)
   const listingBusyDays = props.listing?.ranges.map((date)=> date)
-  console.log("Booked dates on this listing", listingBusyDays);
 
   const [valuesPayment, setValuesPayment] = React.useState({
     cardholder: "",
@@ -72,8 +71,6 @@ function Checkout(props) {
     expiresIn: "",
     cvv: "",
   })
-
-
   const handlePayment = (e) =>{
     setValuesPayment ({
       ...valuesPayment,
@@ -125,7 +122,8 @@ function Checkout(props) {
     else if(
       activeStep === 2 
     ){
-      setActiveStep(activeStep + 1);
+       setActiveStep(activeStep + 1);
+       onSubmitBooking();
     }
   };
 
