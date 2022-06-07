@@ -201,12 +201,15 @@ const updateListing = async(req, res)=>{
     if(booking[0].userId === req.user.id)
         OK=true;
 
-
+    const userName= user.firstName + " " + user.lastName;
+    
 
     let averages= [...listing.average]
     if(req.body.review || req.body.rating )
     {
         const average = {
+            timestamp: new Date(),
+            user: userName,
             review: req.body.review,
             rating: req.body.rating
         }
