@@ -7,13 +7,14 @@ import {Button} from '@mui/material';
 import Typography from '../Typography';
 import { NavItem } from '../NavItem';
 import CollectionsIcon from '@mui/icons-material/Collections';
-import PersonIcon from '@mui/icons-material/Person';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import AttractionsIcon from '@mui/icons-material/Attractions';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import LocalDiningIcon from '@mui/icons-material/LocalDining';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { AppContext } from '../../context/appContext';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+
 
 function SidebarListing(props) {
  
@@ -91,7 +92,7 @@ function SidebarListing(props) {
                             title={item.title}
                         />
                 ))}
-              {props.listing?.userId === user?.id ?  <NavItem disabled icon={(<PersonIcon fontSize="small"/>)} href={`/listings/${props.listingid}/#`} title={"Contact Landlord"}/> : <NavItem  icon={(<PersonIcon fontSize="small"/>)} href={`/listings/${props.listingid}/landlord`} title={"Contact Landlord"}/>  }
+              {props.listing?.userId === user?.id ?  <NavItem disabled icon={(<MailOutlineIcon fontSize="small"/>)} href={`/listings/${props.listingid}/#`} title={"Contact Landlord"}/> : <NavItem  icon={(<MailOutlineIcon fontSize="small"/>)} href={`/listings/${props.listingid}/landlord`} title={"Contact Landlord"}/>  }
               {props.listing?.userId === user?.id ?  <NavItem disabled icon={(<ShoppingCartIcon fontSize="small" />)} href={`/listings/${props.listingid}/#`} title={'Checkout'}/> : <NavItem  icon={(<ShoppingCartIcon fontSize="small" />)} href={`/listings/${props.listingid}/rent`} title={'Checkout'}/>}
             </Box>
             <Divider sx={{ borderColor: '#2D3748' }} /><Box

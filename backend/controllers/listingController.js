@@ -1,7 +1,9 @@
 const asyncHandler = require('express-async-handler');
 const User = require('../models/userModel');
+const Booking = require('../models/bookingModel');
 const Listing = require('../models/listingModel');
 const dotenv= require('dotenv');
+const { resetWatchers } = require('nodemon/lib/monitor/watch');
 
 dotenv.config();
 
@@ -189,6 +191,28 @@ const updateListing = async(req, res)=>{
         return res.status(404).send({message: 'Listing not found'});
     }
 
+
+    const booking = await Booking.find({listingId: req.params.listingid});
+    console.log(booking)
+    let OK=false;
+    console.log(req.user.id)
+    console.log(booking[0].userId)
+    
+    if(booking[0].userId === req.user.id)
+        OK=true;
+
+
+
+    let averages= [...listing.average]
+    if(req.body.review || req.body.rating )
+    {
+        const average = {
+            review: req.body.review,
+            rating: req.body.rating
+        }
+        averages.push(average);
+    }
+
     let images = [...listing.images]
     if(req.files){
         req.files.forEach((file)=>{
@@ -202,6 +226,7 @@ const updateListing = async(req, res)=>{
             ranges.push(date)
         })
     }
+
 
     listing.name = req.body?.name ?? listing.name
     listing.type= req.body?.type ?? listing.type
@@ -223,6 +248,11 @@ const updateListing = async(req, res)=>{
     listing.people = req.body?.people?? listing.people
     listing.ranges = ranges;
     listing.images = images;
+    if(OK===true){
+        listing.average= averages;
+    }else{
+        return res.status(200).send({message:"You did not book this listing, so you cannot leave reviews"})
+    } 
     
    listing.save().then(()=>res.json(listing));
 }
@@ -257,6 +287,7 @@ const delListing = asyncHandler(async (req, rsp) => {
     await listing.remove();
     return rsp.status(200).json({message: 'The listing has been deleted'});
 })
+
 
 
 

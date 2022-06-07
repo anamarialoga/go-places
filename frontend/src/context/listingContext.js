@@ -98,6 +98,27 @@ export const ListingProvider = ({children})=> {
         };
 
 
+        const addReview = async (review) =>{
+          var config = {
+            method: 'post',
+            url: 'http://localhost:1179/api/listings/629f25631ff35455857f4904/reviews',
+            headers: { 
+              'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWU4ZDcxYWE3NDUyYzFjZmQzMjEwZSIsImZpcnN0TmFtZSI6IkFuYSIsImxhc3ROYW1lIjoiTG9nYSIsImVtYWlsIjoiYW5hQGV4LmNvbSIsImlhdCI6MTY1NDU2NDQwOSwiZXhwIjoxNjU3MTU2NDA5fQ.HRSry-ELS43xv1-xiFGCnQxYXhKGiwQV__W6mxLhtvM', 
+              'Content-Type': 'application/json'
+            },
+            data : review,
+          };
+          
+          axios(config)
+          .then(function (response) {
+            console.log(JSON.stringify(response.data));
+          })
+          .catch(function (error) {
+            console.log(error.response?.data?.error);
+          });
+        }
+
+
     return (
         <ListingContext.Provider value={{
          loading,
@@ -110,7 +131,8 @@ export const ListingProvider = ({children})=> {
          forecast,
          getPlacesData,
          places,
-         loadingPlaces
+         loadingPlaces, 
+         addReview
         }}>
             {children}
         </ListingContext.Provider>

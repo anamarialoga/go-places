@@ -86,6 +86,9 @@ const listingSchema= mongoose.Schema({
     },
     ranges: {
         type: [],
+    },
+    average:{
+        type:[],
     }
 }, 
     {

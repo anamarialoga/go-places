@@ -1,5 +1,5 @@
 const express = require('express');
-const {createListing,getAllListings, getListings, getSingleListing, updateListing, delListing, getListing, updateListingWithRanges} = require('../controllers/listingController');
+const {createListing,getAllListings, getListings, getSingleListing, updateListing, delListing, getListing, updateListingWithRanges, addReview} = require('../controllers/listingController');
 const { protect } = require('../middleware/authMiddleware');
 const router = express.Router();
 const multer = require('multer');
@@ -14,5 +14,5 @@ router.get('/me/:listingid',protect, getSingleListing);
 router.get('/:listingid',protect, getListing);
 router.put('/:listingid', protect, upload.array("images"), updateListing);
 router.delete('/:listingid', protect, delListing);
-
+router.delete('/:listingid', protect, delListing);
 module.exports= router;

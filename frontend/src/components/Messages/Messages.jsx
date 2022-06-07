@@ -53,7 +53,8 @@ function Messages(props) {
             },
             config)
             console.log(data);
-            toast.success('Message sent with success')
+            getConv(listingid)
+            setMessage("")
         } catch (error) {
             toast.error(error.response?.data?.message);
       }
