@@ -1,4 +1,4 @@
-import { Avatar, Button, Card, CardActions, CardContent, CardHeader, Divider, List, ListItem, ListItemAvatar, ListItemText, Paper, Rating } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardHeader, Divider, List, ListItem, ListItemText, Rating } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios';
 import * as React from 'react'
@@ -8,7 +8,6 @@ import SidebarListing from '../components/Listing/SidebarListing';
 import { Loading } from '../components/Loading';
 import TextField from '../components/TextField';
 import Typography from '../components/Typography';
-import { AppContext } from '../context/appContext';
 import { ListingContext } from '../context/listingContext';
 import withRoot from "../withRoot";
 
@@ -17,7 +16,6 @@ function ListingAddReview (){
 
     const {listingid} = useParams();
     const {listing, fetchListing, loading} = React.useContext(ListingContext);
-    const {user} = React.useContext(AppContext)
     const [average, setAverage] = React.useState({
         review: "",
         rating: null,
@@ -63,6 +61,7 @@ function ListingAddReview (){
                 review: "",
                 rating: null,
             })
+            console.log(response.data)
             fetchListing(listingid);
           })
           .catch(function (error) {

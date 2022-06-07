@@ -193,10 +193,8 @@ const updateListing = async(req, res)=>{
 
 
     const booking = await Booking.find({listingId: req.params.listingid});
-    console.log(booking)
     let OK=false;
-    console.log(req.user.id)
-    console.log(booking[0].userId)
+
     
     if(booking[0].userId === req.user.id)
         OK=true;
