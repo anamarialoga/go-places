@@ -21,6 +21,7 @@ import ListingAttractions from "./pages/ListingAttractions.jsx";
 import CheckOutForm from "./pages/ListingCheckout.jsx";
 import ListingContactLandlord from "./pages/ListingContactLandlord.jsx";
 import ListingAddReview from "./pages/ListingAddReview.jsx";
+import ProfileMessages from "./pages/ProfileMessages.jsx";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
                   <Route path="/mylistings" element={<MyListingsPage/>}/>
                   <Route path="/addlisting" element={<AddListing/>}/>
                   <Route path='/editlisting/:listingid' element={<EditListing/>} />
+                  <Route path="/messages" element={<ProfileMessages/>} />
                   <Route path='/listings/:listingid' element={<ListingDetails/>} />
                   <Route path='/listings/:listingid/images' element={<ListingAlbum/>} />
                   <Route path='/listings/:listingid/food' element={<ListingDining/>} /> 

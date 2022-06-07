@@ -325,6 +325,28 @@ export const AppProvider = ({children})=>{
     }
 
 
+    const [convos, setConvos] = useState([]);
+    const getAllConvos = async () =>{
+        var config = {
+            method: 'get',
+            url: 'http://localhost:1179/api/chat',
+            headers: { 
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+          };
+          
+          setLoading(true)
+          axios(config)
+          .then(function (response) {
+            setConvos(response.data)
+            setLoading(false);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
+
+
 return (
     <AppContext.Provider value={{
     onLogin, 
@@ -356,6 +378,8 @@ return (
     contains,
     onSubmitBooking,
     onUpdateListingRanges,
+    convos,
+    getAllConvos
     }}>
         {children}
     </AppContext.Provider>

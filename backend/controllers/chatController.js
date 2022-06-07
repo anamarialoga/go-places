@@ -27,6 +27,20 @@ const getAllChats = asyncHandler(async (req, rsp) => {
     }  
 })
 
+const getAllMyConvos = asyncHandler(async (req, rsp) => {
+    //$or: [ { Expression1 }, { Expression2 }, ..., { ExpressionN } ]
+    const chats = await Chat.find({$or: [{to: req.user.id},{from: req.user.id}]});
+    if(chats) {
+        rsp.status(200).json(chats);
+    }else if(chats.length===0){
+        console.log('Currently there are no chats')
+        return rsp.status(200).json({message: 'Currently there are no chats'})
+    }else{
+        return rsp.status(400).json({message: 'Could not fetch chats'})
+    }  
+})
+
+
 dotenv.config();
 
-module.exports={addChat, getAllChats}
+module.exports={addChat, getAllChats, getAllMyConvos}
