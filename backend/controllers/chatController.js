@@ -16,9 +16,9 @@ const addChat= asyncHandler(async (req, rsp) => {
 
 
 const getAllChats = asyncHandler(async (req, rsp) => {
-    const chats = await Chat.find();
+    const chats = await Chat.find({$or: [{to: req.user.id},{from: req.user.id}]});
     if(chats) {
-        rsp.status(200).json(chats);
+        return rsp.status(200).json(chats);
     }else if(chats.length===0){
         console.log('Currently there are no chats')
         return rsp.status(200).json({message: 'Currently there are no chats'})
@@ -31,7 +31,7 @@ const getAllMyConvos = asyncHandler(async (req, rsp) => {
     //$or: [ { Expression1 }, { Expression2 }, ..., { ExpressionN } ]
     const chats = await Chat.find({$or: [{to: req.user.id},{from: req.user.id}]});
     if(chats) {
-        rsp.status(200).json(chats);
+        return rsp.status(200).json(chats);
     }else if(chats.length===0){
         console.log('Currently there are no chats')
         return rsp.status(200).json({message: 'Currently there are no chats'})
