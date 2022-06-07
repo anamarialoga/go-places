@@ -8,6 +8,6 @@ const router = express.Router();
 router.post('/', registerUser);
 router.post('/login', loginUser);
 router.get('/me', protect, getMe); //protected access
-router.put('/:id', updateUser) //protected
-router.get('/:id', getUserById) //protected
+router.put('/:id', protect, updateUser) //protected
+router.get('/:id', protect, getUserById) //protected
 module.exports = router;

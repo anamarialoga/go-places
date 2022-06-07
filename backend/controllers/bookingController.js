@@ -11,14 +11,13 @@ const dotenv= require('dotenv');
 // @access Protected
 // POST
 const addBooking = asyncHandler(async (req, rsp) => {
-    const user = await User.findById(req.user.id);
 
     const booking = await Booking.create({
     billingData: req.body.billingData,
     paymentData: req.body.paymentData,
     dateRange: req.body.dateRange,
     listingId: req.body.listingid,
-    userId: user.id,
+    userId: req.user.id,
 })
     return rsp.status(200).json(booking);
 })

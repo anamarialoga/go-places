@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useParams } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { MessageLeft, MessageRight } from "./Message";
 import { Paper } from "@mui/material";
 import TextField from '@mui/material/TextField'
@@ -37,14 +37,7 @@ function Messages(props) {
     useEffect(()=>{
         getConv(props.listingId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
-
-
-
-    console.log(props.landlord)
-    console.log(props.listingId)
-    console.log(props.listing?.userId)
-    
+    },[props.listingId])
 
 
     const sendMesssage = async(to, message, listingid) =>{
@@ -66,6 +59,16 @@ function Messages(props) {
       }
     }
 
+    const messagesEndRef = useRef(null)
+
+    const scrollToBottom = () => {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+    }
+
+    useEffect(() => {
+        scrollToBottom()
+      }, []);
+
   return (
     <div 
     style={{
@@ -83,8 +86,8 @@ function Messages(props) {
       style={{ 
         paddingTop:"1rem",
         paddingLeft:"1rem",
-        width: "100vw",
-        height: "70vh",
+        width: "60vw",
+        height: "700px",
         maxWidth: "60vw",
         maxHeight: "700px",
         display: "flex",
@@ -92,26 +95,27 @@ function Messages(props) {
         flexDirection: "column",
         position: "relative"
     }} >
-        <Paper id="style-1" style={{
-             width: "calc( 100% - 20px )",
+        <Paper  style={{
+             width: "calc( 100% - 40px )",
              margin: 10,
+             overflowX:"hidden",
              overflowY: "scroll",
              height: "calc( 100% - 80px )"
         }}>
         { allConv.map((message) => {
             if(message.from === user.id) 
-           return <MessageLeft
+           return   <MessageRight
                     key={message._id}
                     message={message.message}
                     timestamp={message.createdAt}
-                    displayName={`${props.landlord?.firstName} ${props.landlord?.lastName}`}
+                    displayName={`${user.firstName} ${user.lastName}`}
                     avatarDisp={true}
                     />
-           else return <MessageRight
+           else return <MessageLeft
                         key={message._id}
                         message={message.message}
                         timestamp={message.createdAt}
-                        displayName={`${user.firstName} ${user.lastName}`}
+                        displayName={`${props.landlord.firstName} ${props.landlord?.lastName}`}
                         avatarDisp={true}
                     />
         })}

@@ -10,7 +10,7 @@ export const MessageLeft = (props) => {
       <div style={{
             marginLeft:"1rem",
             marginTop:"1rem",
-            marginBottom:"1rem",
+            marginBottom:"3rem",
             display: "flex",
             width:"100%"
       }}>
@@ -22,32 +22,38 @@ export const MessageLeft = (props) => {
               {props.displayName}
               </Typography>
           </div>
+          <div className="block" style={{marginBottom:"3rem"}}>
           <div style={{
                position: "relative",
                marginLeft: "20px",
                marginBottom: "10px",
                padding: "10px",
-               backgroundColor: "pink",
-               width: "60%",
+               backgroundColor: "rgb(151 198 227)",
+               width: "fit-content",
                textAlign: "left",
-               font: "400 .9em 'Open Sans', sans-serif",
-               border: "1px solid #97C6E3",
-               borderRadius: "0.5rem",
+               borderRadius: "2rem",
           }}>
             <div>
-              <p style={{ 
-                padding: 0,
-                margin: 3
-              }}>{props.message}</p>
+            <Typography variant="subtitle2" color={"#ffffff"} style={{ 
+              paddingLeft: 0,
+              margin: 3,
+              fontSize:"1rem"
+            }}>
+                {props.message}
+            </Typography>
             </div>
             <div style={{
-                 position: "absolute",
-                 fontSize: ".85em",
-                 fontWeight: "300",
-                 marginTop: "10px",
-                 bottom: "-15px",
-                 right: "5px"
-            }}>{props.timestamp}</div>
+                width:"5cm",
+                position:"absolute",
+                fontSize: ".85em",
+                fontWeight: "300",
+                marginTop: "10px",
+                bottom: "-40%",
+                left: "5px"
+              }}>
+              {props.timestamp.slice(0,10)} {props.timestamp.slice(-13,-5)}
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -58,58 +64,49 @@ export const MessageLeft = (props) => {
 export const MessageRight = (props) => {
   return (
     <div style={{
-    marginRight:"1rem",
-    marginTop:"1rem",
-    marginBottom:"1rem",     
-    display: "flex",
-    justifyContent: "flex-end"
-    }}>
-      <div style={{
-      position: "relative",
-      marginRight: "20px",
-      marginBottom: "10px",
-      padding: "10px",
-      backgroundColor: "#f8e896",
-      width: "60%",
-      textAlign: "left",
-      font: "400 .9em 'Open Sans', sans-serif",
-      border: "1px solid #dfd087",
-      borderRadius: "10px",
-      "&:after": {
-        content: "''",
-        position: "absolute",
-        width: "0",
-        height: "0",
-        borderTop: "15px solid #f8e896",
-        borderLeft: "15px solid transparent",
-        borderRight: "15px solid transparent",
-        top: "0",
-        right: "-15px"
-      },
-      "&:before": {
-        content: "''",
-        position: "absolute",
-        width: "0",
-        height: "0",
-        borderTop: "17px solid #dfd087",
-        borderLeft: "16px solid transparent",
-        borderRight: "16px solid transparent",
-        top: "-1px",
-        right: "-17px"
-      }}}>
-        <p style={{
-      padding: 0,
-      margin: 3
-      }}>{props.message}</p>
-        <div style={{
-              position: "absolute",
-              fontSize: ".85em",
-              fontWeight: "300",
-              marginTop: "10px",
-              bottom: "-15px",
-              right: "5px"
-        }}>{props.timestamp}</div>
-      </div>
+      marginLeft:"1rem",
+      marginTop:"1rem",
+      marginBottom:"3rem",
+      display: "flex",
+      width:"100%"
+}}>
+  <div style={{width:"100%",position:'relative'}}>
+    <div style={{textAlign: "right", marginRight:"3.7rem"}}>
+        <Typography variant="subtitle2" style={{fontWeight:"500"}}>
+       (me) {props.displayName}
+        </Typography>
     </div>
+    <div className="block" style={{marginBottom:"3rem"}}>
+    <div style={{
+        position: "absolute",
+         padding: "10px",
+         backgroundColor: "#f7bfc899",
+         width: "fit-content",
+         right:"3.5rem",
+         textAlign: "right",
+         borderRadius: "2rem",
+    }}>
+      <div>
+        <Typography variant="subtitle2" color={"#ffffff"} style={{ 
+          padding: 0,
+          margin: 3,
+          fontSize:"1rem"
+        }}>{props.message}</Typography>
+      </div>
+      <div style={{
+            width:"5cm",
+            position:"absolute",
+           fontSize: ".85em",
+           fontWeight: "300",
+           marginTop: "10px",
+           bottom: "-40%",
+           right: "5px"
+      }}>
+      {props.timestamp.slice(0,10)} {props.timestamp.slice(-13,-5)}
+    </div>
+    </div>
+    </div>
+  </div>
+</div>
   );
 };

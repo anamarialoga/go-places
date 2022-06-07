@@ -324,24 +324,6 @@ export const AppProvider = ({children})=>{
         }
     }
 
-    const [landlord, setLandlord] = useState({})
-    const getUserById = async(userid) =>{
-        const config = {
-            headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-            }
-        };
-
-        try{
-            const {data} = await axios.get(`http://localhost:1179/users/${userid}`, config)
-            console.log("data", data)
-            setLandlord(data);
-        }catch(error){
-            toast.error(error.response.data.message);
-        }
-
-    }
-
 
 return (
     <AppContext.Provider value={{
@@ -374,8 +356,6 @@ return (
     contains,
     onSubmitBooking,
     onUpdateListingRanges,
-    getUserById,
-    landlord
     }}>
         {children}
     </AppContext.Provider>
