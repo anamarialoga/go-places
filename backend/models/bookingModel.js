@@ -1,15 +1,14 @@
 const mongoose=require('mongoose'); 
+const { stringify } = require('nodemon/lib/utils');
 
 const bookingSchema = mongoose.Schema({
         userId: {
-            type: mongoose.Schema.Types.ObjectId,
+            type: String,
             required: true,
-            ref: 'User' 
         },
         listingId:{
-            type: mongoose.Schema.Types.ObjectId,
+            type: String,
             required: true,
-            ref: 'Listing' 
         },
         dateRange:{
             type:[],

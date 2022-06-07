@@ -228,6 +228,8 @@ const updateListing = async(req, res)=>{
 }
 
 
+
+
 // @desc Delete user listing
 // @route /api/listings/:listingid
 // @access Protected

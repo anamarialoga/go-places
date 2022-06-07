@@ -6,6 +6,7 @@ const Chat = require('../models/chatModel')
 const addChat= asyncHandler(async (req, rsp) => {
 
     const chat = await Chat.create({
+     listingConv: req.params.listingid,
      from: req.user.id,
      to: req.body.to,
      message: req.body.message
@@ -14,6 +15,18 @@ const addChat= asyncHandler(async (req, rsp) => {
 })
 
 
+const getAllChats = asyncHandler(async (req, rsp) => {
+    const chats = await Chat.find();
+    if(chats) {
+        rsp.status(200).json(chats);
+    }else if(chats.length===0){
+        console.log('Currently there are no chats')
+        return rsp.status(200).json({message: 'Currently there are no chats'})
+    }else{
+        return rsp.status(400).json({message: 'Could not fetch chats'})
+    }  
+})
+
 dotenv.config();
 
-module.exports={addChat}
+module.exports={addChat, getAllChats}

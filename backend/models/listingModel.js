@@ -61,9 +61,8 @@ const listingSchema= mongoose.Schema({
         default: 0
     },
     userId: {
-        type: mongoose.Schema.Types.ObjectId, //Relationship between user and listings
-        required: true,
-        ref: 'User' 
+        type: String, //Relationship between user and listings
+        required: true
     },
     isActive: {
         type: Boolean,

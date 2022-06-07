@@ -2,14 +2,17 @@ const mongoose=require('mongoose');
 
 const chatSchema = mongoose.Schema(
     {
+        listingConv: {
+            type:String,
+            required: true
+        },
         to:{
             type:String,
             required: true,
         },
         from: {   
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            ref: 'User' 
+            type: String,
+            required: true, 
         }, 
         message: {
             type:String,

@@ -1,21 +1,69 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState, useParams } from "react";
 import { MessageLeft, MessageRight } from "./Message";
 import { Paper } from "@mui/material";
 import TextField from '@mui/material/TextField'
 import SendIcon from '@mui/icons-material/Send';
 import Button from '@mui/material/Button';
+import axios from "axios";
+import { toast } from "react-toastify";
+import withRoot from "../../withRoot";
 import { AppContext } from "../../context/appContext";
 
 
-export default function Messages(props) {
 
-    const {sendMessage, message, onChangeMessage} = useContext(AppContext)
+function Messages(props) {
+    const {user} = useContext(AppContext)
+    const [message, setMessage] = useState('');
+    const onChangeMessage = (e)=>{
+        setMessage(e.target.value);
+    }
 
-    console.log(props.landlordId)
-    console.log(message)
-    const handleSubmit = (e) =>{
-        e.preventDefault();
-        sendMessage(props.landlordId, message)
+    const [allConv, setAllConv] = useState([]);
+    const getConv = async (listingid) => {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+        };
+        try{
+            const {data} =  await axios.get(`http://localhost:1179/api/chat/${listingid}`,
+             config)
+             setAllConv(data);
+         } catch (error) {
+             toast.error(error.response?.data?.message);
+       }
+    }
+
+    useEffect(()=>{
+        getConv(props.listingId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+
+
+
+    console.log(props.landlord)
+    console.log(props.listingId)
+    console.log(props.listing?.userId)
+    
+
+
+    const sendMesssage = async(to, message, listingid) =>{
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+        };
+        try{
+           const {data} =  await axios.post(`http://localhost:1179/api/chat/${listingid}`, {
+                to,
+                message,
+            },
+            config)
+            console.log(data);
+            toast.success('Message sent with success')
+        } catch (error) {
+            toast.error(error.response?.data?.message);
+      }
     }
 
   return (
@@ -35,9 +83,9 @@ export default function Messages(props) {
       style={{ 
         paddingTop:"1rem",
         paddingLeft:"1rem",
-        width: "vw",
-        height: "80vh",
-        maxWidth: "50vw",
+        width: "100vw",
+        height: "70vh",
+        maxWidth: "60vw",
         maxHeight: "700px",
         display: "flex",
         alignItems: "center",
@@ -50,34 +98,23 @@ export default function Messages(props) {
              overflowY: "scroll",
              height: "calc( 100% - 80px )"
         }}>
-          <MessageLeft
-            message="あめんぼあかいなあいうえお"
-            timestamp="MM/DD 00:00"
-            photoURL="https://lh3.googleusercontent.com/a-/AOh14Gi4vkKYlfrbJ0QLJTg_DLjcYyyK7fYoWRpz2r4s=s96-c"
-            displayName=""
-            avatarDisp={true}
-          />
-          <MessageLeft
-            message="xxxxxhttps://yahoo.co.jp xxxxxxxxxあめんぼあかいなあいうえおあいうえおかきくけこさぼあかいなあいうえおあいうえおかきくけこさぼあかいなあいうえおあいうえおかきくけこさいすせそ"
-            timestamp="MM/DD 00:00"
-            photoURL=""
-            displayName="テスト"
-            avatarDisp={false}
-          />
-          <MessageRight
-            message="messageRあめんぼあかいなあいうえおあめんぼあかいなあいうえおあめんぼあかいなあいうえお"
-            timestamp="MM/DD 00:00"
-            photoURL="https://lh3.googleusercontent.com/a-/AOh14Gi4vkKYlfrbJ0QLJTg_DLjcYyyK7fYoWRpz2r4s=s96-c"
-            displayName="まさりぶ"
-            avatarDisp={true}
-          />
-          <MessageRight
-            message="messageRあめんぼあかいなあいうえおあめんぼあかいなあいうえお"
-            timestamp="MM/DD 00:00"
-            photoURL="https://lh3.googleusercontent.com/a-/AOh14Gi4vkKYlfrbJ0QLJTg_DLjcYyyK7fYoWRpz2r4s=s96-c"
-            displayName="まさりぶ"
-            avatarDisp={false}
-          />
+        { allConv.map((message) => {
+            if(message.from === user.id) 
+           return <MessageLeft
+                    key={message._id}
+                    message={message.message}
+                    timestamp={message.createdAt}
+                    displayName={`${props.landlord?.firstName} ${props.landlord?.lastName}`}
+                    avatarDisp={true}
+                    />
+           else return <MessageRight
+                        key={message._id}
+                        message={message.message}
+                        timestamp={message.createdAt}
+                        displayName={`${user.firstName} ${user.lastName}`}
+                        avatarDisp={true}
+                    />
+        })}
         </Paper>
         <>
             <form 
@@ -94,7 +131,7 @@ export default function Messages(props) {
                 label="Write something ..."
                 style={ { width: "100%" , borderRadius:"0rem"}}
             />
-            <Button variant="contained" onClick={handleSubmit} color="secondary" >
+            <Button variant="contained" onClick={()=>sendMesssage(props.listing?.userId, message, props.listingId)} color="secondary" >
                 <SendIcon color={"success"}/>
             </Button>
             </form>
@@ -103,3 +140,5 @@ export default function Messages(props) {
     </div>
   );
 }
+
+export default withRoot(Messages)

@@ -42,7 +42,6 @@ const registerUser = asyncHandler(async (req, rsp)=>{
         email,
         password: hashedPass,
         since: new Date().toDateString(),
-        phone: "",
     })
 
     if(user){ //success
@@ -53,7 +52,6 @@ const registerUser = asyncHandler(async (req, rsp)=>{
             email: user.email,
             token: generateToken(user._id, user.firstName, user.lastName, user.email),
             since: user.since,
-            phone: user.phone
         })
     }else{ //failure
         console.log('Something went wrong');
@@ -151,9 +149,25 @@ const updateUser = asyncHandler(async (req, rsp) => {
 })
 
 
+const getUserById =  asyncHandler(async (req, rsp) => {
+
+    const users = await User.find()
+    console.log(req.params.id)
+    console.log(users)
+    users.forEach((user)=>{
+        console.log(user.id)
+        if(user._id == req.params.id)
+        {
+            return rsp.status(200).json(user);
+        }
+    })
+})
+
+
 module.exports={
     registerUser, 
     loginUser,
     getMe, 
-    updateUser
+    updateUser, 
+    getUserById
 }

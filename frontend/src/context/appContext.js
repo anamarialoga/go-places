@@ -136,7 +136,7 @@ export const AppProvider = ({children})=>{
                         );
                     onLogOut();
                 }catch(error){
-                    toast.error(error.response.data.message)
+                    toast.error(error.response?.data.message)
                 }
             }else{
             toast.info('No changes were made.');
@@ -324,26 +324,22 @@ export const AppProvider = ({children})=>{
         }
     }
 
-    const [message, setMessage] = useState('');
-    const onChangeMessage = (e)=>{
-        setMessage(e.target.value);
-    }
-
-    const sendMesssage = async(to, message) =>{
+    const [landlord, setLandlord] = useState({})
+    const getUserById = async(userid) =>{
         const config = {
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
-            },
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            }
         };
+
         try{
-            await axios.post("http://localhost:1179/api/chat", {
-                message,
-                to
-            },
-            config)
-        } catch (error) {
-            toast.error(error.response?.data?.message);
-      }
+            const {data} = await axios.get(`http://localhost:1179/users/${userid}`, config)
+            console.log("data", data)
+            setLandlord(data);
+        }catch(error){
+            toast.error(error.response.data.message);
+        }
+
     }
 
 
@@ -378,9 +374,8 @@ return (
     contains,
     onSubmitBooking,
     onUpdateListingRanges,
-    onChangeMessage,
-    message, 
-    sendMesssage
+    getUserById,
+    landlord
     }}>
         {children}
     </AppContext.Provider>
