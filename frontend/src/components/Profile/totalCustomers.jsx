@@ -26,11 +26,15 @@ export const Budget = (props) => (
             variant="h4"
             style={{fontSize:"1.5rem",marginRight:"0.5rem"}}
           >
-            {props.percentage}% 
+            {typeof props.percentage === Number? props.percentage+"%" : 0} 
           </Typography>
-          <Typography variant={"subtitle1"}>
+         { props.mostCountry!=="" ? 
+         <Typography variant={"subtitle1"}>
            are from {props.mostCountry}
-          </Typography>
+          </Typography> :
+           <Typography variant={"subtitle1"}>
+           customers
+          </Typography>}
           </div>
           <div style={{display:"flex", paddingTop:"0.5rem"}}>
           <Typography
@@ -38,7 +42,7 @@ export const Budget = (props) => (
             variant="h4"
             style={{fontSize:"1.5rem", marginRight:"0.5rem"}}
           >
-            {props.percentage2}%  
+            {typeof props.percentage2 === Number? props.percentage2+"%" : 0}
           </Typography>
           <Typography variant={"subtitle1"}>
            are travelling for business

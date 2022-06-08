@@ -66,7 +66,7 @@ export const MyListings = (props) => {
                 style={{marginLeft: "2rem"}}
                 primary={listing.name}
                 secondary={
-                      listing.description? listing.description.slice(0,120)+' ...' : ""}
+                      listing.description? listing.description.slice(0,200)+' ...' : ""}
               />
               {listing.description && <ListItemButton style={{marginLeft: "1rem", fontWeight: 600, fontSize: "0.9rem", color: "#ff3366", marginTop:"-0.5rem", width:"8rem"}}  variant={"text"} onClick={(e)=>{e.preventDefault(); e.stopPropagation(); setOpen(true)}}>
                   [Read More]

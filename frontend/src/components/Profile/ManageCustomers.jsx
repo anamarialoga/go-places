@@ -27,7 +27,7 @@ export const ManageCustomers = (props) => (
     </Box>
     <Divider/>
     <PerfectScrollbar>
-      <List style={{height:"36vh", overflow:"auto"}}>
+      <List style={{maxHeight:"25vh", overflow:"auto"}}>
       <Box sx={{  paddingLeft:"4rem", paddingRight:"3rem"}}>
         <Table>
           <TableHead>
@@ -120,7 +120,16 @@ export const ManageCustomers = (props) => (
           </TableBody>
         </Table>
       </Box>
+         {
+              props.manageRentals.length===0 &&
+              <div style={{width:"100%", textAlign:"center", marginTop:"5%"}}>
+              <Typography variant='subtitle1' color={"gray"} style={{fontSize:"1.5rem"}}>
+                Your properties were not booked yet
+              </Typography>
+              </div>
+            }
       </List>
+      
     </PerfectScrollbar>
     <Box
       sx={{

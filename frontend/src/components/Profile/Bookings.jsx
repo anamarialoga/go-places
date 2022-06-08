@@ -33,7 +33,7 @@ return (
     </Box>
     <Divider/>
     <PerfectScrollbar>
-      <List style={{height:"36vh", overflow:"auto"}}>
+      <List style={{maxHeight:"25vh", overflow:"auto"}}>
       <Box sx={{  paddingLeft:"4rem", paddingRight:"3rem"}}>
         <Table>
           <TableHead>
@@ -122,7 +122,7 @@ return (
       </Box>
               {
               props.bookings.length===0 &&
-              <div style={{width:"100%", textAlign:"center", marginTop:"10%"}}>
+              <div style={{width:"100%", textAlign:"center", marginTop:"5%"}}>
               <Typography variant='subtitle1' color={"gray"} style={{fontSize:"1.5rem"}}>
                 Currently, you don't have any upcoming trips
               </Typography>

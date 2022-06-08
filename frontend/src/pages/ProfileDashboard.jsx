@@ -27,11 +27,13 @@ function ProfileUpcomingTrips() {
     let customersBusiness =[]; 
 
     let profit=0;
-    myRentals.forEach((rental)=>{
+    if(myRentals.length>0){
+    myRentals?.forEach((rental)=>{
       customersCountry.push(rental?.billingData.country);
       customersBusiness.push(rental?.billingData.business);
       profit = profit + rental?.price
     })
+  }
    console.log(customersCountry, customersBusiness);
 
    function mode(arr){
@@ -69,11 +71,15 @@ function ProfileUpcomingTrips() {
 
     return (
       <>
-      <div style={{height: "130vh",        
+      <div style={{
+            paddingLeft:"18%",
+            paddingRight:"5%",
+            width:"100%",
+            height: "110vh",        
             background: "url(http://127.0.0.1:8888/eberhard-grossgasteiger-S-2Ukb_VqpA-unsplash2.jpg)  no-repeat",
             backgroundSize: "cover"}}>
       <SidebarProfile user={user} />
-      <Container maxWidth={false} style={{marginLeft:"20%", paddingTop:"4%", paddingBottom: "5%"}}>
+      <Container maxWidth style={{ width:"100%", paddingTop:"4%", paddingBottom: "1%"}}>
         <Grid
           container
           spacing={3}
@@ -82,7 +88,7 @@ function ProfileUpcomingTrips() {
             item
             lg={3}
             sm={6}
-            xl={3}
+            xl={4}
             xs={12}
           >
             <ListingsCard listings={myListings.length>0? myListings: []}/>
@@ -91,14 +97,14 @@ function ProfileUpcomingTrips() {
             item
             lg={3}
             sm={6}
-            xl={3}
+            xl={4}
             xs={12}
           >
-            <Budget percentage={percentage} mostCountry={countriesSet} percentage2={percentage2} />
+            <Budget percentage={percentage ? percentage:0} mostCountry={countriesSet?countriesSet:""} percentage2={percentage2 ?percentage2: 0} />
           </Grid>
           <Grid
             item
-            xl={3}
+            xl={4}
             lg={3}
             sm={6}
             xs={12}
@@ -109,7 +115,7 @@ function ProfileUpcomingTrips() {
             item
             lg={8}
             md={12}
-            xl={9}
+            xl={12}
             xs={12}
           >
             <Bookings bookings={userBookings.length>0 ? userBookings : []} />
@@ -118,10 +124,10 @@ function ProfileUpcomingTrips() {
             item
             lg={8}
             md={12}
-            xl={9}
+            xl={12}
             xs={12}
           >
-            <ManageCustomers manageRentals={myRentals}/>
+            <ManageCustomers manageRentals={myRentals.length>0? myRentals : []}/>
           </Grid>
         </Grid>
       </Container>
