@@ -28,11 +28,7 @@ const ProfileMessages =()=>{
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     console.log(allConv)
-    
 
-    let arr1= ['629e909cc55bcce9fa3233ab', '629e8d71aa7452c1cfd3210e'];
-    let arr2=['629e8d71aa7452c1cfd3210e', '629e909cc55bcce9fa3233ab'];
-    console.log("test", arr1.includes(arr2[0]) && arr1.includes(arr2[1]))
 
     let filteredList=[];
     for(let i=0; i<allConv.length-1; i++){
@@ -69,8 +65,6 @@ const ProfileMessages =()=>{
     console.log(convWithUser)
 
 
-    const listOfConvs = allConv.length===1 ? allConv: filteredList
-
     return <>
     <div style={{ 
         height: "80vh",        
@@ -88,7 +82,7 @@ const ProfileMessages =()=>{
         <CardContent>
         <List style={{height:"62vh", overflow:"auto"}}>
         {filteredList.map((conver,  i) =>  
-                 <ListItem key={i}>
+                 <ListItem key={i} divider={i<filteredList.length -1}>
                             <div style={{display:"inline-flex", justifyContent:"space-between", width:"100%"}}>
                             <div>
                             <ListItemAvatar>
