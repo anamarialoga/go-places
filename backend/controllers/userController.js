@@ -152,8 +152,6 @@ const updateUser = asyncHandler(async (req, rsp) => {
 const getUserById =  asyncHandler(async (req, rsp) => {
 
     const users = await User.find()
-    console.log(req.params.id)
-    console.log(users)
     users.forEach((user)=>{
         console.log(user.id)
         if(user._id == req.params.id)
@@ -164,10 +162,20 @@ const getUserById =  asyncHandler(async (req, rsp) => {
 })
 
 
+const getUsersById = asyncHandler(async(req, rsp)=>{
+
+
+        const users = await User.find()
+        return rsp.status(200).json(users);
+
+})
+
+
 module.exports={
     registerUser, 
     loginUser,
     getMe, 
     updateUser, 
-    getUserById
+    getUserById,
+    getUsersById,
 }

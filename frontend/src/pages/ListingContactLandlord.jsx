@@ -6,13 +6,13 @@ import { ListingContext } from "../context/listingContext";
 import withRoot from "../withRoot"
 import Messages from '../components/Messages/Messages'
 import axios from "axios";
+import { AppContext } from "../context/appContext";
 
 
 const ListingContactLandlord = () =>{
 
     const {listingid} = useParams();
     const {fetchListing, listing}= useContext(ListingContext);
-    // const {getUserById, landlord} = useContext(AppContext)
 
     useEffect(()=>{
         fetchListing(listingid);
@@ -38,18 +38,36 @@ const ListingContactLandlord = () =>{
         .catch(function (error) {
           console.log(error);
         });
-
     }
+
+    const { getConvWithUser, convWithUser} = useContext(AppContext)
 
     useEffect(()=>{
         getUserById(listing?.userId);
     },[listing])
 
+    
+    useEffect(()=>{
+        if(convWithUser.length===0)
+        getConvWithUser(listingid, landlord._id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[convWithUser])
+
+    console.log(convWithUser)
+
+    const landlordName = landlord?.firstName + " " + landlord?.lastName
 
     return (
     <>
+    <div 
+    style={{ 
+        paddingLeft:"17%",
+        background: "url(http://127.0.0.1:8888/eberhard-grossgasteiger-S-2Ukb_VqpA-unsplash2.jpg)  no-repeat",
+        backgroundSize: "cover"
+    }}>
     <SidebarListing listingid={listingid} listing={listing}/>
-    <Messages landlord={landlord} listingId={listingid} listing={listing} />
+    <Messages landlordName={landlordName} listingUID={landlord._id} allConv={convWithUser} listingId={listingid}/>
+    </div>
     </>)
 }
 

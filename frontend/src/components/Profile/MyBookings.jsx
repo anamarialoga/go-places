@@ -83,7 +83,7 @@ const orders = [
 
 export const MyBookings = (props) => (
   <Card {...props} >
-  <CardHeader title="Manage Listings"  />
+  <CardHeader style={{color:"#ff3366"}} title="Manage Listings"  />
     <PerfectScrollbar>
       <Box sx={{ minWidth: 800}}>
         <Table>

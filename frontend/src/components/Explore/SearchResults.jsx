@@ -24,7 +24,7 @@ import {useNavigate} from 'react-router-dom'
 return<>
     <div className={!props.submit ? 'dontshow' :"showall"}>
     <div style={{width:"100%", borderRadius:"0"}}>
-    <CardHeader title={`You searched for: "${props.searchedLoc}" (${props.searchedListings.length} results)`} subheader={`Find the best accomodation in ${props.searchedLoc} with us and enjoy the experience` }  />
+    <CardHeader style={{color:"#ff3366"}} title={`You searched for: "${props.searchedLoc}" (${props.searchedListings.length} results)`} subheader={`Find the best accomodation in ${props.searchedLoc} with us and enjoy the experience` }  />
     <Divider/>
     {props.searchedListings.length > 0 ?
     <> 

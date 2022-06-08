@@ -45,6 +45,7 @@ import {
    return (
    <Card {...props}>
       <CardHeader
+        style={{color:"#ff3366"}}
         // subheader={`${props.listings.length} properties in total`}
         title="Upcoming Trips"
       />

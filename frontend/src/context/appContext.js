@@ -169,7 +169,7 @@ export const AppProvider = ({children})=>{
           setLoading(false);
         }
         catch (e) {
-          toast.error(e.response.data.message);
+          toast.error(e.response?.data?.message);
         }
       };
     
@@ -346,6 +346,86 @@ export const AppProvider = ({children})=>{
           });
     }
 
+    const [message, setMessage] = useState('');
+    const onChangeMessage = (e)=>{
+        setMessage(e.target.value);
+    }
+
+    const [allConv, setAllConv] = useState([]);
+    const getConv = async (listingid) => {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+        };
+        try{
+            const {data} =  await axios.get(`http://localhost:1179/api/chat/${listingid}`,
+             config)
+             setAllConv(data);
+         } catch (error) {
+             toast.error(error.response?.data?.message);
+       }
+    }
+
+
+    const [convWithUser, setConvWithUser] = useState([])
+    const getConvWithUser = async (listingid, userid) => {
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+        };
+        try{
+            const {data} =  await axios.get(`http://localhost:1179/api/chat/${listingid}/${userid}`,
+             config)
+             setConvWithUser(data);
+         } catch (error) {
+             toast.error(error.response?.data?.message);
+       }
+    }
+
+    const sendMesssage = async(to, message, listingid, fromUser) =>{
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+        };
+        try{
+           const {data} =  await axios.post(`http://localhost:1179/api/chat/${listingid}`, {
+                to,
+                message,
+                fromUser
+            },
+            config)
+            console.log(data);
+            getConv(listingid)
+            setMessage("")
+        } catch (error) {
+            toast.error(error.response?.data?.message);
+      }
+    }
+
+    const sendMesssage2 = async(to, message, listingid, fromUser) =>{
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+        };
+        try{
+           const {data} =  await axios.post(`http://localhost:1179/api/chat/${listingid}`, {
+                to,
+                message,
+                fromUser
+            },
+            config)
+            console.log(data);
+            getConvWithUser(listingid,to)
+            setMessage("")
+        } catch (error) {
+            toast.error(error.response?.data?.message);
+      }
+    }
+
 
 return (
     <AppContext.Provider value={{
@@ -379,7 +459,14 @@ return (
     onSubmitBooking,
     onUpdateListingRanges,
     convos,
-    getAllConvos
+    getAllConvos,
+    message,
+    onChangeMessage,
+    allConv,
+    getConv,
+    sendMesssage,
+    convWithUser,
+    getConvWithUser,sendMesssage2
     }}>
         {children}
     </AppContext.Provider>

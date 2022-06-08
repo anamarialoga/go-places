@@ -41,7 +41,6 @@ function App() {
                   <Route path="/mylistings" element={<MyListingsPage/>}/>
                   <Route path="/addlisting" element={<AddListing/>}/>
                   <Route path='/editlisting/:listingid' element={<EditListing/>} />
-                  <Route path="/messages" element={<ProfileMessages/>} />
                   <Route path='/listings/:listingid' element={<ListingDetails/>} />
                   <Route path='/listings/:listingid/images' element={<ListingAlbum/>} />
                   <Route path='/listings/:listingid/food' element={<ListingDining/>} /> 
@@ -49,6 +48,7 @@ function App() {
                   <Route path='/listings/:listingid/rent' element={<CheckOutForm/>}/>
                   <Route path="/listings/:listingid/landlord" element={<ListingContactLandlord/>}/>
                   <Route path="/listings/:listingid/reviews" element={<ListingAddReview/>} />
+                  <Route path="/listings/:listingid/customers" element={<ProfileMessages/>} />
               </Routes>
               <AppFooter/>
             </Router>

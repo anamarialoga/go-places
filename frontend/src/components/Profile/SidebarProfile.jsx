@@ -36,11 +36,6 @@ const items = [
       title: 'Statistics'
     },
     {
-      href: '/messages',
-      icon: (<MessagesIcon fontSize="small" />),
-      title: 'Messages'
-    },
-    {
       href: '/trips',
       icon: (<LocalAirportOutlinedIcon fontSize="small" />),
       title: 'Upcoming Trips'

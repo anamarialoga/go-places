@@ -92,7 +92,7 @@ function SidebarListing(props) {
                             title={item.title}
                         />
                 ))}
-              {props.listing?.userId === user?.id ?  <NavItem disabled icon={(<MailOutlineIcon fontSize="small"/>)} href={`/listings/${props.listingid}/#`} title={"Contact Landlord"}/> : <NavItem  icon={(<MailOutlineIcon fontSize="small"/>)} href={`/listings/${props.listingid}/landlord`} title={"Contact Landlord"}/>  }
+              {props.listing?.userId === user?.id ?  <NavItem  icon={(<MailOutlineIcon fontSize="small"/>)} href={`/listings/${props.listingid}/customers`} title={"Answer Customers"}/> : <NavItem  icon={(<MailOutlineIcon fontSize="small"/>)} href={`/listings/${props.listingid}/landlord`} title={"Ask Landlord"}/>  }
               {props.listing?.userId === user?.id ?  <NavItem disabled icon={(<ShoppingCartIcon fontSize="small" />)} href={`/listings/${props.listingid}/#`} title={'Checkout'}/> : <NavItem  icon={(<ShoppingCartIcon fontSize="small" />)} href={`/listings/${props.listingid}/rent`} title={'Checkout'}/>}
             </Box>
             <Divider sx={{ borderColor: '#2D3748' }} /><Box

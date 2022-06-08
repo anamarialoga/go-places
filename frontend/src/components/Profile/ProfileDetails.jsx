@@ -42,7 +42,7 @@ export const ProfileDetails = (props) => {
     >
       <Card >
         <CardHeader
-          style={{backgroundColor: "#fff5f8"}}
+          style={{backgroundColor: "#fff5f8", color:"#ff3366"}}
           subheader="The information can be edited"
           title="Personal Details"
         />

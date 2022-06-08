@@ -135,7 +135,7 @@ function ListingAddReview (){
             </div>
             <div style={{width:"50%"}}>
                 <Card style={{width:"80%", height:"77vh"}}>
-                    <CardHeader title="Reviews & Ratings" />
+                    <CardHeader style={{color:"#ff3366"}} title="Reviews & Ratings" />
                     <Divider />
                     <List style={{maxHeight: "100%",overflow:"auto"}}>
                     {listing?.average.map((item,i)=>(

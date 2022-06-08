@@ -20,6 +20,7 @@ const rightLink = {
 function AppAppBar() {
   const {onLogOut} = React.useContext(AppContext)
   const navigate = useNavigate()
+  const {user} = React.useContext(AppContext)
 
   return (
     <div>
@@ -64,7 +65,7 @@ function AppAppBar() {
               sx={rightLink}
               onClick={()=> navigate('/profile')}
             >
-              <PersonIcon style={{marginRight: '0.5rem', fill: "#ff3366"}}/> {'Profile'}
+              <PersonIcon style={{marginRight: '0.5rem', fill: "#ff3366"}}/> {`${user.firstName} 's Profile`}
             </Button> )}
             {(window.location.pathname !== "/explore")&&(window.location.pathname !== "/") && (
             <Button

@@ -38,6 +38,7 @@ export const MyListings = (props) => {
    <div style={{width: "75%",marginLeft: "20%"}}>
     <Card {...props}>
     <CardHeader
+    style={{color:"#ff3366"}}
       subheader={`${props.listings.length} properties in total`}
       title="My listings"
     />

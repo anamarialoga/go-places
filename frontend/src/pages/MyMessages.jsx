@@ -1,20 +1,25 @@
+/* eslint-disable array-callback-return */
 import React, { useContext } from "react";
-import { MessageLeft, MessageRight } from "./Message";
+import { MessageLeft, MessageRight } from "../components/Messages/Message";
 import { Paper } from "@mui/material";
 import TextField from '@mui/material/TextField'
 import SendIcon from '@mui/icons-material/Send';
 import Button from '@mui/material/Button';
-import withRoot from "../../withRoot";
-import { AppContext } from "../../context/appContext";
+import withRoot from "../withRoot";
+import { AppContext } from "../context/appContext";
 
 
 
-function Messages(props) {
+
+function MyMessages(props) {
     const {user, message, onChangeMessage, sendMesssage2} = useContext(AppContext)
 
     const fromUserName = user.firstName + " " + user.lastName
 
-    console.log("IN MESAJE", props.allConv)
+    console.log(props.chat)
+    console.log(props.landlordId)
+    console.log(props.listingId)
+
   return (
     <div 
     style={{
@@ -45,8 +50,8 @@ function Messages(props) {
              overflowY: "scroll",
              height: "calc( 100% - 80px )"
         }}>
-        { props.allConv.map((message) => {
-            if(message.from === user.id )
+        { props.chat.map((message) => {
+           if(message.from === user.id && message.from !== message.to )
                 // && message.from!== message.to) 
            return   <MessageRight
                     key={message._id}
@@ -55,8 +60,8 @@ function Messages(props) {
                     displayName={`${user.firstName} ${user.lastName}`}
                     avatarDisp={true}
                     />
-           //else if( message.to === user.id && message.from !== message.to) 
-        else  return <MessageLeft
+            else if( message.to === user.id && message.from !== message.to) 
+            return <MessageLeft
                         key={message._id}
                         message={message.message}
                         timestamp={message.createdAt}
@@ -82,7 +87,7 @@ function Messages(props) {
             />
             <Button variant="contained" onClick={()=>sendMesssage2(
                 //props.listing?.userId, 
-                props.listingUID, message, props.listingId, fromUserName)} color="secondary" >
+                  props.landlordId,  message, props.listingId , fromUserName)} color="secondary" >
                 <SendIcon color={"success"}/>
             </Button>
             </form>
@@ -92,4 +97,4 @@ function Messages(props) {
   );
 }
 
-export default withRoot(Messages)
+export default withRoot(MyMessages)
