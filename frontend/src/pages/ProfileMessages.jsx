@@ -1,13 +1,10 @@
 import { Card, CardContent, CardHeader, Divider, IconButton, List, ListItem, ListItemAvatar } from "@mui/material";
-import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import SidebarProfile from "../components/Profile/SidebarProfile";
 import Typography from "../components/Typography";
 import { AppContext } from "../context/appContext";
 import {ListingContext} from '../context/listingContext'
 import withRoot from "../withRoot";
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
-import Messages from "../components/Messages/Messages";
 import SidebarListing from "../components/Listing/SidebarListing";
 import { useParams } from "react-router-dom";
 import MyMessages from "./MyMessages";
@@ -21,6 +18,7 @@ const ProfileMessages =()=>{
 
     useEffect(()=>{
         fetchListing(listingid)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     useEffect(()=>{
@@ -60,6 +58,7 @@ const ProfileMessages =()=>{
 
             getConvWithUser(conv.listingConv, landLord.id)
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [buttonClicked])
 
     console.log(convWithUser)

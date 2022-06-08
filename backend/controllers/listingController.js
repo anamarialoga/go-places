@@ -15,7 +15,7 @@ dotenv.config();
 // GET
 const getListings = asyncHandler(async (req, rsp) => {
 
-    const user = await User.findById(req.user.id);
+    const user = await User.findById(req.user._id);
     if(!user){
         console.log('User not found');
         return rsp.status(404).send({message: 'User not found'});
@@ -195,9 +195,10 @@ const updateListing = async(req, res)=>{
     const booking = await Booking.find({listingId: req.params.listingid});
     let OK=false;
 
-    
+    if(booking){
     if(booking[0].userId === req.user.id)
         OK=true;
+    }
 
     const userName= user.firstName + " " + user.lastName;
     

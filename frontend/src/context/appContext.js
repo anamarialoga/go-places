@@ -425,6 +425,63 @@ export const AppProvider = ({children})=>{
             toast.error(error.response?.data?.message);
       }
     }
+    
+    const [userBookings, setUserBookings ] = useState([])
+    const getUserBookings = async()=>{
+        const config = {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+        };
+
+        try{
+            setLoading(true);
+            const {data} = await axios.get('http://localhost:1179/api/bookings/me', config)
+            setUserBookings(data);
+            setLoading(false);
+        }catch(error){
+            toast.error(error.response?.data?.message)
+        }
+    }
+
+    const [myRentals, setMyrentals] = useState([])
+    const GetBookingsIamLandlord = async () =>{
+        var config = {
+            method: 'get',
+            url: 'http://localhost:1179/api/bookings/me/rented',
+            headers: { 
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+          };
+          
+          axios(config)
+          .then(function (response) {
+            setMyrentals(response.data)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+          
+    }
+
+    const onCancelBooking = async (bookingid) => {
+        if (window.confirm(`Are you sure you want to cancel booking ID${bookingid}?`)) {
+            const config = {
+                headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                }
+            };
+            try{
+                await axios.delete(`http://localhost:1179/api/bookings/me/${bookingid}`, 
+                config);
+                window.location.href="http://localhost:3000/dashboard";
+            }catch(error){
+                toast.error(error.response?.data?.message);
+            }
+        }
+    }
+
+
 
 
 return (
@@ -466,7 +523,13 @@ return (
     getConv,
     sendMesssage,
     convWithUser,
-    getConvWithUser,sendMesssage2
+    getConvWithUser,
+    sendMesssage2,
+    getUserBookings,
+    userBookings,
+    GetBookingsIamLandlord,
+    myRentals, 
+    onCancelBooking
     }}>
         {children}
     </AppContext.Provider>

@@ -8,7 +8,7 @@ import { AppContext } from "../context/appContext";
 import withRoot from "../withRoot";
 
 const MyListingsPage = () => {
-const {fetchMyListings, myListings, loadingList} = useContext(AppContext);
+const {fetchMyListings, myListings, loadingList, user} = useContext(AppContext);
 
 
 useEffect(()=>{
@@ -23,7 +23,7 @@ return loadingList? <Loading/> :  (
         background: "url(http://127.0.0.1:8888/eberhard-grossgasteiger-S-2Ukb_VqpA-unsplash2.jpg) no-repeat",
         backgroundSize: "cover"}}
     >
-    <SidebarProfile/>
+    <SidebarProfile user={user}/>
     <Box
       component="main"
       sx={{      

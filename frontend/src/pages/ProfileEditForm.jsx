@@ -7,10 +7,11 @@ import SidebarProfile from '../components/Profile/SidebarProfile';
 import AppForm from '../views/AppForm'
 import { useParams } from 'react-router-dom';
 import { Loading } from '../components/Loading';
+import { AppContext } from '../context/appContext';
 
 function EditListing () {
     const {listingid} = useParams();
-
+    const {user} = useContext(AppContext)
     const {
         onChange,
         fetchListing,
@@ -56,7 +57,7 @@ function EditListing () {
 
 return loading? <Loading/>: (
     <>
-    <SidebarProfile/>
+    <SidebarProfile user={user}/>
     <div style={{marginLeft: "10%"}}>
     <AppForm >
     < FormControl fullWidth>

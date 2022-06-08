@@ -15,7 +15,7 @@ const {user, loadingUser} = useContext(AppContext);
 
  return loadingUser? <Loading/> : (
     <>
-    <SidebarProfile/>
+    <SidebarProfile user={user}/>
     <Box
       component="main"
       sx={{

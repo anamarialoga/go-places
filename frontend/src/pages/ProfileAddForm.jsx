@@ -6,8 +6,10 @@ import { FormContext } from '../context/formContext';
 import SidebarProfile from '../components/Profile/SidebarProfile';
 import AppForm from '../views/AppForm'
 import { Loading } from '../components/Loading';
+import { AppContext } from '../context/appContext';
 
 function AddListing () {
+    const {user}=useContext(AppContext)
     const {
         cancelListing, 
         loading, 
@@ -54,7 +56,7 @@ function AddListing () {
 
 return loading? <Loading/> : (
     <>
-    <SidebarProfile/>
+    <SidebarProfile user={user}/>
     <div style={{marginLeft: "10%"}}>
     <AppForm >
     < FormControl fullWidth>

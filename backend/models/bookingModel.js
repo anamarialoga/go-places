@@ -22,6 +22,16 @@ const bookingSchema = mongoose.Schema({
             type: {},
             required:true,
         },
+        landlord: {
+            type: {},
+            required:true
+        },
+        status:{
+            type: String
+        },
+        price:{
+            type:Number
+        }
     },
     {
         timestamps: true,

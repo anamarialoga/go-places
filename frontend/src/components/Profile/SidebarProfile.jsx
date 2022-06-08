@@ -6,8 +6,6 @@ import withRoot from '../../withRoot';
 import {Button} from '@mui/material';
 import Typography from '../Typography';
 import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
-import MessagesIcon from '@mui/icons-material/Forum';
-import LocalAirportOutlinedIcon from '@mui/icons-material/LocalAirportOutlined';
 import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
 import { NavItem } from '../NavItem';
 import HomeIcon from '@mui/icons-material/Home';
@@ -31,20 +29,15 @@ const items = [
         title: 'Add Listing'
     },
     {
-      href: '/statistics',
+      href: '/dashboard',
       icon: (<BarChartOutlinedIcon fontSize="small" />),
-      title: 'Statistics'
-    },
-    {
-      href: '/trips',
-      icon: (<LocalAirportOutlinedIcon fontSize="small" />),
-      title: 'Upcoming Trips'
+      title: 'Dashboard'
     },
 
   ];
 
 
-function SidebarProfile() {
+function SidebarProfile(props) {
 
     const content = (
     <>
@@ -64,15 +57,16 @@ function SidebarProfile() {
                     <div style={{marginTop: '1rem'}}>
                         <Typography
                             color="white"
-                            variant="h4"
+                            variant="subtitle1"
+                            style={{fontSize:"1.7rem", fontWeight:"800"}}
                         >
-                           My
+                           My Account
                         </Typography>
                         <Typography
                             color="white"
-                            variant="h4"
+                            variant="subtitle2"
                         >
-                           Profile
+                           {props.user.firstName} {props.user.lastName}, {props.user.city}, {props.user.country}
                         </Typography>
                     </div>
                 </Box>
