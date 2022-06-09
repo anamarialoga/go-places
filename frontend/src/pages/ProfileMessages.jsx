@@ -21,21 +21,25 @@ const ProfileMessages =()=>{
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
+    const [filteredList, setFilteredList] = useState([])
     useEffect(()=>{
         getConv(listingid);
+        if(allConv.length>1){
+            console.log('There are more conversations');
+            for(let i=0; i<allConv.length-1; i++){
+                    if(!(allConv[i+1]?.to_from.includes(allConv[i]?.to_from[1]) &&  allConv[i+1]?.to_from.includes(allConv[i]?.to_from[0])))
+                    {
+                        setFilteredList((prevState)=>[...prevState, allConv[i+1]])
+                    }
+                }
+        }
+        else{
+            console.log('There is only one conversation', allConv.length)
+            setFilteredList((prevState)=>[...allConv])
+            console.log(filteredList)
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
-    console.log(allConv)
-
-
-    let filteredList=[];
-    for(let i=0; i<allConv.length-1; i++){
-        if(!(allConv[i+1]?.to_from.includes(allConv[i]?.to_from[1]) &&  allConv[i+1]?.to_from.includes(allConv[i]?.to_from[0])))
-        {
-            filteredList.push(allConv[i+1]);
-        }
-    }
-    console.log(filteredList)
 
     
     const [conv, setConv] = useState({});
@@ -48,8 +52,6 @@ const ProfileMessages =()=>{
 
 
     useEffect(()=>{
-
-
         if(buttonClicked ===true){
             if(conv.to!==user.id)
                 setlandLord({id: conv.to,name:conv.toUser})

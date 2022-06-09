@@ -102,6 +102,27 @@ const getAllListings = asyncHandler(async (req, rsp) => {
 })
 
 
+const getAllButMineListings = asyncHandler(async (req, rsp) => {
+    const listings = await Listing.find();
+    const user = await User.findById(req.user._id)
+    console.log(user)
+    let excludeMine = [];
+    listings.forEach((listing)=>{
+        if(listing.userId !== user.id)
+        excludeMine.push(listing)
+    })
+
+    if(excludeMine) {
+        rsp.status(200).json(excludeMine);
+    }else if(excludeMine.length===0){
+        console.log('Currently there are no listings')
+        return rsp.status(200).json({message: 'Currently there are no listings'})
+    }else{
+        return rsp.status(400).json({message: 'Could not fetch listings'})
+    }  
+})
+
+
 // @desc Add new listing
 // @route /api/listings
 // @access Protected
@@ -295,5 +316,5 @@ const delListing = asyncHandler(async (req, rsp) => {
 
 
 
-module.exports= {createListing, getAllListings, getListings, getSingleListing, updateListing, delListing, getListing};
+module.exports= {createListing,getAllButMineListings, getAllListings, getListings, getSingleListing, updateListing, delListing, getListing};
 

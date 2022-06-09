@@ -11,7 +11,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import TextField from '../TextField';
 
 
-function Sidebar({sidebar, onSidebar}){
+function Sidebar({sidebar, onSidebar, filters, onChange}){
   const content = (
     <>
               <Box
@@ -28,8 +28,8 @@ function Sidebar({sidebar, onSidebar}){
               <div style={{backgroundColor:"#fff5f8"}}>
               <ListItem>  
                 <FormControl fullWidth style={{backgroundColor:"white"}} >
-                <InputLabel style={{ fontWeight:"bold"}}>Purpose</InputLabel>
-                <Select  name="purpose"  >
+                <InputLabel  style={{ fontWeight:"bold"}}>Purpose</InputLabel>
+                <Select  name="purpose" value={filters.purpose} onChange={onChange}>
                     <MenuItem style={{color:"#ff3366"}} value="beach">Beach</MenuItem>
                     <MenuItem style={{color:"#ff3366"}} value="ski">Ski</MenuItem>
                     <MenuItem style={{color:"#ff3366"}} value="nature">Nature</MenuItem>
@@ -41,7 +41,7 @@ function Sidebar({sidebar, onSidebar}){
           <ListItem >  
           <FormControl fullWidth style={{backgroundColor:"white"}} >
                 <InputLabel style={{ fontWeight:"bold"}}>Type</InputLabel>
-                <Select  name="type"  >
+                <Select  name="type"  value={filters.type} onChange={onChange}>
                     <MenuItem style={{color:"#ff3366"}} value="hotel">Hotel</MenuItem>
                     <MenuItem style={{color:"#ff3366"}} value="apartment">Apartment</MenuItem>
                     <MenuItem style={{color:"#ff3366"}} value="villa">Villa</MenuItem>
@@ -49,15 +49,19 @@ function Sidebar({sidebar, onSidebar}){
             </FormControl>
           </ListItem>
           <ListItem>  
-          <FormControl fullWidth style={{backgroundColor:"white"}} >
-                <InputLabel  style={{ fontWeight:"bold"}}>Bedrooms</InputLabel>
-                <Select  id="bedrooms" >
-                  <MenuItem style={{color:"#ff3366"}} value="1">1</MenuItem>
-                  <MenuItem style={{color:"#ff3366"}} value="2">2</MenuItem>
-                  <MenuItem style={{color:"#ff3366"}} value="3">3</MenuItem>
-                  <MenuItem style={{color:"#ff3366"}}value="4plus">4+</MenuItem>
-                </Select>
-            </FormControl>
+          <FormControl fullWidth  >
+          <TextField
+                style={{backgroundColor: "#ff3366"}}
+                autoFocus
+                margin="dense"
+                name="bedrooms"
+                label="Bedrooms"
+                type="number"
+                variant="outlined"
+                value={filters.bedrooms}
+                onChange={onChange}
+            />
+          </FormControl>
           </ListItem>
           <ListItem>  
             <FormControl fullWidth >
@@ -69,19 +73,25 @@ function Sidebar({sidebar, onSidebar}){
                 label="People"
                 type="number"
                 variant="outlined"
-                value={1}
+                value={filters.people}
+                onChange={onChange}
             />
             </FormControl>
           </ListItem>
           <ListItem style={{marginBottom: "1rem"}}>  
-          <FormControl fullWidth  style={{ backgroundColor: "#ffffff"}}>
-                <InputLabel style={{ fontWeight:"bold"}}>Bathrooms</InputLabel>
-                <Select  id="bathrooms"  >
-                  <MenuItem style={{color:"#ff3366"}} value="1">1</MenuItem>
-                  <MenuItem style={{color:"#ff3366"}} value="2">2</MenuItem>
-                  <MenuItem style={{color:"#ff3366"}} value="3+">3+</MenuItem>
-                </Select>
-            </FormControl>
+          <FormControl fullWidth >
+          <TextField
+                style={{backgroundColor: "#ff3366"}}
+                autoFocus
+                margin="dense"
+                name="bathrooms"
+                label="Bathrooms"
+                type="number"
+                variant="outlined"
+                value={filters.bathrooms}
+                onChange={onChange}
+            />
+          </FormControl>
           </ListItem>
           <Divider   sx={{
                     borderColor: "#ffffff",
@@ -89,18 +99,18 @@ function Sidebar({sidebar, onSidebar}){
         <List>
             <div className='flex'>
             <ListItem>
-              <FormControlLabel style={{color:"#69696a"}} control={<Checkbox id={"parking"}/>} label="Parking" />
+              <FormControlLabel style={{color:"#69696a"}} control={<Checkbox name={"parking"} value={filters.parking} onChange={onChange}/>} label="Parking" />
                 </ListItem>
                 <ListItem>
-                    <FormControlLabel style={{color:"#69696a"}} control={<Checkbox id={"spa"}/>} label="Spa" />
+                    <FormControlLabel style={{color:"#69696a"}} control={<Checkbox name={"spa"}  value={filters.spa} onChange={onChange}/>} label="Spa" />
                 </ListItem>
             </div>
           <div className='flex'>
             <ListItem>
-                <FormControlLabel style={{color:"#69696a"}}  control={<Checkbox id={"pool"}/>} label="Pool" />
+                <FormControlLabel style={{color:"#69696a"}}  control={<Checkbox name={"pool"}  value={filters.pool} onChange={onChange}/>} label="Pool" />
             </ListItem>
             <ListItem>
-                <FormControlLabel style={{color:"#69696a"}} control={<Checkbox id={"kitchen"}/>} label="Kitchen" />
+                <FormControlLabel style={{color:"#69696a"}} control={<Checkbox name={"kitchen"}  value={filters.kitchen} onChange={onChange}/>} label="Kitchen" />
             </ListItem>
           </div>
       </List> 
@@ -108,10 +118,10 @@ function Sidebar({sidebar, onSidebar}){
           <br/>
           <br/>
           <ListItem>
-              <FormControlLabel style={{color:"#69696a"}} control={<Checkbox id={"exclude"}/>} checked={true} label="Exclude my listings from the search" />
+              <FormControlLabel style={{color:"#69696a"}} control={<Checkbox name={"excludeMine"}  value={filters.excludeMine}  checked={filters.excludeMine} onChange={onChange}/>} label="Exclude my listings from the search" />
           </ListItem>
           <ListItem>
-              <FormControlLabel style={{color:"#ff3366"}} control={<Checkbox id={"apply"}/>} label="Apply Filters" />
+              <FormControlLabel style={{color:"#ff3366"}} control={<Checkbox name={"apply"}  value={filters.apply} onChange={onChange}/>} label="Apply Filters" />
           </ListItem>
           </div>
           </Box>
