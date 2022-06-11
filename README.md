@@ -3,7 +3,7 @@
 Full-stack MERN application
 
 FrontEnd: ReactJs,
-BackEnd: Express,
+BackEnd: Express, Node
 Database: MongoDb
 
 # dependencies

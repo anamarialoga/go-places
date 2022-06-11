@@ -216,7 +216,7 @@ const updateListing = async(req, res)=>{
     const booking = await Booking.find({listingId: req.params.listingid});
     let OK=false;
 
-    if(booking){
+    if(booking.length>0){
     if(booking[0].userId === req.user.id)
         OK=true;
     }
@@ -242,6 +242,7 @@ const updateListing = async(req, res)=>{
             images.push(file.filename);
         })
     }
+    console.log(images);
 
     let ranges = [...listing.ranges]
     if(req.body.ranges){
@@ -273,8 +274,6 @@ const updateListing = async(req, res)=>{
     listing.images = images;
     if(OK===true){
         listing.average= averages;
-    }else{
-        return res.status(200).send({message:"You did not book this listing, so you cannot leave reviews"})
     } 
     
    listing.save().then(()=>res.json(listing));

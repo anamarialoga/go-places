@@ -171,6 +171,14 @@ const getUsersById = asyncHandler(async(req, rsp)=>{
 })
 
 
+const getAllUsers = asyncHandler(async(req, rsp)=>{
+    const users = await User.find()
+    if (users){
+        return rsp.status(200).json(users)
+    }else   return rsp.status(200).json({message: 'No users in the DB'});
+})
+
+
 module.exports={
     registerUser, 
     loginUser,
@@ -178,4 +186,5 @@ module.exports={
     updateUser, 
     getUserById,
     getUsersById,
+    getAllUsers
 }

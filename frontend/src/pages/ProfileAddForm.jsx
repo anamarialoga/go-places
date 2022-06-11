@@ -270,7 +270,9 @@ return loading? <Loading/> : (
             fullWidth
             variant="outlined"
             onChange={onMutate}
-            multiple
+            inputProps={{
+                multiple: true
+              }}
             max='8'
             accept=".png, .jpg, .jpeg"
             required

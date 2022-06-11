@@ -226,7 +226,7 @@ export const FormProvider = ({children})=> {
 
         console.log((formData.get('location') !== "") && (formData.get('price') > 0) && (((formData.get('offer') === 'true') && (formData.get('discount') > 10)) || ((formData.get('offer') === 'false') && (formData.get('discount') === '0'))))
 
-    if(formData.images) {
+    if(formdata.images) {
        for(const file of formdata.images){
            formData.append("images", file);
        }

@@ -482,26 +482,6 @@ export const AppProvider = ({children})=>{
     }
 
 
-
-    // const excludeMyListings = async ()=>
-    // {
-    //     var config = {
-    //         method: 'get',
-    //         url: 'http://localhost:1179/api/listings/excludemine',
-    //         headers: { 
-    //           'Authorization': `Bearer ${localStorage.getItem('token')}`
-    //         }
-    //       };
-          
-    //       axios(config)
-    //       .then(function (response) {
-    //         console.log(JSON.stringify(response.data));
-    //       })
-    //       .catch(function (error) {
-    //         console.log(error);
-    //       });          
-    // }
-
 return (
     <AppContext.Provider value={{
     onLogin, 
