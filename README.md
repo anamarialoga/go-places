@@ -14,16 +14,10 @@ Database: MongoDb
 # front-end:
 
     * react-router-dom
-    * react-icons
     * swiper: image slider
-    * sass
     * axios: handler for HTTP requests
-    * react-jwt: jsonwebtoken decoder
     * react-paginate
     * react-toastify: frontend error handler
-    * react-datepicker
-    * leaflet
-    * react-leaflet
 
 # back-end
 
@@ -34,6 +28,4 @@ Database: MongoDb
     * jsonwebtoken: generate tokens
     * nodemon
     * cors
-    * gridfs-stream
     * multer
-    * multer-gridfs-storage
