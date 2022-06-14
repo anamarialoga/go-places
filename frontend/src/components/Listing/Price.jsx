@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import { Button, CardActions, Divider} from '@mui/material';
 import withRoot from '../../withRoot';
 import PaidIcon from '@mui/icons-material/Paid';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Price(props) {
 
