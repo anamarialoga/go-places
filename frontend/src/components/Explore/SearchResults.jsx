@@ -30,7 +30,7 @@ return<>
     <> 
     <List style={{height:'16.4cm'}}>
         {props.searchedListings.slice(pageNumber * listingsPerPage , pageNumber * listingsPerPage + listingsPerPage).map((listing, i) =>
-            <CardActionArea  key={i} onClick={()=>window.location.href=`/listings/${listing._id}`}>
+            <CardActionArea  key={i} onClick={()=>navigate(`/listings/${listing._id}`)}>
             <ListItem  divider={i<props.searchedListings.length }>
                 <ListItemAvatar>
                 <img

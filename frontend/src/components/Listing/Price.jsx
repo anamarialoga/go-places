@@ -6,9 +6,11 @@ import CardContent from '@mui/material/CardContent';
 import { Button, CardActions, Divider} from '@mui/material';
 import withRoot from '../../withRoot';
 import PaidIcon from '@mui/icons-material/Paid';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function Price(props) {
 
+  const navigate = useNavigate();
   return (
     <Grid item xs={12} md={3} >
         <Card sx={{ display: 'flex' , height: "6cm"}}>
@@ -49,10 +51,10 @@ function Price(props) {
           <Divider />
           <CardActions >
              { props.user?.id === props.listing?.userId ?
-              <Button disabled fullWidth variant='contained' color={"secondary"} onClick={()=>window.location.href=`http://localhost:3000/listings/${props.listing._id}/rent`}>
+              <Button disabled fullWidth variant='contained' color={"secondary"} onClick={()=>navigate(`http://localhost:3000/listings/${props.listing._id}/rent`)}>
                  checkout & Book
               </Button> :
-              <Button  fullWidth variant='contained' color={"secondary"} onClick={()=>window.location.href=`http://localhost:3000/listings/${props.listing._id}/rent`}>
+              <Button  fullWidth variant='contained' color={"secondary"} onClick={()=>navigate(`http://localhost:3000/listings/${props.listing._id}/rent`)}>
               checkout & Book
            </Button> }
           </CardActions>
