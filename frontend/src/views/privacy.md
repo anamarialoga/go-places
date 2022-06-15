@@ -1,93 +1,21 @@
-<!-- markdownlint-capture -->
-<!-- markdownlint-disable -->
-
-Last modified: October 7th, 2018.
-
-<!-- markdownlint-restore -->
-
-MUI is committed to protecting and respecting your privacy. This Privacy Policy sets out how we collect and process personal information about you when you visit the website mui.com, when you use our products and services (our "Services"), or when you otherwise do business or make contact with us.
-
-Please read this policy carefully to understand how we handle and treat your personal information.
-
 ## What information do we collect?
 
-We may collect and process the following personal information from you:
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Viverra ipsum nunc aliquet bibendum. Orci sagittis eu volutpat odio facilisis mauris. At in tellus integer feugiat. Sociis natoque penatibus et magnis dis. Magna fermentum iaculis eu non diam phasellus vestibulum. Imperdiet nulla malesuada pellentesque elit eget gravida cum sociis. Eget sit amet tellus cras adipiscing enim eu. Rhoncus aenean vel elit scelerisque mauris. Sit amet porttitor eget dolor morbi non. Aenean et tortor at risus. Pulvinar sapien et ligula ullamcorper malesuada. Sed risus pretium quam vulputate dignissim suspendisse in est. Odio morbi quis commodo odio. Nibh tortor id aliquet lectus. Egestas dui id ornare arcu odio ut. Diam donec adipiscing tristique risus nec. Consequat ac felis donec et odio. Purus non enim praesent elementum facilisis leo vel fringilla. Et malesuada fames ac turpis egestas integer.
 
-- **Information you provide to us:** We collect personal information when you voluntarily provide us with such information in the course of using our website or Services. For example, when you register to use our Services, we will collect your name, email address and organization information. We also collect personal information from you when you subscribe to our newsletter, or respond to a survey. If you make an enquiry through our website, or contact us in any other way, we will keep a copy of your communications with us.
-- **Information we collect when you do business with us:** We may process your personal information when you do business with us – for example, as a customer or prospective customer, or as a vendor, supplier, consultant or other third party. For example, we may hold your business contact information and financial account information (if any) and other communications you have with us for the purposes of maintaining our business relations with you.
-- **Information we automatically collect:** We may also collect certain technical information by automatic means when you visit our website, such as IP address, browser type and operating system, referring URLs, your use of our website, and other clickstream data. We collect this information automatically through the use of various technologies, such as cookies.
-- **Personal information where we act as a data processor:** We also process personal information on behalf of our customers in the context of supporting our products and services. Where a customer subscribes to our Services for their website, game or app, they will be the ones who control what event data is collected and stored on our systems. For example, they may ask us to log basic user data (e.g. email address or username), device identifiers, IP addresses, event type, and related source code. In such cases, we are data processors acting in accordance with the instructions of our customers. You will need to refer to the privacy policies of our customers to find out more about how such information is handled by them.
+Semper viverra nam libero justo laoreet sit. In est ante in nibh mauris. Imperdiet proin fermentum leo vel orci porta non pulvinar neque. Tristique nulla aliquet enim tortor at. Sit amet nisl purus in mollis. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla. Tempus egestas sed sed risus. Praesent elementum facilisis leo vel fringilla est ullamcorper eget nulla. Nec ultrices dui sapien eget mi proin sed. Adipiscing elit duis tristique sollicitudin nibh sit amet. Risus commodo viverra maecenas accumsan lacus vel facilisis. Imperdiet sed euismod nisi porta lorem mollis. Lectus proin nibh nisl condimentum id venenatis a condimentum vitae. Et malesuada fames ac turpis egestas. Diam maecenas ultricies mi eget mauris pharetra et ultrices neque. In mollis nunc sed id.
 
-## What do we use your information for?
+Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat. Eros in cursus turpis massa. Diam vel quam elementum pulvinar etiam. Nibh sit amet commodo nulla facilisi nullam vehicula ipsum a. Donec ac odio tempor orci. Mattis nunc sed blandit libero volutpat sed cras. Libero nunc consequat interdum varius sit amet. Morbi enim nunc faucibus a. Ante metus dictum at tempor commodo ullamcorper a. Amet consectetur adipiscing elit pellentesque habitant morbi tristique. Egestas fringilla phasellus faucibus scelerisque eleifend donec pretium vulputate.
 
-The personal information we collect from you may be used in one of the following ways:
+Sed ullamcorper morbi tincidunt ornare. Mattis molestie a iaculis at. Habitasse platea dictumst quisque sagittis purus. Sit amet risus nullam eget felis eget nunc lobortis mattis. At risus viverra adipiscing at in tellus integer feugiat scelerisque. Sit amet nisl suscipit adipiscing. Ultrices in iaculis nunc sed augue lacus viverra vitae congue. Id diam maecenas ultricies mi. Leo in vitae turpis massa sed elementum. Diam quis enim lobortis scelerisque fermentum dui. Enim sit amet venenatis urna cursus eget nunc. In tellus integer feugiat scelerisque varius morbi enim nunc faucibus. Amet risus nullam eget felis eget nunc. Risus feugiat in ante metus dictum at tempor. Senectus et netus et malesuada fames ac. Vitae aliquet nec ullamcorper sit. Aliquet enim tortor at auctor urna nunc id cursus metus.
 
-- To deal with your inquiries and requests
-- To create and administer records about any online account that you register with us
-- To provide you with information and access to resources that you have requested from us
-- To provide you with technical support (your information helps us to better respond to your individual needs)
-- To improve our website (we continually strive to improve our website offerings based on the information and feedback we receive from you), including to improve the navigation and content of our sites
-- For website and system administration and security
-- For general business purposes, including to improve customer service (your information helps us to more effectively respond to your customer service requests and support needs), to help us improve the content and functionality of our Services, to better understand our users, to protect against wrongdoing, to enforce our Terms of Service, and to generally manage our business
-- To process transactions and to provide Services to our customers and end-users
-- For recruitment purposes, where you apply for a job with us
-- To administer a contest, promotion, survey, or other site features
-- To send periodic emails. The email address you provide for order processing, will only be used to send you information and updates pertaining to your order. Where it is in accordance with your marketing preferences, we will send occasional marketing emails about our products and services, which you can unsubscribe from at any time using the link provided in the message.
+Lectus sit amet est placerat in egestas erat. Non enim praesent elementum facilisis. Lorem donec massa sapien faucibus. Turpis tincidunt id aliquet risus feugiat in ante metus. Vitae turpis massa sed elementum tempus egestas sed. Nec dui nunc mattis enim ut. Proin sed libero enim sed faucibus turpis. Sit amet nulla facilisi morbi tempus iaculis urna id. Mi sit amet mauris commodo quis imperdiet massa tincidunt nunc. Leo vel fringilla est ullamcorper eget nulla. Id diam maecenas ultricies mi eget mauris pharetra. Lobortis elementum nibh tellus molestie nunc non blandit massa enim. Enim blandit volutpat maecenas volutpat blandit aliquam. Tristique et egestas quis ipsum suspendisse ultrices gravida.
 
-## How do we protect your information?
+Lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt. Venenatis urna cursus eget nunc scelerisque. Proin sed libero enim sed. Gravida dictum fusce ut placerat. Amet nulla facilisi morbi tempus iaculis urna id. Ut morbi tincidunt augue interdum velit. Ultrices in iaculis nunc sed augue lacus viverra. Faucibus vitae aliquet nec ullamcorper sit amet. Donec adipiscing tristique risus nec feugiat in. Suspendisse faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Cum sociis natoque penatibus et magnis dis. Aliquet eget sit amet tellus cras. Ut consequat semper viverra nam libero justo laoreet sit amet. Metus dictum at tempor commodo ullamcorper. Et netus et malesuada fames.
 
-We implement a variety of security measures to maintain the safety of your personal information when you enter, submit, or access your personal information. We offer the use of a secure server. All supplied sensitive/credit information is transmitted via Secure Socket Layer (SSL) technology and then encrypted into our Payment gateway providers database only to be accessible by those authorized with special access rights to such systems, and are required to keep the information confidential. After a transaction, your private information (credit cards, social security numbers, financials, etc.) will not be stored on our servers.
+Et malesuada fames ac turpis egestas sed tempus urna. Neque sodales ut etiam sit amet nisl purus in mollis. Suspendisse potenti nullam ac tortor. Feugiat in ante metus dictum at tempor commodo. Eget nunc scelerisque viverra mauris in aliquam sem fringilla ut. Mi eget mauris pharetra et ultrices. Volutpat maecenas volutpat blandit aliquam etiam. Mauris a diam maecenas sed enim ut sem. In ornare quam viverra orci sagittis. Rutrum quisque non tellus orci ac auctor augue mauris. Pretium vulputate sapien nec sagittis aliquam. Risus nec feugiat in fermentum. Nibh praesent tristique magna sit amet purus gravida quis. Mattis vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. Turpis egestas sed tempus urna et. Tincidunt ornare massa eget egestas purus viverra accumsan. Nisi porta lorem mollis aliquam ut porttitor.
 
-## Do we use cookies?
+Ipsum dolor sit amet consectetur adipiscing elit. Interdum velit laoreet id donec ultrices. Placerat in egestas erat imperdiet. Aenean vel elit scelerisque mauris pellentesque pulvinar. Non quam lacus suspendisse faucibus interdum posuere lorem. Amet nisl purus in mollis nunc. Bibendum est ultricies integer quis auctor elit sed vulputate mi. Ut sem nulla pharetra diam sit. Sit amet mattis vulputate enim nulla aliquet. Sem viverra aliquet eget sit amet tellus cras. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Elit sed vulputate mi sit amet mauris commodo quis.
 
-Yes. Cookies are small files that a site or its service provider transfers to your computers hard drive through your Web browser (if you allow) that enables the sites or service providers systems to recognize your browser and capture and remember certain information.
+Pulvinar neque laoreet suspendisse interdum. Ac auctor augue mauris augue neque gravida in. Pellentesque sit amet porttitor eget dolor. Platea dictumst quisque sagittis purus sit amet volutpat consequat mauris. At imperdiet dui accumsan sit amet nulla facilisi morbi. Augue eget arcu dictum varius duis at consectetur. Proin sagittis nisl rhoncus mattis rhoncus urna neque. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus. Lorem sed risus ultricies tristique nulla aliquet enim tortor. Posuere morbi leo urna molestie at elementum eu facilisis sed. Vulputate ut pharetra sit amet aliquam id diam. Est ultricies integer quis auctor elit sed vulputate mi. Enim nec dui nunc mattis enim ut tellus elementum sagittis. Arcu vitae elementum curabitur vitae nunc sed. Mi quis hendrerit dolor magna eget. Sit amet porttitor eget dolor morbi non. Convallis aenean et tortor at risus viverra adipiscing at.
 
-We use cookies to understand and save your preferences for future visits, to advertise to you on other sites and compile aggregate data about site traffic and site interaction so that we can offer better site experiences and tools in the future.
-
-You may refuse to accept cookies by activating the setting on your browser which allows you to refuse the setting of cookies. You can find information on popular browsers and how to adjust your cookie preferences at the following websites:
-
-- Microsoft Internet Explorer
-- Mozilla Firefox
-- Google Chrome
-- Apple Safari
-
-However, if you choose to disable cookies, you may be unable to access certain parts of our site. Unless you have adjusted your browser setting so that it will refuse cookies, our system will issue cookies when you log on to our site.
-
-## Do we disclose any information to outside parties?
-
-We will only share your information with third parties in certain circumstances:
-
-- We engage certain trusted third parties to perform functions and provide services to us, including cloud hosting services, off-site backups, email service providers, and customer support providers. We will only share your personal information with third parties to the extent necessary to perform these functions, in accordance with the purposes set out in this Privacy Policy and applicable laws.
-- In the event of a corporate sale, merger, reorganization, dissolution or similar event, your personal information may be sold, disposed of, transferred or otherwise disclosed as part of that transaction.
-- We may also disclose information about you to third parties where we believe it necessary or appropriate under law, for example: (1) to protect or defend our rights, interests or property or that of third parties; (2) to comply with legal process, judicial orders or subpoenas; (3) to respond to requests from public or government authorities, including for national security and law enforcement purposes; (4) to prevent or investigate possible wrongdoing in connection with the Services or to enforce our Terms of Service; (5) to protect the vital interests of our users, customers and other third parties.
-- We may use and share aggregated non-personal information with third parties for marketing, advertising and analytics purposes.
-
-We do not sell or trade your personal information to third parties.
-
-## Third Party Links
-
-Occasionally, at our discretion, we may include or offer third party products or services on our website. If you access other websites using the links provided, the operators of these websites may collect information from you that will be used by them in accordance with their privacy policies. These third party sites have separate and independent privacy policies. We therefore have no responsibility or liability for the content and activities of these linked sites. Nonetheless, we seek to protect the integrity of our site and welcome any feedback about these sites.
-
-## International Transfers
-
-If you are visiting our website or using our Services from outside the United States (US), please be aware that you are sending personal information to the US where our servers are located. The US may not have data protection laws that are as comprehensive or protective as those in your country of residence; however, our collection, storage and use of your personal information will at all times be in accordance with this Privacy Policy.
-
-## Your Rights
-
-If you are from the EU, you may have the right to access a copy of the personal information we hold about you, or to request the correction, amendment or deletion of such information where it is inaccurate or processed in violation of the Privacy Shield Principles. To make such a request, please contact us at the contact details at the left.
-
-We will consider and respond to your request in accordance with the Privacy Shield Principles and applicable laws.
-
-Furthermore, we commit to giving you an opportunity to opt-out if your personal information is to be disclosed to any other independent third parties, or to be used for a purpose materially different from those that are set out in this Privacy Policy. Where sensitive personal information is involved, we will always obtain your express opt-in consent to do such things. If you otherwise wish to limit the use or disclosure of your personal information, please write to us at the contact details further below.
-
-You can also unsubscribe from our marketing communications at any time by following the instructions or unsubscribe mechanism in the email message itself.
-
-## Data Retention
-
-We may retain your personal information as long as you continue to use the Services, have an account with us or for as long as is necessary to fulfil the purposes outlined in the policy. You can ask to close your account by contacting us at the details below and we will delete your personal information on request.
-
-We may however retain personal information for an additional period as is permitted or required under applicable laws, for legal, tax or regulatory reasons, or for legitimate and lawful business purposes.
-
-## Changes to our Privacy Policy
-
-If we decide to change our privacy policy, we will post those changes on this page, and/or update the Privacy Policy modification date below.
+Nibh ipsum consequat nisl vel. Dictum fusce ut placerat orci nulla pellentesque dignissim enim. Pellentesque adipiscing commodo elit at imperdiet dui accumsan sit. Hac habitasse platea dictumst quisque sagittis purus sit amet. Senectus et netus et malesuada. Egestas congue quisque egestas diam. Molestie ac feugiat sed lectus vestibulum mattis ullamcorper. Arcu bibendum at varius vel. Malesuada fames ac turpis egestas integer eget aliquet. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Tristique risus nec feugiat in fermentum posuere urna nec tincidunt. Ullamcorper velit sed ullamcorper morbi. Sed enim ut sem viverra aliquet eget sit. Bibendum arcu vitae elementum curabitur vitae nunc sed. Etiam erat velit scelerisque in dictum non consectetur.
