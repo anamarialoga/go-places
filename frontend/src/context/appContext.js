@@ -107,7 +107,7 @@ export const AppProvider = ({children})=>{
 
     const onLogOut=()=>{
         localStorage.removeItem("token");
-        window.location.href = '/signin';
+        window.location.href = '/home';
         toast.success('Logout successful!');
       }
 
