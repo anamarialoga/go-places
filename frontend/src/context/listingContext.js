@@ -34,8 +34,6 @@ export const ListingProvider = ({children})=> {
         }
     }
 
-   
-        const [loadingPlaces, setLoadingPlaces] = useState(false)
         const getPlacesData = async (type, lat, long) => {
             try {
               setLoading(true);
@@ -49,7 +47,7 @@ export const ListingProvider = ({children})=> {
                     'X-RapidAPI-Key': 'bb448a6f19mshcfb71a404c39b74p119c47jsn3ca02941b0df'                
                 },
               });
-              setLoadingPlaces(false);
+              setLoading(false);
               setPlaces(data);
             } catch (error) {
               console.log(error);
