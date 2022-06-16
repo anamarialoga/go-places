@@ -141,7 +141,7 @@ function ListingAlbum() {
                 //   background: `url(${backgroundImage}) right no-repeat` 
                   }}>
                         <Button variant={"text"} color={"primary"} id={card} onClick={() => {setOpen(true); setImage(card)}} size="small">View</Button>
-                        { (listing.userId === user.id) &&  <Button variant={"text"} color={"primary"}  size="small">Delete</Button> }
+                        { (listing.userId === user.id) &&  <Button variant={"text"} color={"secondary"}  size="small">Delete</Button> }
                   </CardActions>
                 </Card>
               </Grid>
