@@ -47,7 +47,7 @@ export const MyListings = (props) => {
       {props.listings.slice(pageNumber * listingsPerPage , pageNumber * listingsPerPage + listingsPerPage).map((listing, i) => (
         <CardActionArea onClick={()=>navigate(`/listings/${listing._id}`)}  key={i}>
         <ListItem
-          divider={i < props.listings.length - 1}
+          divider={i < 2}
         >
           <ListItemAvatar style={{cursor:  "pointer"}}>
             <img
