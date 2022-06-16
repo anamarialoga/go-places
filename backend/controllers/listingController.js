@@ -224,7 +224,7 @@ const updateListing = async(req, res)=>{
     const userName= user.firstName + " " + user.lastName;
     
 
-    let averages= [...listing.average]
+    let averages= [...listing?.average]
     if(req.body.review || req.body.rating )
     {
         const average = {

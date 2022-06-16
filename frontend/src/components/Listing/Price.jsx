@@ -54,7 +54,7 @@ function Price(props) {
               <Button disabled fullWidth variant='contained' color={"secondary"} onClick={()=>navigate(`http://localhost:3000/listings/${props.listing._id}/rent`)}>
                  checkout & Book
               </Button> :
-              <Button  fullWidth variant='contained' color={"secondary"} onClick={()=>navigate(`http://localhost:3000/listings/${props.listing._id}/rent`)}>
+              <Button  fullWidth variant='contained' color={"secondary"} onClick={()=> window.location.href = `http://localhost:3000/listings/${props.listing._id}/rent`}>
               checkout & Book
            </Button> }
           </CardActions>

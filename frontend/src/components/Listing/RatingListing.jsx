@@ -11,7 +11,7 @@ function RatingListing(props) {
   let avg=0;
   let nrReviews = 0;
 
-for(let i=0; i<props.listing.average.length; i++){
+for(let i=0; i<props.listing?.average.length; i++){
   nrReviews = nrReviews + 1;
 }
 
@@ -37,7 +37,7 @@ for(let i=0; i<props.listing.average.length; i++){
             <div style={{display: 'inline-flex', width:"100%", justifyContent: "space-between"}}>
             <Rating size='large' readOnly defaultValue={avg ?? 0} precision={0.5}/>
             <Typography component="h2" variant="h5" style={{marginRight:"1rem", fontWeight: "800"}}>
-              {(avg/nrReviews).toFixed(1) ?? 0} /5 
+              {typeof (avg/nrReviews).toFixed(1) === Number? (avg/nrReviews).toFixed(1) : 0} /5 
               </Typography>
             </div>
           </CardActions>
