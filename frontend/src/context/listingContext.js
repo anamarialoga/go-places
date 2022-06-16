@@ -129,7 +129,6 @@ export const ListingProvider = ({children})=> {
          forecast,
          getPlacesData,
          places,
-         loadingPlaces, 
          addReview
         }}>
             {children}
