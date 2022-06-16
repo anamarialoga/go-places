@@ -200,6 +200,7 @@ const createListing = async(req, res) => {
 // PUT
 const updateListing = async(req, res)=>{
     const user = await User.findById(req.user.id);
+
     if(!user){
         console.log('User not Connected');
         return res.status(404).send({message: 'User not Connected'});
@@ -213,14 +214,13 @@ const updateListing = async(req, res)=>{
     }
 
 
-    const booking = await Booking.find({listingId: req.params.listingid});
-    let OK=false;
+    const booking = await Booking.find({listingId: req.params.listingid, userId: req.user.id});
 
+
+    let OK=false;
     if(booking.length>0){
-    if(booking[0].userId === req.user.id)
         OK=true;
     }
-
     const userName= user.firstName + " " + user.lastName;
     
 
@@ -235,6 +235,7 @@ const updateListing = async(req, res)=>{
         }
         averages.push(average);
     }
+
 
     let images = [...listing.images]
     if(req.files){
@@ -273,6 +274,7 @@ const updateListing = async(req, res)=>{
     listing.ranges = ranges;
     listing.images = images;
     if(OK===true){
+        console.log("a intrat aici")
         listing.average= averages;
     } 
     
