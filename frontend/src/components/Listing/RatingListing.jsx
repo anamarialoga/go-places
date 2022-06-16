@@ -8,13 +8,21 @@ import withRoot from '../../withRoot';
 
 function RatingListing(props) {
 
+  let avg=0;
+  let nrReviews = 0;
+  props.listing?.average?.forEach((elem, i) => {
+    avg = (avg + elem.rating )/(i+1);
+    nrReviews = (nrReviews + i+1)
+  });
+
+
   return (
     <Grid item xs={12} md={3} >
         <Card sx={{ marginTop: '1rem',display: 'flex' , width:"10cm"}}>
         <div className='block' style={{width: "100%"}}>
           <CardContent sx={{ flex: 1 }}>
             <Typography component="h2" variant="h5" style={{fontWeight: "800"}}>
-                Reviews
+               {nrReviews === 1? '1 Review' : `${nrReviews} Reviews`} 
             </Typography>
             <Typography  variant="subtitile1" color={'text.secondary'} style={{fontWeight: "800"}}>
                 The average grade and rating given by our customers
@@ -23,9 +31,9 @@ function RatingListing(props) {
           <Divider />
           <CardActions >      
             <div style={{display: 'inline-flex', width:"100%", justifyContent: "space-between"}}>
-            <Rating size='large' readOnly defaultValue={props.listing?.rating ?? 5} precision={0.5}/>
+            <Rating size='large' readOnly defaultValue={avg ?? 0} precision={0.5}/>
             <Typography component="h2" variant="h5" style={{marginRight:"1rem", fontWeight: "800"}}>
-              {props.listing?.rating ?? 5} /5 
+              {avg ?? 0} /5 
               </Typography>
             </div>
           </CardActions>
