@@ -2,7 +2,7 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
-        callback(null, "D:/Repos/go-places/frontend/public/uploads");
+        callback(null, `D:/go-places-app-master/frontend/public/images`);
     }, 
     filename: (req, file, callback) => {
         callback(null, file.originalname);

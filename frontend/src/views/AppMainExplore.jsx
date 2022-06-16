@@ -171,7 +171,12 @@ const [filteredLocations, setFilteredLocations ] = React.useState([])
       </div>
       <Sidebar sidebar={sidebar} onSidebar={onSidebar} onChange={onChange} filters={filters}/>
     </ProductHeroLayout>
-    {submit && <SearchResults submit={submit} searchedListings={(filters.apply === true) ? filteredLocations : searchedListings} searchedLoc={searchedLoc} startDate={(dateRange.searchDateStart)?.toDateString()} endDate={(dateRange.searchDateEnd)?.toDateString()}/>}
+
+    { submit===true && <SearchResults 
+    submit={submit} searchedListings={(filters.apply === true) ? filteredLocations : searchedListings} searchedLoc={searchedLoc} 
+    startDate={(dateRange.searchDateStart)?.toDateString()} endDate={(dateRange.searchDateEnd)?.toDateString()}
+    />  }
+
     </div>
   );
 }
