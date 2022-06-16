@@ -2,18 +2,20 @@ import { Button, Card, CardActions, CardContent, CardHeader, Divider, List, List
 import { Box } from '@mui/system';
 import axios from 'axios';
 import * as React from 'react'
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import SidebarListing from '../components/Listing/SidebarListing';
 import { Loading } from '../components/Loading';
 import TextField from '../components/TextField';
 import Typography from '../components/Typography';
+import { AppContext } from '../context/appContext';
 import { ListingContext } from '../context/listingContext';
 import withRoot from "../withRoot";
 
 
 function ListingAddReview (){
-
+    const {user} = useContext(AppContext)
     const {listingid} = useParams();
     const {listing, fetchListing, loading} = React.useContext(ListingContext);
     const [average, setAverage] = React.useState({
@@ -127,7 +129,7 @@ function ListingAddReview (){
                             maxLength={300}
                         />
                         </div>
-                        <Button onClick={handleSubmit} color={"secondary"} variant={"contained"}>
+                        <Button disabled={user.id === listing.userId ? true : false} onClick={handleSubmit} color={"secondary"} variant={"contained"}>
                             Submit Review
                         </Button>
                     </CardActions>

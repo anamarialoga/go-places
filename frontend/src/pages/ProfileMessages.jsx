@@ -24,6 +24,7 @@ const ProfileMessages =()=>{
     const [filteredList, setFilteredList] = useState([])
     useEffect(()=>{
         getConv(listingid);
+        console.log(allConv)
         if(allConv.length>1){
             console.log('There are more conversations');
             for(let i=0; i<allConv.length-1; i++){
