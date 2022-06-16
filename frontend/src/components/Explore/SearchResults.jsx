@@ -28,10 +28,10 @@ return<>
     <Divider/>
     {props.searchedListings.length > 0 ?
     <> 
-    <List style={{height:'17cm'}}>
+    <List style={{height:'16.89cm'}}>
         {props.searchedListings.slice(pageNumber * listingsPerPage , pageNumber * listingsPerPage + listingsPerPage).map((listing, i) =>
             <CardActionArea  key={i} onClick={()=>navigate(`/listings/${listing._id}`)}>
-            <ListItem  divider={i<props.searchedListings.length -1 }>
+            <ListItem  divider={i<2}>
                 <ListItemAvatar>
                 <img
                     alt={listing.name}
