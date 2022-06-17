@@ -33,7 +33,6 @@ function Review(props) {
         summary
       </Typography>
       <List disablePadding>
-       
           <ListItem  sx={{ py: 1, px: 0 }}>
             <ListItemText primary={listing.name} secondary={listing.description.slice(0,50)+'...'} />
             <Typography variant="body2">${(listing.price).toFixed(2)} /night</Typography>
