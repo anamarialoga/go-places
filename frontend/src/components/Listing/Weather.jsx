@@ -12,6 +12,7 @@ function Weather(props) {
     console.log(props.forecast)
     const today = new Date();
 
+
   return (
     <Grid item xs={12} md={3} >
       <CardActionArea component="a" href="#">

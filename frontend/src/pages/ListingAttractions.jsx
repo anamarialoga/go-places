@@ -11,14 +11,23 @@ const ListingAttractions= () => {
     const [rating, setRating] = useState('');
     const [filteredPlaces, setFilteredPlaces] = useState([]);
 
-    const {listing, fetchListing, loading, getPlacesData, places, coords} = React.useContext(ListingContext);
+    const {listing, fetchListing, loading, getPlacesData, places, setPlaces, coords} = React.useContext(ListingContext);
     const {listingid} = useParams();
     
     React.useEffect(()=>{
         fetchListing(listingid);
-        getPlacesData('attractions', coords.lat, coords.lng)
+        setPlaces([])
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
+
+    React.useEffect(()=>{
+        if(places.length === 0 ){
+            getPlacesData('attractions', coords.lat, coords.lng)
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[places])
+    console.log(places)
+
 
     useEffect(() => {
         const filtered = places.filter((place) => Number(place.rating) >= rating);
@@ -27,7 +36,7 @@ const ListingAttractions= () => {
 
     console.log(places)
 
-    return loading? <Loading/> : (
+    return (loading || places.length===0)? <Loading/> : (
         <>
         <SidebarListing listingid={listingid} listing={listing}/>
         <Places  type={'attractions'} places={filteredPlaces.length ? filteredPlaces : places} rating={rating} setRating={setRating} />

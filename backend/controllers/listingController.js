@@ -4,6 +4,7 @@ const Booking = require('../models/bookingModel');
 const Listing = require('../models/listingModel');
 const dotenv= require('dotenv');
 const { resetWatchers } = require('nodemon/lib/monitor/watch');
+const mongoose=require('mongoose'); 
 
 dotenv.config();
 
@@ -46,6 +47,7 @@ const getSingleListing = asyncHandler(async (req, rsp) => {
 
     //acccess the id of the listing from URL params;
     const listing = await Listing.findById(req.params.listingid);
+    console.log(mongoose.Types.ObjectId.isValid(req.params.listingid));
     if(!listing) {
         return rsp.status(404).json({message: 'Listing not found'});
     }
@@ -67,6 +69,7 @@ const getSingleListing = asyncHandler(async (req, rsp) => {
 const getListing = asyncHandler(async (req, rsp) => {
 
     const user = await User.findById(req.user.id);
+    console.log(mongoose.Types.ObjectId.isValid(req.params.listingid));
     if(!user){
         console.log('User not found');
         return rsp.status(404).send({message: 'User not found'});

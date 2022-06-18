@@ -25,19 +25,23 @@ const {user} = useContext(AppContext);
 
 useEffect(()=>{
     fetchListing(listingid);
-    getWeatherData(coords.lat, coords.lng)
-    getWeatherForecast(coords.lat, coords.lng)
 // eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
 
 
-// console.log(listing)
-// console.log(coords)
+useEffect(()=>{
+    if(forecast.length === 0 ){
+        getWeatherData(coords.lat, coords.lng)
+        getWeatherForecast(coords.lat, coords.lng)
+    }
+// eslint-disable-next-line react-hooks/exhaustive-deps
+},[forecast.length])
+
 console.log(weather)
 console.log(forecast)
 
 
-return loading? <Loading/> : (
+return (loading || forecast.length === 0)? <Loading/> : (
     <>
     <SidebarListing listingid={listingid} listing={listing}/>
     <div style={{   
