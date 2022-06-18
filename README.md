@@ -2,13 +2,23 @@
 
 Full-stack MERN application
 
-FrontEnd: ReactJs,
-BackEnd: Express, Node
-Database: MongoDb
+FrontEnd: ReactJs;
+BackEnd: Express, Node;
+Database: MongoDb;
+
+# installation
+
+    * In order to install all the dependencies, please run the following command under both /frontend and /go-places-app-master directories:
+    # npm install
+
+# start
+
+    * In order to start the application, please run the following command under /go-places-app-master directory:
+    * npm run dev
 
 # dependencies
 
-    * concurrently: run both 'npm run server' & 'npm run client'
+    * concurrently: runs both 'npm run server' & 'npm run client'
     * dotenv
 
 # front-end:
@@ -18,6 +28,8 @@ Database: MongoDb
     * axios: handler for HTTP requests
     * react-paginate
     * react-toastify: frontend error handler
+    * google-map-react
+    * Material UI packages
 
 # back-end
 
