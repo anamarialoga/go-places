@@ -45,10 +45,12 @@ export const MyListings = (props) => {
     <Divider />
     <List >
       {props.listings.slice(pageNumber * listingsPerPage , pageNumber * listingsPerPage + listingsPerPage).map((listing, i) => (
-        <CardActionArea onClick={()=>navigate(`/listings/${listing._id}`)}  key={i}>
+        
         <ListItem
           divider={i < 2}
+          key={i}
         >
+          <CardActionArea onClick={()=>navigate(`/listings/${listing._id}`)}  style={{width:300}}>
           <ListItemAvatar style={{cursor:  "pointer"}}>
             <img
               alt={listing.name}
@@ -60,6 +62,7 @@ export const MyListings = (props) => {
               }}
             />
           </ListItemAvatar>
+          </CardActionArea>
           <div style={{display: "flex",justifyContent: 'space-between', width: "100%", height:"9rem"}}>
             <div className='block' style={{width:"70%"}}>
               <ListItemText
@@ -88,7 +91,6 @@ export const MyListings = (props) => {
             </div>
           </div>
         </ListItem>
-        </CardActionArea>
       ))}
     </List>
     <Divider/>
