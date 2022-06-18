@@ -35,7 +35,7 @@ useEffect(()=>{
         getWeatherForecast(listing?.latitude, listing?.longitude)
     }
 // eslint-disable-next-line react-hooks/exhaustive-deps
-},[forecast])
+},[forecast, listing])
 
 console.log(forecast)
 

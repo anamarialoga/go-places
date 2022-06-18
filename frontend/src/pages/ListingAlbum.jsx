@@ -126,8 +126,6 @@ function ListingAlbum() {
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
                   <CardMedia
-                    //  style={{ background: `url(${backgroundImage})  right no-repeat` }}
-                    // style={{backgroundColor: "#fff5f8"}}
                     component="img"
                     sx={{
                       height: "6cm",
@@ -137,10 +135,9 @@ function ListingAlbum() {
                     alt={`photo-${i}`}
                   />
                   <CardActions style={{justifyContent: "center", 
-                //   background: `url(${backgroundImage}) right no-repeat` 
                   }}>
                         <Button variant={"text"} color={"primary"} id={card} onClick={() => {setOpen(true); setImage(card)}} size="small">View</Button>
-                        { (listing.userId === user.id) &&  <Button variant={"text"} color={"secondary"} onClick={()=>deleteImage(card, listingid)} size="small">Delete</Button> }
+                        { (listing.userId === user.id) &&  <Button variant={"text"} color={"secondary"} onClick={()=>{deleteImage(card, listingid); fetchListing(listingid)}} size="small">Delete</Button> }
                   </CardActions>
                 </Card>
               </Grid>
