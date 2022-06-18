@@ -19,7 +19,7 @@ import Weather from "../components/Listing/Weather";
 import { AppContext } from "../context/appContext";
 const SingleListing = () => {
 
-const {listing, fetchListing, loading, coords, getWeatherData, weather, getWeatherForecast, forecast} = useContext(ListingContext);
+const {listing, fetchListing, loading, coords, getWeatherForecast, forecast} = useContext(ListingContext);
 const {listingid} = useParams();
 const {user} = useContext(AppContext);
 
@@ -27,20 +27,20 @@ useEffect(()=>{
     fetchListing(listingid);
 // eslint-disable-next-line react-hooks/exhaustive-deps
 },[listingid])
+console.log(listing)
+
 
 useEffect(()=>{
     if(forecast.length === 0 ){
-        getWeatherData(listing.latitude, listing.longitude)
-        getWeatherForecast(listing.latitude, listing.longitude)
+        getWeatherForecast(listing?.latitude, listing?.longitude)
     }
 // eslint-disable-next-line react-hooks/exhaustive-deps
 },[forecast])
 
-console.log(weather)
 console.log(forecast)
 
 
-return (loading || forecast.length === 0)? <Loading/> : (
+return (loading || forecast.length===0 )? <Loading/> : (
     <>
     <SidebarListing listingid={listingid} listing={listing}/>
     <div style={{   

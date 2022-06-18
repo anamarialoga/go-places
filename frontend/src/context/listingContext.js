@@ -36,7 +36,6 @@ export const ListingProvider = ({children})=> {
 
         const getPlacesData = async (type, lat, long) => {
             try {
-              setLoading(true);
               const { data: { data } } = await axios.get(`https://travel-advisor.p.rapidapi.com/${type}/list-by-latlng`, {
                 params: {
                     latitude: `${lat}`,
@@ -47,7 +46,6 @@ export const ListingProvider = ({children})=> {
                     'X-RapidAPI-Key': 'bb448a6f19mshcfb71a404c39b74p119c47jsn3ca02941b0df'                
                 },
               });
-              setLoading(false);
               setPlaces(data);
             } catch (error) {
               console.log(error);
@@ -58,7 +56,6 @@ export const ListingProvider = ({children})=> {
         const getWeatherData = async (lat, lng) => {
             try {
               if (lat && lng) {
-                setLoading(true);
                 const { data } = await axios.get('https://community-open-weather-map.p.rapidapi.com/weather', {
                   params: { lat, lon: lng},
                   headers: {
@@ -66,7 +63,6 @@ export const ListingProvider = ({children})=> {
                     'X-RapidAPI-Key': 'bb448a6f19mshcfb71a404c39b74p119c47jsn3ca02941b0df'
                   },
                 });
-                setLoading(false);
                 setWeather(data.list? data.list[0].main : data.main);
               }
             } catch (error) {
@@ -79,7 +75,6 @@ export const ListingProvider = ({children})=> {
         const getWeatherForecast = async (lat, lng) => {
         try {
             if (lat && lng) {
-            setLoading(true);
             const { data } = await axios.get('https://community-open-weather-map.p.rapidapi.com/forecast/daily', {
                 params: { lat, lon: lng},
                 headers: {
@@ -87,7 +82,6 @@ export const ListingProvider = ({children})=> {
                     'X-RapidAPI-Key': 'bb448a6f19mshcfb71a404c39b74p119c47jsn3ca02941b0df'
                 },
             });
-            setLoading(false);
             setForecast(data.list);
             }
         } catch (error) {
@@ -117,6 +111,29 @@ export const ListingProvider = ({children})=> {
         }
 
 
+        const deleteImage = async(image, listingid)=>{
+          if (window.confirm(`Are you sure you want to delete ${image}?`)) {
+            var myHeaders = new Headers();
+            myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYTEwOTBkYTE5Nzg2ZjFjYWM2ODU4ZSIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IkRvZSIsImVtYWlsIjoiam9obi5kb2VAZXhhbXBsZS5jb20iLCJpYXQiOjE2NTU1NjAxNjIsImV4cCI6MTY1ODE1MjE2Mn0.LfQw5sKN8zkmybMYFHD9LQvAdtnKtPhcHDZSvqGZX70");
+            myHeaders.append("Content-Type", "application/json");
+            
+            var raw = JSON.stringify({
+              image
+            });
+            var requestOptions = {
+              method: 'PUT',
+              headers: myHeaders,
+              body: raw,
+              redirect: 'follow'
+            };
+            
+            fetch(`http://localhost:1179/api/listings/images/${listingid}`, requestOptions)
+              .then(response => response.text())
+              .then(result => console.log(result))
+              .catch(error => console.log('error', error));
+        }
+      }
+
     return (
         <ListingContext.Provider value={{
          loading,
@@ -130,7 +147,8 @@ export const ListingProvider = ({children})=> {
          getPlacesData,
          places,
          setPlaces,
-         addReview
+         addReview,
+         deleteImage
         }}>
             {children}
         </ListingContext.Provider>

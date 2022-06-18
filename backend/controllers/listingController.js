@@ -319,8 +319,30 @@ const delListing = asyncHandler(async (req, rsp) => {
 
 
 
+const deleteImage = asyncHandler(async(req, res) =>{
+    const listing = await Listing.findById(req.params.listingid)
+
+    if(req.user.id !== listing.userId) {
+        return res.status(200).json({message: "Not authorized"})
+    }
 
 
 
-module.exports= {createListing,getAllButMineListings, getAllListings, getListings, getSingleListing, updateListing, delListing, getListing};
+    if(listing.images.includes(req.body.image))
+    {
+        const index =listing.images.indexOf(req.body.image)
+        console.log(index)
+        listing.images.splice(index, 1)
+        console.log(listing.images)
+    }
+    else{
+        return res.status(200).json({message: "image does not exist"})
+    }
+
+    listing.save().then(()=>res.json(listing));
+
+})
+
+
+module.exports= {createListing,getAllButMineListings, getAllListings, getListings, getSingleListing, updateListing, delListing, getListing, deleteImage};
 

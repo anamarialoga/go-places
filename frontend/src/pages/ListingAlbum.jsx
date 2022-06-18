@@ -37,7 +37,6 @@ const style = {
     p: 4,
   };
 
-// const backgroundImage = 'http://127.0.0.1:8888/annie-spratt-nWiS2rgtVts-unsplash.jpg';
 
 function ListingAlbum() {
 
@@ -47,7 +46,7 @@ function ListingAlbum() {
   
 
     const {listingid} = useParams();
-    const {listing, fetchListing, loading} = React.useContext(ListingContext);
+    const {listing, fetchListing, loading, deleteImage} = React.useContext(ListingContext);
     const {user} = React.useContext(AppContext)
 
     React.useEffect(()=>{
@@ -141,7 +140,7 @@ function ListingAlbum() {
                 //   background: `url(${backgroundImage}) right no-repeat` 
                   }}>
                         <Button variant={"text"} color={"primary"} id={card} onClick={() => {setOpen(true); setImage(card)}} size="small">View</Button>
-                        { (listing.userId === user.id) &&  <Button variant={"text"} color={"secondary"}  size="small">Delete</Button> }
+                        { (listing.userId === user.id) &&  <Button variant={"text"} color={"secondary"} onClick={()=>deleteImage(card, listingid)} size="small">Delete</Button> }
                   </CardActions>
                 </Card>
               </Grid>
