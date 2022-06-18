@@ -66,13 +66,28 @@ const getUserBookings = asyncHandler(async (req, rsp) => {
 
 const cancelBooking = asyncHandler(async (req, rsp) => {
 
-    //acccess the id of the listing from URL params;
+    //acccess the id of the booking from URL params;
     const booking = await Booking.findById(req.params.bookingid);
     if(!booking) {
         return rsp.status(404).json({message: 'Booking not found'});
     }
     await booking.remove();
-    return rsp.status(200).json({message: 'The listing has been deleted'});
+
+    const listing = await Listing.findById(booking.listingId);
+
+    let newDates = [];
+    listing.ranges.map((date)=> {
+        if(!booking.dateRange.includes(date))
+          {  
+            newDates.push(date)
+          }
+        return newDates;
+    })
+
+    console.log("new date ranges", newDates)
+    listing.ranges=newDates;
+    listing.save();
+    return rsp.status(200).json({message: 'The booking has been deleted'});
 })
 
 
