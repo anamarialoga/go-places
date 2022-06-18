@@ -9,12 +9,12 @@ Database: MongoDb;
 # installation
 
     * In order to install all the dependencies, please run the following command under both /frontend and /go-places-app-master directories:
-    # npm install
+         npm install
 
 # start
 
     * In order to start the application, please run the following command under /go-places-app-master directory:
-    * npm run dev
+         npm run dev
 
 # dependencies
 
