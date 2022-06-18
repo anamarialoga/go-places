@@ -94,7 +94,7 @@ const ProfileMessages =()=>{
         <CardContent>
         <List style={{height:"62vh", overflow:"auto"}}>
         {filteredList.map((conver,  i) =>  
-                 <ListItem key={i} divider={i<filteredList.length -1}>
+                 <ListItem key={i} divider={i<filteredList.length }>
                             <div style={{display:"inline-flex", justifyContent:"space-between", width:"100%"}}>
                             <div>
                             <ListItemAvatar>
