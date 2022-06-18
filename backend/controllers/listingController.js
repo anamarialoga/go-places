@@ -76,7 +76,9 @@ const getListing = asyncHandler(async (req, rsp) => {
     }
 
     //acccess the id of the listing from URL params;
+
     const listing = await Listing.findById(req.params.listingid);
+
     if(!listing) {
         return rsp.status(404).json({message: 'Listing not found'});
     }

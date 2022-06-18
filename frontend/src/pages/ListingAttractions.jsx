@@ -11,7 +11,7 @@ const ListingAttractions= () => {
     const [rating, setRating] = useState('');
     const [filteredPlaces, setFilteredPlaces] = useState([]);
 
-    const {listing, fetchListing, loading, getPlacesData, places, setPlaces, coords} = React.useContext(ListingContext);
+    const {listing, fetchListing, loading, getPlacesData, places, setPlaces} = React.useContext(ListingContext);
     const {listingid} = useParams();
     
     React.useEffect(()=>{
@@ -22,7 +22,7 @@ const ListingAttractions= () => {
 
     React.useEffect(()=>{
         if(places.length === 0 ){
-            getPlacesData('attractions', coords.lat, coords.lng)
+            getPlacesData('attractions', listing.latitude, listing.longitude)
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[places])

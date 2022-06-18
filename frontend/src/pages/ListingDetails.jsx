@@ -26,16 +26,15 @@ const {user} = useContext(AppContext);
 useEffect(()=>{
     fetchListing(listingid);
 // eslint-disable-next-line react-hooks/exhaustive-deps
-},[])
-
+},[listingid])
 
 useEffect(()=>{
     if(forecast.length === 0 ){
-        getWeatherData(coords.lat, coords.lng)
-        getWeatherForecast(coords.lat, coords.lng)
+        getWeatherData(listing.latitude, listing.longitude)
+        getWeatherForecast(listing.latitude, listing.longitude)
     }
 // eslint-disable-next-line react-hooks/exhaustive-deps
-},[forecast.length])
+},[forecast])
 
 console.log(weather)
 console.log(forecast)

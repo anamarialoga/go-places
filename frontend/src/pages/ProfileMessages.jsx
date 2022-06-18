@@ -23,26 +23,36 @@ const ProfileMessages =()=>{
 
     const [filteredList, setFilteredList] = useState([])
     useEffect(()=>{
-        getConv(listingid);
-        console.log(allConv)
+        if(allConv.length===0){
+            getConv(listingid);
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[allConv])
+
+    useEffect(()=>{
         if(allConv.length>1){
-            console.log('There are more conversations');
-            for(let i=0; i<allConv.length-1; i++){
+            console.log('There are more conversations', allConv.length);
+            for(let i=0; i<allConv.length; i++){
                     if(!(allConv[i+1]?.to_from.includes(allConv[i]?.to_from[1]) &&  allConv[i+1]?.to_from.includes(allConv[i]?.to_from[0])))
                     {
-                        setFilteredList((prevState)=>[...prevState, allConv[i+1]])
+                        setFilteredList((prevState)=>[...prevState, allConv[i]])
+                        console.log(allConv[i])
                     }
                 }
         }
-        else{
+        else if(allConv.length===1){
             console.log('There is only one conversation', allConv.length)
             setFilteredList((prevState)=>[...allConv])
             console.log(filteredList)
         }
+        else{
+            console.log('No Conversations', allConv.length)
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
+    },[allConv])
 
-    
+    console.log("filtered list", filteredList)
+
     const [conv, setConv] = useState({});
     const [buttonClicked, setButtonClicked] = useState(false)
     
@@ -55,16 +65,16 @@ const ProfileMessages =()=>{
     useEffect(()=>{
         if(buttonClicked ===true){
             if(conv.to!==user.id)
-                setlandLord({id: conv.to,name:conv.toUser})
-            else setlandLord({id: conv.from,name:conv.fromUser})
+                setlandLord({id: conv?.to,name:conv.toUser})
+            else setlandLord({id: conv?.from,name:conv.fromUser})
             
 
-            getConvWithUser(conv.listingConv, landLord.id)
+            getConvWithUser(conv?.listingConv, landLord.id)
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [buttonClicked])
 
-    console.log(convWithUser)
+    // console.log(convWithUser)
 
 
     return <>
@@ -91,7 +101,7 @@ const ProfileMessages =()=>{
                                 
                             </ListItemAvatar>
                             <Typography variant={"subtitle1"} color={"#ff3366"} style={{fontWeight:"600", fontSize:"1.2rem"}}>
-                                            {user.id !== conver.from ? conver.fromUser: conver.toUser} 
+                                            {user.id !== conver?.from ? conver?.fromUser: conver?.toUser} 
                             </Typography>
                             </div>
                              <IconButton 
