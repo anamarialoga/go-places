@@ -193,7 +193,7 @@ export const ProfileDetails = (props) => {
             </Grid>
         </Grid>
         </CardContent>
-        <Divider />Fig. 5.23. Edit Listing page
+        <Divider />
         <Box
          style={{backgroundColor: "#fff5f8"}}
           sx={{
