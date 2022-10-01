@@ -1,24 +1,23 @@
 # GoPlaces! App
 
 Full-stack MERN application (Bachelor's Degree Final Project)
-
 Offers services for both customers and owners :) !
 
 FrontEnd: ReactJs;
 BackEnd: Express, Node;
 Database: MongoDb;
 
-# installation
+# Installation
 
     * In order to install all the dependencies, please run the following command under both /frontend and /go-places-app-master directories:
          npm install
 
-# start
+# Start
 
     * In order to start the application, please run the following command under /go-places-app-master directory:
          npm run dev
 
-# project content
+# Project Content
 
 - Initial Page
   ![ScreenShot](UIpages/1.png)
@@ -29,9 +28,10 @@ Database: MongoDb;
 - Explore Page
   ![ScreenShot](UIpages/4.png)
 - Search functionality based on filters - location, date
-
-- USER AREA (accessible by clicking on My Profile button)
   ![ScreenShot](UIpages/5.png)
+
+USER AREA (accessible by clicking on My Profile button)
+
 - My Account Page - Adjust personal information to be used when booking a property
   ![ScreenShot](UIpages/6.png)
 - My Listings Page - A list for all the listings the user has posted
@@ -41,7 +41,7 @@ Database: MongoDb;
 - Dashboard - See statistics: customers, bookings, planned trips,
   ![ScreenShot](UIpages/9.png)
 
-- PROPERTY AREA (accessible after searching and selecting a property)
+PROPERTY AREA (accessible after searching and selecting a property)
 
 - Property detais
   ![ScreenShot](UIpages/10.png)
@@ -60,12 +60,12 @@ Database: MongoDb;
 - Answer Customers (Section available only if the property belongs to the user)
   ![ScreenShot](UIpages/17.png)
 
-# dependencies
+# Dependencies
 
     * concurrently: runs both 'npm run server' & 'npm run client'
     * dotenv
 
-# front-end:
+# Front-end:
 
     * react-router-dom
     * swiper: image slider
@@ -75,7 +75,7 @@ Database: MongoDb;
     * google-map-react
     * Material UI packages
 
-# back-end
+# Back-end
 
     * Express: tooling for HTTP services
     * express-async-handler: exception handler
