@@ -2,6 +2,8 @@
 
 Full-stack MERN application (Bachelor's Degree Final Project)
 
+Offers services for both customers and owners :) !
+
 FrontEnd: ReactJs;
 BackEnd: Express, Node;
 Database: MongoDb;
@@ -18,23 +20,45 @@ Database: MongoDb;
 
 # project content
 
-![ScreenShot](UIpages/1.png)
-![ScreenShot](UIpages/2.png)
-![ScreenShot](UIpages/3.png)
-![ScreenShot](UIpages/4.png)
-![ScreenShot](UIpages/5.png)
-![ScreenShot](UIpages/6.png)
-![ScreenShot](UIpages/7.png)
-![ScreenShot](UIpages/8.png)
-![ScreenShot](UIpages/9.png)
-![ScreenShot](UIpages/10.png)
-![ScreenShot](UIpages/11.png)
-![ScreenShot](UIpages/12.png)
-![ScreenShot](UIpages/13.png)
-![ScreenShot](UIpages/14.png)
-![ScreenShot](UIpages/15.png)
-![ScreenShot](UIpages/16.png)
-![ScreenShot](UIpages/17.png)
+- Initial Page
+  ![ScreenShot](UIpages/1.png)
+- Sign Up Page
+  ![ScreenShot](UIpages/2.png)
+- Sign In Page
+  ![ScreenShot](UIpages/3.png)
+- Explore Page
+  ![ScreenShot](UIpages/4.png)
+- Search functionality based on filters - location, date
+
+- USER AREA (accessible by clicking on My Profile button)
+  ![ScreenShot](UIpages/5.png)
+- My Account Page - Adjust personal information to be used when booking a property
+  ![ScreenShot](UIpages/6.png)
+- My Listings Page - A list for all the listings the user has posted
+  ![ScreenShot](UIpages/7.png)
+- Section for adding a property listing
+  ![ScreenShot](UIpages/8.png)
+- Dashboard - See statistics: customers, bookings, planned trips,
+  ![ScreenShot](UIpages/9.png)
+
+- PROPERTY AREA (accessible after searching and selecting a property)
+
+- Property detais
+  ![ScreenShot](UIpages/10.png)
+- Photo Gallery
+  ![ScreenShot](UIpages/11.png)
+- Restaurants in the area
+  ![ScreenShot](UIpages/12.png)
+- Activities in the area
+  ![ScreenShot](UIpages/13.png)
+- Reviews from users who booked the property at least once
+  ![ScreenShot](UIpages/14.png)
+- Contact the owner (Section available only if the property belongs to someone else)
+  ![ScreenShot](UIpages/15.png)
+- Checkout form (Section available only if the property belongs to someone else)
+  ![ScreenShot](UIpages/16.png)
+- Answer Customers (Section available only if the property belongs to the user)
+  ![ScreenShot](UIpages/17.png)
 
 # dependencies
 
