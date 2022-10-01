@@ -1,6 +1,6 @@
 # GoPlaces! App
 
-Full-stack MERN application
+Full-stack MERN application (Bachelor's Degree Final Project)
 
 FrontEnd: ReactJs;
 BackEnd: Express, Node;
@@ -15,6 +15,26 @@ Database: MongoDb;
 
     * In order to start the application, please run the following command under /go-places-app-master directory:
          npm run dev
+
+# project content
+
+![ScreenShot](UIpages/1.PNG)
+![ScreenShot](UIpages/2.PNG)
+![ScreenShot](UIpages/3.PNG)
+![ScreenShot](UIpages/4.PNG)
+![ScreenShot](UIpages/5.PNG)
+![ScreenShot](UIpages/6.PNG)
+![ScreenShot](UIpages/7.PNG)
+![ScreenShot](UIpages/8.PNG)
+![ScreenShot](UIpages/9.PNG)
+![ScreenShot](UIpages/10.PNG)
+![ScreenShot](UIpages/11.PNG)
+![ScreenShot](UIpages/12.PNG)
+![ScreenShot](UIpages/13.PNG)
+![ScreenShot](UIpages/14.PNG)
+![ScreenShot](UIpages/15.PNG)
+![ScreenShot](UIpages/16.PNG)
+![ScreenShot](UIpages/17.PNG)
 
 # dependencies
 
