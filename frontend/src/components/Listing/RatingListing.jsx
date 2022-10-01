@@ -37,7 +37,7 @@ for(let i=0; i<props.listing?.average.length; i++){
             <div style={{display: 'inline-flex', width:"100%", justifyContent: "space-between"}}>
             <Rating size='large' readOnly defaultValue={(avg/nrReviews) ?? 0} precision={0.1}/>
             <Typography component="h2" variant="h5" style={{marginRight:"1rem", fontWeight: "800"}}>
-              {(avg/nrReviews).toFixed(1) ? (avg/nrReviews).toFixed(1) : 0} /5 
+              { (avg/nrReviews).toFixed(1) > 0  ? (avg/nrReviews).toFixed(1) : 0} /5 
               </Typography>
             </div>
           </CardActions>
